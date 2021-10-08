@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbTravelWebModelStoreContainer" CdmEntityContainer="dbTravelWebEntities">
+    <EntitySetMapping Name="tUserOrder">
+      <EntityTypeMapping TypeName="dbTravelWebModel.tUserOrder">
+        <MappingFragment StoreEntitySet="tUserOrder">
+          <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+          <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
+          <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+          <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+          <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+          <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+          <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+          <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+          <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+          <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

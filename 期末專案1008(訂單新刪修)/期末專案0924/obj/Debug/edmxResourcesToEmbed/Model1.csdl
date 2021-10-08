@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTravelWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbTravelWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tUserOrder" EntityType="dbTravelWebModel.tUserOrder" />
+  </EntityContainer>
+  <EntityType Name="tUserOrder">
+    <Key>
+      <PropertyRef Name="cOrderSN" />
+    </Key>
+    <Property Name="cOrderSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cOrderID" Type="Int32" Nullable="false" />
+    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+    <Property Name="cOrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cCheckInDate" Type="DateTime" Precision="3" />
+    <Property Name="cCheckOutDate" Type="DateTime" Precision="3" />
+    <Property Name="cOrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffProfileSN" Type="Int32" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+    <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cOrderPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+</Schema>
