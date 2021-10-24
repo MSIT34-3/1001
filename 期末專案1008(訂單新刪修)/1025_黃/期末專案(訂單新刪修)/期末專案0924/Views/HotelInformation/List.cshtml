@@ -1,0 +1,99 @@
+﻿@model List<期末專案0924.ViewModels.CHotelInformationViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>旅館一覽表</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+<p>
+    @Html.ActionLink("新增旅館", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmTaxID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelNameEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelBarrierfree)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int count = 0;
+        foreach (var item in Model)
+        {
+            count++;
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmTaxID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelNameEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelBarrierfree)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.cHotelSN }) |
+                @Html.ActionLink("刪除", "Delete", "HotelInformation", new { id = item.cHotelSN }, new { onclick = "return confirm('確定要刪除嗎?')" }) |
+                @Html.ActionLink("新增飯店房型", "List", "HotelRoomType",new { id = item.cHotelSN})
+            </td>
+        </tr>
+        }
+    }
+
+
+</table>

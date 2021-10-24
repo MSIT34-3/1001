@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbTravelWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tHotelInfomation">
+    <Key>
+      <PropertyRef Name="cHotelSN" />
+    </Key>
+    <Property Name="cHotelSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cFirmSN" Type="int" />
+    <Property Name="cFirmTaxID" Type="int" />
+    <Property Name="cHotelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelNameEN" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelAdress" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelCreationDate" Type="datetime" />
+    <Property Name="cHotelInfoPhoto" Type="image" />
+    <Property Name="cHotelPhone" Type="varchar" MaxLength="20" />
+    <Property Name="cHotelAverageRating" Type="float" />
+    <Property Name="cHotelRatingOfPeople" Type="int" />
+    <Property Name="cHotelType" Type="nvarchar" MaxLength="20" />
+    <Property Name="cHotelBarrierfree" Type="bit" />
+  </EntityType>
+  <EntityType Name="tUserOrder">
+    <Key>
+      <PropertyRef Name="cOrderSN" />
+    </Key>
+    <Property Name="cOrderSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cOrderID" Type="int" Nullable="false" />
+    <Property Name="cGuestSN" Type="int" Nullable="false" />
+    <Property Name="cOrderDate" Type="datetime" Nullable="false" />
+    <Property Name="cCheckInDate" Type="datetime" />
+    <Property Name="cCheckOutDate" Type="datetime" />
+    <Property Name="cOrderStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="cStaffProfileSN" Type="int" />
+    <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+    <Property Name="cOrderNotes" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="cOrderPrice" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbTravelWebModelStoreContainer">
+    <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tUserOrder" EntityType="Self.tUserOrder" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

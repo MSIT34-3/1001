@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbtravelwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tGuestPaymentInfomation">
+    <Key>
+      <PropertyRef Name="cGuestPaymentInfoSN" />
+    </Key>
+    <Property Name="cGuestPaymentInfoSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cOrderID" Type="int" />
+    <Property Name="cCreditCardType" Type="nvarchar" MaxLength="50" />
+    <Property Name="cGuestCreditCardName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cGuestCreditCardBirth" Type="date" />
+    <Property Name="cGuestCreditCardNameID" Type="nvarchar" MaxLength="50" />
+    <Property Name="cGuestCreditCardNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="cGuestCreditCardDeadlineMonth" Type="int" />
+    <Property Name="cGuestCreditCardDeadlineYear" Type="int" />
+    <Property Name="cGuestCreditCardSecurityCode" Type="int" />
+  </EntityType>
+  <EntityType Name="tHotelInfomation">
+    <Key>
+      <PropertyRef Name="cHotelSN" />
+    </Key>
+    <Property Name="cHotelSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cFirmSN" Type="int" />
+    <Property Name="cFirmTaxID" Type="int" />
+    <Property Name="cHotelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelNameEN" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelAdress" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelCreationDate" Type="datetime" />
+    <Property Name="cHotelInfoPhoto" Type="image" />
+    <Property Name="cHotelPhone" Type="varchar" MaxLength="20" />
+    <Property Name="cHotelAverageRating" Type="float" />
+    <Property Name="cHotelRatingOfPeople" Type="int" />
+    <Property Name="cHotelType" Type="nvarchar" MaxLength="20" />
+    <Property Name="cHotelBarrierfree" Type="bit" />
+  </EntityType>
+  <EntityType Name="tHotelOrderSystem">
+    <Key>
+      <PropertyRef Name="OrderSystemSN" />
+    </Key>
+    <Property Name="OrderSystemSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="cHotelSN" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+    <Property Name="CanBookNumber" Type="int" Nullable="false" />
+    <Property Name="BookedNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tHotelRoomType">
+    <Key>
+      <PropertyRef Name="cHotelRoomTypeSN" />
+    </Key>
+    <Property Name="cHotelRoomTypeSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cHotelSN" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cHotelRoomCount" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomContain" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomContainAldults" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomContainChiidren" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tUserOrder">
+    <Key>
+      <PropertyRef Name="cOrderSN" />
+    </Key>
+    <Property Name="cOrderSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cOrderID" Type="int" Nullable="false" />
+    <Property Name="cGuestSN" Type="int" Nullable="false" />
+    <Property Name="cOrderDate" Type="datetime" />
+    <Property Name="cCheckInDate" Type="date" />
+    <Property Name="cCheckOutDate" Type="date" />
+    <Property Name="cOrderStatus" Type="nvarchar" MaxLength="20" />
+    <Property Name="cStaffProfileSN" Type="int" />
+    <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+    <Property Name="cOrderNotes" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="cOrderPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbtravelwebModelStoreContainer">
+    <EntitySet Name="tGuestPaymentInfomation" EntityType="Self.tGuestPaymentInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tHotelOrderSystem" EntityType="Self.tHotelOrderSystem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tHotelRoomType" EntityType="Self.tHotelRoomType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tUserOrder" EntityType="Self.tUserOrder" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

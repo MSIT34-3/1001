@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbtravelwebModelStoreContainer" CdmEntityContainer="dbtravelwebEntities">
+    <EntitySetMapping Name="tHotelInfomation">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tHotelInfomation">
+        <MappingFragment StoreEntitySet="tHotelInfomation">
+          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+          <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+          <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+          <ScalarProperty Name="cHotelName" ColumnName="cHotelName" />
+          <ScalarProperty Name="cHotelNameEN" ColumnName="cHotelNameEN" />
+          <ScalarProperty Name="cHotelCity" ColumnName="cHotelCity" />
+          <ScalarProperty Name="cHotelAdress" ColumnName="cHotelAdress" />
+          <ScalarProperty Name="cHotelCreationDate" ColumnName="cHotelCreationDate" />
+          <ScalarProperty Name="cHotelInfoPhoto" ColumnName="cHotelInfoPhoto" />
+          <ScalarProperty Name="cHotelPhone" ColumnName="cHotelPhone" />
+          <ScalarProperty Name="cHotelAverageRating" ColumnName="cHotelAverageRating" />
+          <ScalarProperty Name="cHotelRatingOfPeople" ColumnName="cHotelRatingOfPeople" />
+          <ScalarProperty Name="cHotelType" ColumnName="cHotelType" />
+          <ScalarProperty Name="cHotelBarrierfree" ColumnName="cHotelBarrierfree" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUserOrder">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
+        <MappingFragment StoreEntitySet="tUserOrder">
+          <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
+          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+          <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+          <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+          <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+          <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+          <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+          <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+          <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+          <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
+          <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHotelOrderSystem">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tHotelOrderSystem">
+        <MappingFragment StoreEntitySet="tHotelOrderSystem">
+          <ScalarProperty Name="BookedNumber" ColumnName="BookedNumber" />
+          <ScalarProperty Name="CanBookNumber" ColumnName="CanBookNumber" />
+          <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderSystemSN" ColumnName="OrderSystemSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHotelRoomType">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
+        <MappingFragment StoreEntitySet="tHotelRoomType">
+          <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
+          <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
+          <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
+          <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
+          <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
+          <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
+          <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
+          <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
+          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+          <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tGuestPaymentInfomation">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tGuestPaymentInfomation">
+        <MappingFragment StoreEntitySet="tGuestPaymentInfomation">
+          <ScalarProperty Name="cGuestCreditCardSecurityCode" ColumnName="cGuestCreditCardSecurityCode" />
+          <ScalarProperty Name="cGuestCreditCardDeadlineYear" ColumnName="cGuestCreditCardDeadlineYear" />
+          <ScalarProperty Name="cGuestCreditCardDeadlineMonth" ColumnName="cGuestCreditCardDeadlineMonth" />
+          <ScalarProperty Name="cGuestCreditCardNumber" ColumnName="cGuestCreditCardNumber" />
+          <ScalarProperty Name="cGuestCreditCardNameID" ColumnName="cGuestCreditCardNameID" />
+          <ScalarProperty Name="cGuestCreditCardBirth" ColumnName="cGuestCreditCardBirth" />
+          <ScalarProperty Name="cGuestCreditCardName" ColumnName="cGuestCreditCardName" />
+          <ScalarProperty Name="cCreditCardType" ColumnName="cCreditCardType" />
+          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+          <ScalarProperty Name="cGuestPaymentInfoSN" ColumnName="cGuestPaymentInfoSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
