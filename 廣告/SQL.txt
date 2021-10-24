@@ -7,7 +7,7 @@ CREATE TABLE [tAdvertising](
 	[cADFileName] [nvarchar](50) NULL,
 	[cADStartDate] [date] NULL,
 	[cADDueDate] [date] NULL,
-	[cADActionDate] [binary](100) NULL,
+	[cADActionDate] [nvarchar](1000) NULL,
 	[cADStatus] [bit] NULL,
 	[cADGroup] [nvarchar](50) NULL,
 	[cADURL] [nvarchar](1000) NULL,
