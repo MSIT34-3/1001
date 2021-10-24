@@ -1,0 +1,163 @@
+﻿@model TEST3.tAdvertising
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" enctype="multipart/form-data">
+
+    廣告開始日期:<input type="date" name="cADStartDate" id="cADStartDate" /><br />
+    廣告結束日期:<input type="date" name="cADDueDate" id="cADDueDate" /><br />
+    <input type="button" onclick="SelectDays()" />選擇的日期<br />
+    <input type="button" onclick="StrTransToArray()" />轉換<br />
+    <input type="button" onclick="outPutStr()" />輸出<br />
+    <input type="text" id="cADActionDate" /><br />
+    <div>
+        <label>123///@ViewBag.Date</label>
+    </div>
+    
+
+    <input type="submit" value="submit" />
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    //new Date(); 輸入now或是yyyy-MM-dd，輸出標準時間格式
+    //$('#cADStartDate').val() 輸出yyyy-MM-dd
+
+    var getString = "2021-10-26,2021-10-29,2021-10-30";
+    var selectString="";
+
+    //選擇的日期轉字串
+    function SelectDays() {
+        var firstDay = $('#cADStartDate').val();
+        var lastDay = $('#cADDueDate').val();
+        var allDayCount = DateDiff(firstDay, lastDay);
+        for (i = 0; i < allDayCount; i++){
+            selectString += firstDay;
+            selectString += ",";
+            firstDay = new Date(firstDay);
+            GetDate(firstDay, 1);
+            firstDay = GetDateOutput(firstDay);
+        }
+        selectString = selectString.substring(0, selectString.length - 1);
+        return selectString;
+    }
+    //字串轉陣列
+    function StrTransToArray(string) {
+        return (string.split(','));
+    }
+    //陣列轉字串
+    function ArrayTransToStr(array) {
+        return (array.join(','));
+    }
+    //兩陣列取出重複值
+    function GetRepeat(array1,array2) {
+        var result = array1.filter(function (val) {
+            return array2.indexOf(val) != -1;
+        });
+        return result;
+    }
+    //最終輸出
+    function outPutStr() {
+        var selectStrArray = StrTransToArray(selectString);//get的已滿天數轉陣列
+        var getStrArray = StrTransToArray(getString);//選取的天數轉陣列
+        var finalStrArray = arrChange(selectStrArray, getStrArray);//兩陣列相減
+        $('#cADActionDate').val(finalStrArray.length);//實際可用天數
+
+        return(ArrayTransToStr(finalStrArray));//最終陣列轉回字串後輸出
+    }
+    //陣列A-陣列B，回傳新的陣列A
+    function arrChange(arrayA, arratB) {
+        for (var i = 0; i < arratB.length; i++) {
+            for (var j = 0; j < arrayA.length; j++) {
+                if (arrayA[j] == arratB[i]) {
+                    arrayA.splice(j, 1);
+                    j = j - 1;
+                }
+            }
+        }
+        return arrayA;
+    }
+
+
+
+    //日期天數差公式
+    var DateDiff = function (sDate1, sDate2) { // 輸入$('#cADStartDate').val()yyyy-MM-dd
+        var oDate1 = new Date(sDate1);
+        var oDate2 = new Date(sDate2);
+        var iDays = parseInt(Math.abs(oDate1 - oDate2) / 1000 / 60 / 60 / 24); // 把相差的毫秒數轉換為天數
+        return iDays;
+    };
+
+    //日期預設
+    //日期加減，輸入(Date()日期格式,加減天數)，輸出Date()日期格式
+    function GetDate(date, addDays) {
+        var getDate = date.setDate(date.getDate() + addDays);//加完後會轉碼
+        getDate = new Date(getDate);//再轉回標準時間 
+        return getDate;
+    }
+    //輸入(Date()日期格式，輸出(yyyy-MM-dd)
+    function GetDateOutput(date) {
+        var day = ("0" + date.getDate()).slice(-2);//格式化日，如果小於9，前面補0        
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);//格式化月，如果小於9，前面補0
+        var Date = date.getFullYear() + "-" + (month) + "-" + (day);//拼裝完整日期格式
+        return Date;
+    }
+    //日期範圍浮動(輸入yyyy-MM-dd)
+    function DateRange(selectStartDate) {
+        var startdate = new Date(selectStartDate);//取得選取時間Date()
+        //開始+7天
+        var enddatestart = GetDate(startdate, 7);
+        var adenddatestart = GetDateOutput(enddatestart);
+        $('#cADDueDate').attr('min', adenddatestart);
+        //結束+30天
+        var enddateend = GetDate(startdate, 30);
+        var adenddateend = GetDateOutput(enddateend);
+        $('#cADDueDate').attr('max', adenddateend);
+
+        //超出範圍的話自動跳回範圍內
+        if ($('#cADDueDate').val() < adenddatestart) {
+            $('#cADDueDate').val(adenddatestart);
+        } else if ($('#cADDueDate').val() > adenddateend) {
+            $('#cADDueDate').val(adenddateend);
+        } else {
+            return;
+        }
+    };
+    // 取得標準時間  Date()設定預設值now
+    var now = new Date();
+    //預設起始日期+1天，並設定最小值
+    var startDate = GetDate(now, 1);
+    var adStartDate = GetDateOutput(startDate);
+    $('#cADStartDate').val(adStartDate);
+    $('#cADStartDate').attr('min', adStartDate);
+    //預設結束日期
+    DateRange(adStartDate);
+    //浮動(不能用this.val()，不知道為什麼)
+    $('#cADStartDate').change(function () {
+        DateRange($('#cADStartDate').val())
+    });
+</script>
+
+
+@*//用contain取出資料庫陣列
+
+//輸入日期陣列(2個月)
+
+//值取出然後畫黑
+
+//選擇開始跟結束
+
+//把選擇的日子變成陣列
+
+//日期陣列並選擇陣列
+
+//計算日數並顯示
+
+//儲存陣列*@
+

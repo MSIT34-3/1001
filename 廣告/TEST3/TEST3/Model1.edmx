@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADStartDate" Type="date" />
+          <Property Name="cADDueDate" Type="date" />
+          <Property Name="cADActionDate" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADStatus" Type="bit" />
+          <Property Name="cADGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADURL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADCreateDate" Type="smalldatetime" />
+          <Property Name="cADEditDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityContainer Name="TESTModelStoreContainer">
+          <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TESTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAdvertising" EntityType="TESTModel.tAdvertising" />
+        </EntityContainer>
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADStartDate" Type="DateTime" Precision="0" />
+          <Property Name="cADDueDate" Type="DateTime" Precision="0" />
+          <Property Name="cADActionDate" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADStatus" Type="Boolean" />
+          <Property Name="cADGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADCreateDate" Type="DateTime" Precision="0" />
+          <Property Name="cADEditDate" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TESTModelStoreContainer" CdmEntityContainer="TESTEntities">
+          <EntitySetMapping Name="tAdvertising">
+            <EntityTypeMapping TypeName="TESTModel.tAdvertising">
+              <MappingFragment StoreEntitySet="tAdvertising">
+                <ScalarProperty Name="cADEditDate" ColumnName="cADEditDate" />
+                <ScalarProperty Name="cADCreateDate" ColumnName="cADCreateDate" />
+                <ScalarProperty Name="cADURL" ColumnName="cADURL" />
+                <ScalarProperty Name="cADGroup" ColumnName="cADGroup" />
+                <ScalarProperty Name="cADStatus" ColumnName="cADStatus" />
+                <ScalarProperty Name="cADActionDate" ColumnName="cADActionDate" />
+                <ScalarProperty Name="cADDueDate" ColumnName="cADDueDate" />
+                <ScalarProperty Name="cADStartDate" ColumnName="cADStartDate" />
+                <ScalarProperty Name="cADFileName" ColumnName="cADFileName" />
+                <ScalarProperty Name="cADName" ColumnName="cADName" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cADSN" ColumnName="cADSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

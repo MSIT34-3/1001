@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS [tAdvertising]
+
+CREATE TABLE [tAdvertising](
+	[cADSN] [int] IDENTITY(1,1) PRIMARY KEY CLUSTERED NOT NULL,
+	[cFirmSN] [nvarchar](50) NULL,
+	[cADName] [nvarchar](50) NULL,
+	[cADFileName] [nvarchar](50) NULL,
+	[cADStartDate] [date] NULL,
+	[cADDueDate] [date] NULL,
+	[cADActionDate] [binary](100) NULL,
+	[cADStatus] [bit] NULL,
+	[cADGroup] [nvarchar](50) NULL,
+	[cADURL] [nvarchar](1000) NULL,
+	[cADCreateDate] [smalldatetime] NULL,
+	[cADEditDate] [smalldatetime] NULL,
+	)
+GO

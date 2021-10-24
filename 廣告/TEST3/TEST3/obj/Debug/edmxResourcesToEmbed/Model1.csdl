@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TESTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TESTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tAdvertising" EntityType="TESTModel.tAdvertising" />
+  </EntityContainer>
+  <EntityType Name="tAdvertising">
+    <Key>
+      <PropertyRef Name="cADSN" />
+    </Key>
+    <Property Name="cADSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cFirmSN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cADName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cADFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cADStartDate" Type="DateTime" Precision="0" />
+    <Property Name="cADDueDate" Type="DateTime" Precision="0" />
+    <Property Name="cADActionDate" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="cADStatus" Type="Boolean" />
+    <Property Name="cADGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cADURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="cADCreateDate" Type="DateTime" Precision="0" />
+    <Property Name="cADEditDate" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

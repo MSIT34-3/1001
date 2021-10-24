@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TESTModelStoreContainer" CdmEntityContainer="TESTEntities">
+    <EntitySetMapping Name="tAdvertising">
+      <EntityTypeMapping TypeName="TESTModel.tAdvertising">
+        <MappingFragment StoreEntitySet="tAdvertising">
+          <ScalarProperty Name="cADEditDate" ColumnName="cADEditDate" />
+          <ScalarProperty Name="cADCreateDate" ColumnName="cADCreateDate" />
+          <ScalarProperty Name="cADURL" ColumnName="cADURL" />
+          <ScalarProperty Name="cADGroup" ColumnName="cADGroup" />
+          <ScalarProperty Name="cADStatus" ColumnName="cADStatus" />
+          <ScalarProperty Name="cADActionDate" ColumnName="cADActionDate" />
+          <ScalarProperty Name="cADDueDate" ColumnName="cADDueDate" />
+          <ScalarProperty Name="cADStartDate" ColumnName="cADStartDate" />
+          <ScalarProperty Name="cADFileName" ColumnName="cADFileName" />
+          <ScalarProperty Name="cADName" ColumnName="cADName" />
+          <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+          <ScalarProperty Name="cADSN" ColumnName="cADSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

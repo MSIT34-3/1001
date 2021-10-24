@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TESTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tAdvertising">
+    <Key>
+      <PropertyRef Name="cADSN" />
+    </Key>
+    <Property Name="cADSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cFirmSN" Type="nvarchar" MaxLength="50" />
+    <Property Name="cADName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cADFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cADStartDate" Type="date" />
+    <Property Name="cADDueDate" Type="date" />
+    <Property Name="cADActionDate" Type="nvarchar" MaxLength="1000" />
+    <Property Name="cADStatus" Type="bit" />
+    <Property Name="cADGroup" Type="nvarchar" MaxLength="50" />
+    <Property Name="cADURL" Type="nvarchar" MaxLength="1000" />
+    <Property Name="cADCreateDate" Type="smalldatetime" />
+    <Property Name="cADEditDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityContainer Name="TESTModelStoreContainer">
+    <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
