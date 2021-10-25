@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TEST3.tAdvertising>
+
+@{
+    ViewBag.Title = "ADList";
+}
+
+<h2>ADList</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" id="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("新增廣告", "ADUpload")
+    @Html.ActionLink("預覽", "ADShow")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cADName)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.cADCreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADDueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADGroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cADEditDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADName)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.cADCreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADDueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADURL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADEditDate)
+            </td>
+            <td>@*之後再來用權限區分顯示項目*@                
+                @Html.ActionLink("Edit", "ADEdit", new { sn = item.cADSN }) |
+                @Html.ActionLink("Status", "ADChangeStatus", new { id = item.cADSN }) |
+                @Html.ActionLink("Delete", "ADDelete", new { id = item.cADSN })
+            </td>
+        </tr>
+    }
+
+</table>

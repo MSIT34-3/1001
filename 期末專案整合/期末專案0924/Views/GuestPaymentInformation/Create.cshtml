@@ -1,0 +1,127 @@
+﻿@model 期末專案0924.ViewModels.CGuestPaymentInformationViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新增信用卡資訊</h2>
+
+<head>
+    <style>
+        .card {
+            height: 25px;
+            width: 200px;
+            display: inline;
+        }
+    </style>
+</head>
+@using (Html.BeginForm("Create","GuestPaymentInformation", FormMethod.Post, new { id = "cardForm" }))
+{ 
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>填寫信用卡資訊</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cGuestCreditCardName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardBirth, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cGuestCreditCardBirth, new { htmlAttributes = new { @class = "form-control", Type = "date" } })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardBirth, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardNameID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cGuestCreditCardNameID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardNameID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input class="form-control card" maxlength="4" id="card1" />
+            <input class="form-control card" maxlength="4" id="card2" />
+            <input class="form-control card" maxlength="4" id="card3" />
+            <input class="form-control card" maxlength="4" id="card4" />
+            <input type="hidden" name="cGuestCreditCardNumber" id="card5" />
+            @*@Html.EditorFor(model => model.cGuestCreditCardNumber, new { htmlAttributes = new { @class = "form-control card", Type = "text", maxlength = "4", id = "card" } })*@
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardDeadlineMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*寫下拉式選單*@
+            @Html.DropDownList("cGuestCreditCardDeadlineMonth", (List<SelectListItem>)ViewBag.Month, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardDeadlineMonth, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardDeadlineYear, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*寫下拉式選單*@
+            @Html.DropDownList("cGuestCreditCardDeadlineYear", (List<SelectListItem>)ViewBag.Year, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardDeadlineYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.cGuestCreditCardSecurityCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.cGuestCreditCardSecurityCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.cGuestCreditCardSecurityCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="cardClick" value="訂單資訊確認" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+     
+<div>
+    @Html.ActionLink("回信用卡列表", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script src="~/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+<script>
+    $("#cardClick").click(function () {
+        if ($("#card1").val().length != 4) {
+            alert("信用卡卡號為16碼!!");
+            return false;
+        }
+        if ($("#card2").val().length != 4) {
+            alert("信用卡卡號為16碼!!");
+            return false;
+        }
+        if ($("#card3").val().length != 4) {
+            alert("信用卡卡號為16碼!!");
+            return false;
+        }
+        if ($("#card4").val().length != 4) {
+            alert("信用卡卡號為16碼!!");
+            return false;
+        };
+        $("#cardForm").submit();
+    });
+</script>
