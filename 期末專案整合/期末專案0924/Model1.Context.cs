@@ -53,5 +53,6 @@ namespace 期末專案0924
         public virtual DbSet<tUserOrder> tUserOrder { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
         public virtual DbSet<ipv6_database_firewall_rules> ipv6_database_firewall_rules { get; set; }
+        public virtual DbSet<tAdvertising> tAdvertising { get; set; }
     }
 }

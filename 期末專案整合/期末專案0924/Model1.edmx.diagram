@@ -33,6 +33,7 @@
         <EntityTypeShape EntityType="dbtravelwebModel.tUserOrder" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbtravelwebModel.database_firewall_rules" Width="1.5" PointX="4.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbtravelwebModel.ipv6_database_firewall_rules" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbtravelwebModel.tAdvertising" Width="1.5" PointX="9.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

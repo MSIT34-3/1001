@@ -541,3 +541,7 @@ F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.csproj.CoreCompileInputs.cache
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.dll
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.pdb
+E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.AssemblyReference.cache
+E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.CoreCompileInputs.cache
+E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.dll
+E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.pdb

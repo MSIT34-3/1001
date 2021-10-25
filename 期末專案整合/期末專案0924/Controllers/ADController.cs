@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TEST3.Models;
+using 期末專案0924;
+using 期末專案0924.Models;
+using 期末專案0924.ViewModels;
 
-namespace TEST3.Controllers
+namespace 期末專案0924.Controllers
 {
     public class ADController : Controller
     {
@@ -20,8 +18,9 @@ namespace TEST3.Controllers
                 q = new tADFactory().QueryAll();
             else
                 q = new tADFactory().QueryByKeyword(Request.Form["txtKeyword"]);
-            return View(q);
+            return View(tableToViewModel(q));
         }
+
         public ActionResult ADShow()
         {
             tADFactory factory = new tADFactory();
@@ -55,13 +54,13 @@ namespace TEST3.Controllers
                 return RedirectToAction("ADShow");
             }
             ViewBag.ADFileName = new tADFactory().QueryBySN((int)sn).cADFileName;
-            
-            return View(new tADFactory().QueryBySN((int)sn));
+
+            return View(tableToViewModel(new tADFactory().QueryBySN((int)sn)));
         }
         [HttpPost]
-        public ActionResult ADEdit(tAdvertising tAdvertising)
+        public ActionResult ADEdit(CADViewModel cADViewModel)
         {
-            new tADFactory().Update(tAdvertising);
+            new tADFactory().Update(cADViewModel);
             return RedirectToAction("ADList");
         }
         public ActionResult ADChangeStatus(int? id)
@@ -75,14 +74,29 @@ namespace TEST3.Controllers
             return RedirectToAction("ADList");
         }
 
-        public ActionResult ADDelete(int? sn)
+        public ActionResult ADDelete(int? id)
         {
-            if(sn!=null)
+            if (id != null)
             {
-                new tADFactory().Delete((int)sn);
+                new tADFactory().Delete((int)id);
             }
 
             return RedirectToAction("ADList");
+        }
+
+        //Table轉ViewModel
+        List<CADViewModel> tableToViewModel(IQueryable<tAdvertising> tad)
+        {
+            List<CADViewModel> models = new List<CADViewModel>();
+            foreach (tAdvertising ad in tad)
+                models.Add(new CADViewModel() { advertising = ad });
+            return models;
+        }
+        CADViewModel tableToViewModel(tAdvertising tad)
+        {
+            CADViewModel models = new CADViewModel();
+            models.advertising = tad;
+            return models;
         }
     }
 }

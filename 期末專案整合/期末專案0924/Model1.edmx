@@ -4,7 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbtravelwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbtravelwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADStartDate" Type="date" />
+          <Property Name="cADDueDate" Type="date" />
+          <Property Name="cADActionDate" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADStatus" Type="bit" />
+          <Property Name="cADGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADURL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADCreateDate" Type="smalldatetime" />
+          <Property Name="cADEditDate" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="tCreditCardTypeTable">
           <Key>
             <PropertyRef Name="cCreditCardTypeSN" />
@@ -76,7 +93,7 @@
           <Property Name="cGuestCreditCardNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="cGuestCreditCardDeadlineMonth" Type="int" />
           <Property Name="cGuestCreditCardDeadlineYear" Type="int" />
-          <Property Name="cGuestCreditCardSecurityCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="cGuestCreditCardSecurityCode" Type="int" />
         </EntityType>
         <EntityType Name="tGuestPreference">
           <Key>
@@ -338,6 +355,7 @@
           <Property Name="modify_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="dbtravelwebModelStoreContainer">
+          <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCreditCardTypeTable" EntityType="Self.tCreditCardTypeTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCurrency" EntityType="Self.tCurrency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tFirmAccountInfomation" EntityType="Self.tFirmAccountInfomation" Schema="dbo" store:Type="Tables" />
@@ -385,8 +403,7 @@
     FROM [sys].[ipv6_database_firewall_rules] AS [ipv6_database_firewall_rules]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbtravelwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -461,7 +478,7 @@
           <Property Name="cGuestCreditCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cGuestCreditCardDeadlineMonth" Type="Int32" />
           <Property Name="cGuestCreditCardDeadlineYear" Type="Int32" />
-          <Property Name="cGuestCreditCardSecurityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestCreditCardSecurityCode" Type="String" />
         </EntityType>
         <EntityType Name="tGuestPreference">
           <Key>
@@ -747,7 +764,25 @@
           <EntitySet Name="tUserOrder" EntityType="Self.tUserOrder" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
           <EntitySet Name="ipv6_database_firewall_rules" EntityType="Self.ipv6_database_firewall_rules" />
+          <EntitySet Name="tAdvertising" EntityType="dbtravelwebModel.tAdvertising" />
         </EntityContainer>
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADStartDate" Type="DateTime" Precision="0" />
+          <Property Name="cADDueDate" Type="DateTime" Precision="0" />
+          <Property Name="cADActionDate" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADStatus" Type="Boolean" />
+          <Property Name="cADGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADCreateDate" Type="DateTime" Precision="0" />
+          <Property Name="cADEditDate" Type="DateTime" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1097,6 +1132,24 @@
                 <ScalarProperty Name="end_ipv6_address" ColumnName="end_ipv6_address" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tAdvertising">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tAdvertising">
+              <MappingFragment StoreEntitySet="tAdvertising">
+                <ScalarProperty Name="cADEditDate" ColumnName="cADEditDate" />
+                <ScalarProperty Name="cADCreateDate" ColumnName="cADCreateDate" />
+                <ScalarProperty Name="cADURL" ColumnName="cADURL" />
+                <ScalarProperty Name="cADGroup" ColumnName="cADGroup" />
+                <ScalarProperty Name="cADStatus" ColumnName="cADStatus" />
+                <ScalarProperty Name="cADActionDate" ColumnName="cADActionDate" />
+                <ScalarProperty Name="cADDueDate" ColumnName="cADDueDate" />
+                <ScalarProperty Name="cADStartDate" ColumnName="cADStartDate" />
+                <ScalarProperty Name="cADFileName" ColumnName="cADFileName" />
+                <ScalarProperty Name="cADName" ColumnName="cADName" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cADSN" ColumnName="cADSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

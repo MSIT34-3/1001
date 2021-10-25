@@ -3,15 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using 期末專案0924;
+using 期末專案0924.ViewModels;
 
-namespace TEST3.Models
+namespace 期末專案0924.Models
 {
     public class tADFactory
     {
-        TESTEntities db = new TESTEntities();
+        dbtravelwebEntities db = new dbtravelwebEntities();
 
         //圖片儲存位置
-        string savePath = "C:/Users/benny/source/repos/TEST3/TEST3/ADImage/";
+        //"E:/資策會/003專題/GitHub/Travel/期末專案整合/期末專案0924/ADImage/"
+        string savePath = "E:/資策會/003專題/GitHub/Travel/期末專案整合/期末專案0924/ADImage/";
         //新增圖片
         public void Create(HttpPostedFileBase image, tAD tad)
         {
@@ -35,19 +38,20 @@ namespace TEST3.Models
             db.SaveChanges();
         }
         //修改
-        public void Update(tAdvertising tAdvertising)
+        public void Update(CADViewModel cADViewModel)
         {
-            int sn = tAdvertising.cADSN;
+            int sn = cADViewModel.cADSN;
             var q = (from n in db.tAdvertising
                      where n.cADSN == sn
                      select n).First();
-            q.cADName = tAdvertising.cADName;
+            q.cADName = cADViewModel.cADName;
             q.cADEditDate = DateTime.Now;
-            q.cADStartDate = tAdvertising.cADStartDate;
-            q.cADDueDate = tAdvertising.cADDueDate;
-            q.cADStatus = tAdvertising.cADStatus;
-            q.cADGroup = tAdvertising.cADGroup;
-            q.cADURL = tAdvertising.cADURL;
+            q.cADStartDate = cADViewModel.cADStartDate;
+            q.cADDueDate = cADViewModel.cADDueDate;
+            q.cADStatus = cADViewModel.cADStatus;
+            q.cADGroup = cADViewModel.cADGroup;
+            q.cADURL = cADViewModel.cADURL;
+            q.cADActionDate = cADViewModel.cADActionDate;
             db.SaveChanges();
 
             //專案內的圖片更名(未解決)
@@ -67,9 +71,11 @@ namespace TEST3.Models
         //廣告業面3個參數+搜尋式
         IQueryable<tAdvertising> SelectAdShow()
         {
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
             var q = from result in db.tAdvertising
                     where result.cADStatus == true &&
-                          result.cADGroup == "1"
+                          result.cADGroup == "1" &&
+                          result.cADActionDate.Contains(today)
                     select result;
 
             return q;
@@ -159,10 +165,12 @@ namespace TEST3.Models
             if (status == true)
             {
                 q.cADStatus = false;
+                q.cADEditDate = DateTime.Now;
             }
             else
             {
                 q.cADStatus = true;
+                q.cADEditDate = DateTime.Now;
             }
             db.SaveChanges();
         }
@@ -172,10 +180,10 @@ namespace TEST3.Models
         {
             DateTime today = DateTime.Now;
             string fullDays = "";
-            for (int i = 0; i < 61; i++)
+            for (int i = 0; i < 65; i++)
             {
-                today.AddDays(i);
-                string day = today.ToString("yyyy-MM-dd");
+                DateTime theDay = today.AddDays(i);
+                string day = theDay.ToString("yyyy-MM-dd");
 
                 var dbDays = from n in db.tAdvertising
                              where n.cADStatus == true &&
@@ -190,7 +198,7 @@ namespace TEST3.Models
             if (fullDays != "")
                 fullDays.Substring(0, fullDays.Length - 1);
             else
-                fullDays = "2000-01-01";
+                fullDays = "2021-10-30";
 
             return fullDays;
         }
