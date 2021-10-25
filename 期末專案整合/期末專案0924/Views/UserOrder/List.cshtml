@@ -1,0 +1,92 @@
+﻿@model List<期末專案0924.ViewModels.CUserOrderViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>訂單一覽表</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+<p>
+    @Html.ActionLink("新增訂單", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cOrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cCheckInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cCheckOutDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cOrderStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cStaffProfileSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cOrderNotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cOrderPrice)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int Count = 0;
+        foreach (var item in Model)
+        {
+            Count++;
+            <tr>
+                <td>
+                    @Count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cGuestSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cOrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cCheckInDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cCheckOutDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cOrderStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cStaffProfileSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cOrderNotes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cOrderPrice)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.cOrderSN }) |
+                    @Html.ActionLink("Delete", "Delete", "UserOrder", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要刪除嗎?')" })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

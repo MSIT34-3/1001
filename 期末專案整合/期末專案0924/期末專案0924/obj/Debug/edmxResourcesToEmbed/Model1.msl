@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbTravelWebModelStoreContainer" CdmEntityContainer="dbTravelWebEntities">
+    <EntitySetMapping Name="tUserOrder">
+      <EntityTypeMapping TypeName="dbTravelWebModel.tUserOrder">
+        <MappingFragment StoreEntitySet="tUserOrder">
+          <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+          <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
+          <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+          <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+          <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+          <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+          <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+          <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+          <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+          <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHotelInfomation">
+      <EntityTypeMapping TypeName="dbTravelWebModel.tHotelInfomation">
+        <MappingFragment StoreEntitySet="tHotelInfomation">
+          <ScalarProperty Name="cHotelPhone" ColumnName="cHotelPhone" />
+          <ScalarProperty Name="cHotelBarrierfree" ColumnName="cHotelBarrierfree" />
+          <ScalarProperty Name="cHotelType" ColumnName="cHotelType" />
+          <ScalarProperty Name="cHotelRatingOfPeople" ColumnName="cHotelRatingOfPeople" />
+          <ScalarProperty Name="cHotelAverageRating" ColumnName="cHotelAverageRating" />
+          <ScalarProperty Name="cHotelInfoPhoto" ColumnName="cHotelInfoPhoto" />
+          <ScalarProperty Name="cHotelCreationDate" ColumnName="cHotelCreationDate" />
+          <ScalarProperty Name="cHotelAdress" ColumnName="cHotelAdress" />
+          <ScalarProperty Name="cHotelCity" ColumnName="cHotelCity" />
+          <ScalarProperty Name="cHotelNameEN" ColumnName="cHotelNameEN" />
+          <ScalarProperty Name="cHotelName" ColumnName="cHotelName" />
+          <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+          <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,213 @@
+﻿@model 期末專案0924.ViewModels.GuestModel
+@{
+    ViewBag.Title = "Member";
+
+
+    var MemberList = ViewBag.tGuestAccountInfomation;
+
+}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="zh-Hant">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="We help travelers, guide for best travel, Tours Nature &amp; Wildlife, Welcome!, Contact Us">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>會員中心</title>
+    <link rel="stylesheet" href="~/css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/css/會員中心.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.26.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+
+    <script type="application/ld+json">
+        {
+                "@@context": "http://schema.org",
+                "@@type": "Organization",
+                "name": "Site1"
+        }</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="會員中心">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+</head>
+<body class="u-body">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-ab9b">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-list u-list-1">
+                    <div class="u-repeater u-repeater-1">
+                        <div class="u-container-style u-custom-item u-list-item u-repeater-item">
+                            <div class="u-container-layout u-similar-container u-container-layout-1">
+                                <a href="https://nicepage.com/k/auto-mechanic-html-templates" class="u-border-2 u-border-black u-btn u-button-style u-custom-item u-hover-black u-none u-text-black u-text-hover-white u-btn-1">個人資料</a>
+                            </div>
+                        </div>
+                        <div class="u-container-style u-custom-item u-list-item u-repeater-item">
+                            <div class="u-container-layout u-similar-container u-container-layout-2">
+                                <a href="https://nicepage.com/k/auto-mechanic-html-templates" class="u-border-2 u-border-black u-btn u-button-style u-custom-item u-hover-black u-none u-text-black u-text-hover-white u-btn-2">管理訂單</a>
+                            </div>
+                        </div>
+                        <div class="u-container-style u-custom-item u-list-item u-repeater-item">
+                            <div class="u-container-layout u-similar-container u-container-layout-3">
+                                <a href="https://nicepage.com/k/auto-mechanic-html-templates" class="u-border-2 u-border-black u-btn u-button-style u-custom-item u-hover-black u-none u-text-black u-text-hover-white u-btn-3">線上客服</a>
+                            </div>
+                        </div>
+                        <div class="u-container-style u-custom-item u-list-item u-repeater-item">
+                            <div class="u-container-layout u-similar-container u-container-layout-4">
+                                <a href="https://nicepage.com/k/auto-mechanic-html-templates" class="u-border-2 u-border-black u-btn u-button-style u-custom-item u-hover-black u-none u-text-black u-text-hover-white u-btn-4">收藏飯店</a>
+                            </div>
+                            <input value="@Model.cGuestBirth" name="cGuestBirth"  type="hidden">
+                            <input value="@Model.cGuestCitizenship" name="cGuestCitizenship"   type="hidden">
+                            <input value="@Model.cGuestGender" name="cGuestGender" type="hidden">
+                        </div>
+                    </div>
+                </div>
+                <div class="u-form u-form-1">
+                    <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 0;" source="custom" name="form">
+                        <div class="u-form-email u-form-group">
+                            <label for="email-f2a8" class="u-label u-label-1">E-mail(帳號)</label>
+                            <input value="@Model.cGuestEmail" type="email" placeholder="請輸入電子郵件" id="email-f2a8" name="cGuestEmail" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+
+                        </div>
+                        <div class="u-form-group u-form-group-2">
+                            <label for="name-1ec8" class="u-label u-label-2">舊密碼</label>
+                            <input type="text" placeholder="必填" id="" name="" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-partition-factor-2">
+                            <label for="text-898e" class="u-label u-label-3">新密碼</label>
+                            <input type="text" id="text-898e" name="cGuestPWDHash" placeholder="請輸入6-12位密碼(必須包含一個數字與一個英文字母)" name="cGuestPWDHash" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-4">
+                            <label for="ext-898e" class="u-label u-label-4">再輸入一次新密碼</label>
+                            <input type="text" placeholder="再輸入一次密碼" id="text-898e" name="cGuestPWDSalt" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle">
+                        </div>
+                        @*<div class="u-form-group u-form-partition-factor-2 u-form-radiobutton u-form-group-6">
+                                <div class="u-form-radio-button-wrapper">
+                                    <input type="radio" name="cGuestGender" value="男生" required="required">
+                                    <label class="u-label" for="radiobutton">男生</label>
+                                    <br>
+                                    <input type="radio" name="cGuestGender" value="女生" required="required">
+                                    <label class="u-label" for="radiobutton">女生</label>
+                                    <br>
+                                </div>
+                            </div>*@
+                        <div class="u-form-group u-form-phone u-form-group-7">
+                            <label for="phone-447e" class="u-label u-label-8">手機號碼</label>
+                            <input value="@Model.cGuestPhoneNumber" type="text" pattern="\+?\d{0,2}[\s\(\-]?([0-9]{3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" placeholder="請輸入手機號碼(EX.0912345678)" id="phone-447e" name="cGuestPhoneNumber" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-group-8">
+                            <label for="text-19f0" class="u-label u-label-9">身分證字號(外籍人士請輸入護照號碼或居留證號)</label>
+                            <input value="@Model.cGuestID" type="text" id="text-19f0" name="cGuestID" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle">
+                        </div>
+                        @*<div class="u-form-group u-form-partition-factor-2 u-form-radiobutton u-form-group-9">
+                                <div class="u-form-radio-button-wrapper">
+                                    <input type="radio" name="cGuestCitizenship" value="本國籍" required="required">
+                                    <label class="u-label" for="radiobutton">本國籍</label>
+                                    <br>
+                                    <input type="radio" name="cGuestCitizenship" value="非本國籍" required="required">
+                                    <label class="u-label" for="radiobutton">非本國籍</label>
+                                    <br>
+                                </div>
+                            </div>*@
+                        <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-11">
+                            <label for="name-c7df" class="u-label u-label-13">中文姓氏</label>
+                            <input value="@Model.cGuestLastName" type="text" id="name-c7df" name="cGuestLastName" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-10">
+                            <label for="name-2051" class="u-label u-label-12">中文名</label>
+                            <input value="@Model.cGuestFirstName" type="text" id="name-2051" name="cGuestFirstName" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-12">
+                            <label for="name-f510" class="u-label u-label-14">英文姓氏</label>
+                            <input value="@Model.cGuestLastNameEN" type="text" id="name-f510" name="cGuestLastNameEN" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="" placeholder="請輸入同護照英文名字">
+                        </div>
+                        <div class="u-form-group u-form-name u-form-partition-factor-2 u-form-group-13">
+                            <label for="name-911d" class="u-label u-label-15">英文名</label>
+                            <input value="@Model.cGuestFirstNameEN" type="text" placeholder="請輸入同護照英文名字" id="name-911d" name="cGuestFirstNameEN" class="u-border-2 u-border-grey-75 u-border-no-left u-border-no-right u-border-no-top u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-align-center u-form-group u-form-submit">
+                            <a href="#" class="u-black u-btn u-btn-rectangle u-btn-submit u-button-style u-btn-5">
+                                儲存<br>
+                            </a>
+                            <input type="submit" value="submit" class="u-form-control-hidden">
+                        </div>
+                        <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                        <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+                        <input type="hidden" value="" name="recaptchaResponse">
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="u-align-center u-clearfix u-grey-10 u-section-2" id="sec-6b7a">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                    <table class="u-table-entity u-table-entity-1">
+                        <colgroup>
+                            <col width="25%">
+                            <col width="25%">
+                            <col width="25%">
+                            <col width="25%">
+                        </colgroup>
+                        <tbody class="u-custom-font u-table-alt-palette-1-light-3 u-table-body u-text-font u-table-body-1">
+                            <tr style="height: 71px;">
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-1">信用卡名稱</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-2">信用卡持有人</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-3">卡號</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-4">有效日期</td>
+                            </tr>
+                            <tr style="height: 65px;">
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-5">卡片一</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-6">待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-7">待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-8">待新增</td>
+                            </tr>
+                            <tr style="height: 67px;">
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-9">
+                                    卡片二<br>
+                                </td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-10">待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-11">待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-12">待新增</td>
+                            </tr>
+                            <tr style="height: 65px;">
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-13"> 卡片三</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-14"> 待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-15"> 待新增</td>
+                                <td class="u-border-2 u-border-no-left u-border-no-right u-border-palette-4-light-2 u-table-cell u-table-cell-16"> 待新增</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="https://nicepage.studio" class="u-border-none u-btn u-button-style u-none u-btn-1">
+                    新增卡片<span class="u-icon"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068 c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557 l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104 c0.006-.006,0.011-.013,0.018-.019C513.968,262.339,513.943,249.635,506.134,241.843z"></path></svg><img></span>
+                </a>
+            </div>
+        </section>
+
+
+        <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-1d23">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+            </div>
+        </footer>
+        <section class="u-backlink u-clearfix u-grey-80">
+            <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+                <span>Website Template</span>
+            </a>
+            <p class="u-text">
+                <span>created with</span>
+            </p>
+            <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
+                <span>HTML Layout generator</span>
+            </a>.
+        </section>
+    }
+</body>
+</html>
