@@ -166,6 +166,7 @@
     <Compile Include="Controllers\GuestPaymentInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelInformationController.cs" />
+    <Compile Include="Controllers\HotelOrderSystemController.cs" />
     <Compile Include="Controllers\HotelRoomTypeController.cs" />
     <Compile Include="Controllers\UserOrderController.cs" />
     <Compile Include="database_firewall_rules.cs">
@@ -279,6 +280,7 @@
     <Compile Include="ViewModels\CheckOrderViewModel.cs" />
     <Compile Include="ViewModels\CheckViewModel.cs" />
     <Compile Include="ViewModels\CHotelInformationViewModel.cs" />
+    <Compile Include="ViewModels\CHotelOrderSystemViewModel.cs" />
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
     <Compile Include="ViewModels\GuestModel.cs" />
@@ -569,6 +571,10 @@
     <Content Include="Views\HotelRoomType\Create.cshtml" />
     <Content Include="Views\HotelRoomType\Edit.cshtml" />
     <Content Include="Views\HotelRoomType\List.cshtml" />
+    <Content Include="Views\HotelOrderSystem\Create.cshtml" />
+    <Content Include="Views\HotelOrderSystem\Edit.cshtml" />
+    <Content Include="Views\HotelOrderSystem\List.cshtml" />
+    <Content Include="Views\Home\Select.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

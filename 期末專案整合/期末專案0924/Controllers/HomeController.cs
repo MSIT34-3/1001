@@ -25,7 +25,7 @@ namespace 期末專案0924.Controllers
                      join r in db.tHotelInfomation
                      on p.cHotelSN equals r.cHotelSN
                      where
-                     p.OrderDate > checkViewModel.checkin &&
+                     p.OrderDate == checkViewModel.checkin &&
                      p.OrderDate < checkViewModel.checkout &&
                      p.CanBookNumber >= checkViewModel.room &&
                      q.cHotelRoomContainAldults >= checkViewModel.adult &&

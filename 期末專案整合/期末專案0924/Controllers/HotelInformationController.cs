@@ -17,7 +17,7 @@ namespace 期末專案0924.Controllers
             if (string.IsNullOrEmpty(keyword))
             {
                 hotelInfomations = from p in (new dbtravelwebEntities()).tHotelInfomation
-                           select p;
+                                   select p;
             }
             else
             {
@@ -28,8 +28,7 @@ namespace 期末專案0924.Controllers
                                    p.cHotelCity.Contains(keyword) ||
                                    p.cHotelAdress.Contains(keyword) ||
                                    p.cHotelPhone.Contains(keyword) ||
-                                   p.cHotelType.Contains(keyword) ||
-                                   p.cHotelBarrierfree.ToString().Contains(keyword)
+                                   p.cHotelType.Contains(keyword) 
                                    select p;
             }
             List<CHotelInformationViewModel> models = new List<CHotelInformationViewModel>();
