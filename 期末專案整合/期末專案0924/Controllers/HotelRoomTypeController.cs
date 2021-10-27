@@ -10,52 +10,73 @@ namespace 期末專案0924.Controllers
     public class HotelRoomTypeController : Controller
     {
         // GET: HotelRoomType
-        public ActionResult List()
+        public ActionResult List(int? id ,int? FirmSN)
         {
+            
             IEnumerable<tHotelRoomType> hotelRoomTypes = null;
             string keyword = Request.Form["txtKeyword"];
             if (string.IsNullOrEmpty(keyword))
             {
                 hotelRoomTypes = from p in (new dbtravelwebEntities()).tHotelRoomType
+                                 where p.cHotelSN == id
                                    select p;
             }
             else
             {
                 hotelRoomTypes = from p in (new dbtravelwebEntities()).tHotelRoomType
-                                 where p.cHotelRoomTypeName.ToString().Contains(keyword)
-                                   select p;
+                                 where p.cHotelSN == id && 
+                                 p.cHotelRoomTypeName.ToString().Contains(keyword)
+                                  select p;
             }
             List<CHotelRoomTypeViewModel> models = new List<CHotelRoomTypeViewModel>();
+            
             foreach (tHotelRoomType t in hotelRoomTypes)
                 models.Add(new CHotelRoomTypeViewModel() { hotelRoomTypes = t });
-            return View(models);
+            //如果沒資料直接跳Create 有資料的話跳List
+            if (models.Count == 0)
+            {
+                return RedirectToAction("Create", new { id , FirmSN });
+            }
+            else
+            {
+                return View(models);
+            }
+            
         }
         public ActionResult Delete(int? id)
         {
-            if (id != null)
+            dbtravelwebEntities db = new dbtravelwebEntities();
+            tHotelRoomType prod = db.tHotelRoomType.FirstOrDefault(p => p.cHotelRoomTypeSN == id);
+            if (prod != null)
             {
-                dbtravelwebEntities db = new dbtravelwebEntities();
-                tHotelRoomType prod = db.tHotelRoomType.FirstOrDefault(p => p.cHotelRoomTypeSN == id);
-                if (prod != null)
-                {
-                    db.tHotelRoomType.Remove(prod);
-                    db.SaveChanges();
-                }
+                db.tHotelRoomType.Remove(prod);
+                db.SaveChanges();
             }
-            return RedirectToAction("List");
+            //如果刪除房型管理資料後 List為0 會跳回飯店管理
+            tHotelRoomType RoomZero = db.tHotelRoomType.FirstOrDefault(p => p.cHotelSN == prod.cHotelSN);
+            if (RoomZero == null)
+            {
+                return RedirectToAction("List", "HotelInformation", new { id = prod.cHotelSN });
+            }
+            return RedirectToAction("List",new { id = prod.cHotelSN });
         }
-        public ActionResult Create()
+        public ActionResult Create(int? id ,int? FirmSN)
         {
+            //tHotelRoomType pay = (new dbtravelwebEntities()).tHotelRoomType.FirstOrDefault(q => q.cHotelSN == id);
+            Session["tHotelRoomTypeHotelSN"] = id;
+            Session["tHotelRoomTypeFirmSN"] = FirmSN;
             return View();
         }
         [HttpPost]
         public ActionResult Create(tHotelRoomType p)
         {
+            p.cHotelSN = (int)Session["tHotelRoomTypeHotelSN"];
+            p.cFirmSN = (int)Session["tHotelRoomTypeFirmSN"];
             dbtravelwebEntities db = new dbtravelwebEntities();
             db.tHotelRoomType.Add(p);
             db.SaveChanges();
 
-            return RedirectToAction("List");
+            return RedirectToAction("List",new { id = p.cHotelSN });
         }
 
         public ActionResult Edit(int? id)
@@ -76,6 +97,7 @@ namespace 期末專案0924.Controllers
             tHotelRoomType prod = db.tHotelRoomType.FirstOrDefault(p => p.cHotelRoomTypeSN == input.cHotelRoomTypeSN);
             if (prod != null)
             {
+                //prod.cHotelSN = (int)Session["tHotelRoomType"];
                 prod.cHotelRoomTypeName = input.cHotelRoomTypeName;
                 prod.cHotelRoomCount = input.cHotelRoomCount;
                 prod.cHotelRoomContain = input.cHotelRoomContain;
@@ -86,7 +108,7 @@ namespace 期末專案0924.Controllers
                 prod.cHotelRoomTypePriceOfFestival = input.cHotelRoomTypePriceOfFestival;
                 db.SaveChanges();
             }
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { id = prod.cHotelSN });
         }
     }
 }

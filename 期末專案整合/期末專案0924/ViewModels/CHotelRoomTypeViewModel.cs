@@ -18,7 +18,13 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomTypeSN; }
             set { this.hotelRoomTypes.cHotelRoomTypeSN = value; }
         }
-        
+        [Required(ErrorMessage = "廠商編號不可空白")]
+        [DisplayName("廠商編號編號")]
+        public Nullable<int> cFirmSN
+        {
+            get { return this.hotelRoomTypes.cFirmSN; }
+            set { this.hotelRoomTypes.cFirmSN = value; }
+        }
         [DisplayName("飯店編號")]
         public int cHotelSN
         {
@@ -32,6 +38,7 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomTypeName; }
             set { this.hotelRoomTypes.cHotelRoomTypeName = value; }
         }
+        
         [Required(ErrorMessage = "房間總數目不可空白")]
         [DisplayName("房間總數目")]
         public int cHotelRoomCount
@@ -39,13 +46,14 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomCount; }
             set { this.hotelRoomTypes.cHotelRoomCount = value; }
         }
-        
+        [Required(ErrorMessage = "可容量最大總人數不可空白")]
         [DisplayName("可容量最大總人數")]
         public int cHotelRoomContain
         {
             get { return this.hotelRoomTypes.cHotelRoomContain; }
             set { this.hotelRoomTypes.cHotelRoomContain = value; }
         }
+       
         [Required(ErrorMessage = "可容量成人人數不可空白")]
         [DisplayName("可容量成人人數")]
         public int cHotelRoomContainAldults
@@ -53,6 +61,7 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomContainAldults; }
             set { this.hotelRoomTypes.cHotelRoomContainAldults = value; }
         }
+       
         [Required(ErrorMessage = "可容量孩童人數不可空白")]
         [DisplayName("可容量孩童人數")]
         public int cHotelRoomContainChiidren
@@ -60,6 +69,7 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomContainChiidren; }
             set { this.hotelRoomTypes.cHotelRoomContainChiidren = value; }
         }
+        
         [Required(ErrorMessage = "飯店房型價格(平日)不可空白")]
         [DisplayName("飯店房型價格(平日)")]
         public int cHotelRoomTypePriceOfWeekdays

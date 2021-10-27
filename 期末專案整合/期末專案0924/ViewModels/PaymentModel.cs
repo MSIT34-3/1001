@@ -53,7 +53,7 @@ namespace 期末專案0924.ViewModels
             set { this.GuestPaymentInfomation.cGuestCreditCardNumber = value; }
         }
         [DisplayName("安全碼")]
-        public string cGuestCreditCardSecurityCode
+        public Nullable<int> cGuestCreditCardSecurityCode
         {
             get { return this.GuestPaymentInfomation.cGuestCreditCardSecurityCode; }
             set { this.GuestPaymentInfomation.cGuestCreditCardSecurityCode = value; }

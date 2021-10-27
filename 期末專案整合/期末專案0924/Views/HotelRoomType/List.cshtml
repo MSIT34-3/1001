@@ -14,7 +14,8 @@
     </p>
 }
 <p>
-    @Html.ActionLink("新增房型", "Create")
+    @Html.ActionLink("新增房型", "Create", new { id = Model[0].cHotelSN, FirmSN = Model[0].cFirmSN }, new { @class = "btn btn-light" })
+    @Html.ActionLink("返回飯店列表", "List", "HotelInformation",new { id = Model[0].cFirmSN }, new { @class = "btn btn-light" })
 </p>
 
 <table class="table">
@@ -88,8 +89,9 @@
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfFestival)
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.cHotelRoomTypeSN }) |
-                @Html.ActionLink("刪除", "Delete", new { id = item.cHotelRoomTypeSN }, new { onclick = "return confirm('確定要刪除嗎?')" })
+                @Html.ActionLink("修改", "Edit", new { id = item.cHotelRoomTypeSN }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.cHotelRoomTypeSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
+                @Html.ActionLink("新增房型訂單系統", "List", "HotelOrderSystem", new { id = item.cHotelRoomTypeSN , HotelId = item.cHotelSN}, new { @class = "btn btn-light" })
             </td>
         </tr>
         }

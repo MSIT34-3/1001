@@ -219,6 +219,7 @@
       <PropertyRef Name="cHotelRoomTypeSN" />
     </Key>
     <Property Name="cHotelRoomTypeSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cFirmSN" Type="int" />
     <Property Name="cHotelSN" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="cHotelRoomCount" Type="int" Nullable="false" />

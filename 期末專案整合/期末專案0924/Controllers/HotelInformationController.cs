@@ -53,6 +53,17 @@ namespace 期末專案0924.Controllers
         }
         public ActionResult Create()
         {
+            //讓View-DeadlineMonths變成下拉式選單
+            List<SelectListItem> hoteltypes = new List<SelectListItem>();
+            SelectListItem hoteltype = new SelectListItem { Text = "請選擇旅館類型", Value = "請選擇旅館類型" };
+            hoteltypes.Add(hoteltype);
+            SelectListItem Homestay = new SelectListItem { Text = "民宿", Value = "民宿" };
+            hoteltypes.Add(Homestay);
+            SelectListItem Hotel = new SelectListItem { Text = "飯店", Value = "飯店" };
+            hoteltypes.Add(Hotel);
+            //畫面顯示的字串
+            //hoteltypes.Where(q => q.Value == "請選擇旅館類型").First().Selected = true;
+            ViewBag.HotelType = hoteltypes;
             return View();
         }
         [HttpPost]

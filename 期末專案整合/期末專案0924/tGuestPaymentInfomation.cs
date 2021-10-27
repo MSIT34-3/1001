@@ -23,6 +23,6 @@ namespace 期末專案0924
         public string cGuestCreditCardNumber { get; set; }
         public Nullable<int> cGuestCreditCardDeadlineMonth { get; set; }
         public Nullable<int> cGuestCreditCardDeadlineYear { get; set; }
-        public string cGuestCreditCardSecurityCode { get; set; }
+        public Nullable<int> cGuestCreditCardSecurityCode { get; set; }
     }
 }

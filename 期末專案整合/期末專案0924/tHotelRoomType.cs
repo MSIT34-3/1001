@@ -15,6 +15,7 @@ namespace 期末專案0924
     public partial class tHotelRoomType
     {
         public int cHotelRoomTypeSN { get; set; }
+        public Nullable<int> cFirmSN { get; set; }
         public int cHotelSN { get; set; }
         public string cHotelRoomTypeName { get; set; }
         public int cHotelRoomCount { get; set; }

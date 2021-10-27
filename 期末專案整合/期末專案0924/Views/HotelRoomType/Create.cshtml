@@ -10,7 +10,7 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>填寫房型資料</h4>
         <hr />
@@ -83,14 +83,13 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="送出" class="btn btn-default" />
+                <input type="button" name="back" value="回上一頁" class="btn btn-danger" onclick="javascript: history.back()" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("回房型列表", "List")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

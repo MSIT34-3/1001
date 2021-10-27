@@ -24,8 +24,9 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelInfomation.cFirmSN; }
             set { this.hotelInfomation.cFirmSN = value; }
         }
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "廠商統一編號為8碼")]
         [Required(ErrorMessage = "廠商統一編號不可空白")]
-        [DisplayName("廠商統一編號")]
+        [DisplayName("廠商統一編號(8碼)")]
         public Nullable<int> cFirmTaxID
         {
             get { return this.hotelInfomation.cFirmTaxID; }
@@ -59,6 +60,7 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelInfomation.cHotelAdress; }
             set { this.hotelInfomation.cHotelAdress = value; }
         }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Required(ErrorMessage = "飯店成立日期不可空白")]
         [DisplayName("飯店成立日期")]
         public Nullable<System.DateTime> cHotelCreationDate
@@ -73,8 +75,9 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelInfomation.cHotelInfoPhoto; }
             set { this.hotelInfomation.cHotelInfoPhoto = value; }
         }
+        [StringLength(10, MinimumLength = 8, ErrorMessage = "電話號碼為9-10碼")]
         [Required(ErrorMessage = "飯店電話不可空白")]
-        [DisplayName("飯店電話")]
+        [DisplayName("飯店電話(區碼加電話號碼)")]
         public string cHotelPhone
         {
             get { return this.hotelInfomation.cHotelPhone; }
