@@ -24,6 +24,7 @@ namespace 期末專案0924.Models
 
             tAdvertising tAdvertising = new tAdvertising();
             tAdvertising.cADName = image.FileName;
+            tAdvertising.cFirmSN = tad.cFirmSN;
             tAdvertising.cADFileName = adFileName;
             tAdvertising.cADCreateDate = DateTime.Now;
             tAdvertising.cADEditDate = DateTime.Now;
@@ -190,15 +191,15 @@ namespace 期末專案0924.Models
                                    n.cADActionDate.Contains(day)
                              select n;
 
-                if (dbDays.Count() > 1)
+                if (dbDays.Count()>=3)
                 {
-                    fullDays += day + ",";
+                    fullDays += $"{day},";
                 }
             }
             if (fullDays != "")
                 fullDays.Substring(0, fullDays.Length - 1);
             else
-                fullDays = "2021-10-30";
+                fullDays = "2000-01-01";
 
             return fullDays;
         }

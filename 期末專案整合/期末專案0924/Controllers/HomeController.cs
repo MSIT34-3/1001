@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 期末專案0924.Models;
 using 期末專案0924.ViewModels;
 
 namespace 期末專案0924.Controllers
@@ -11,11 +12,19 @@ namespace 期末專案0924.Controllers
     {
         public ActionResult Index()
         {
+            //取廣告資料
+            tADFactory factory = new tADFactory();
+            ViewBag.adCount = factory.AdCount();
+            if (factory.AdCount() == 0)
+                ViewBag.adCount = 1;
+            ViewBag.adName = factory.AdName();
+            ViewBag.adURL = factory.AdURL();
+
             return View();
         }
         [HttpPost]
         public ActionResult Index(CheckViewModel checkViewModel)
-        {
+        { 
             using (dbtravelwebEntities db = new dbtravelwebEntities())
             {
                 var cHotels =
