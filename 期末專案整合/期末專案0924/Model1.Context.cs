@@ -28,6 +28,7 @@ namespace 期末專案0924
         public virtual DbSet<tAdvertising> tAdvertising { get; set; }
         public virtual DbSet<tCreditCardTypeTable> tCreditCardTypeTable { get; set; }
         public virtual DbSet<tCurrency> tCurrency { get; set; }
+        public virtual DbSet<tFirmAccountInfomation> tFirmAccountInfomation { get; set; }
         public virtual DbSet<tGuestAccountInfomation> tGuestAccountInfomation { get; set; }
         public virtual DbSet<tGuestCollection> tGuestCollection { get; set; }
         public virtual DbSet<tGuestPaymentInfomation> tGuestPaymentInfomation { get; set; }
@@ -51,6 +52,5 @@ namespace 期末專案0924
         public virtual DbSet<tRoomFacilityStandardForm> tRoomFacilityStandardForm { get; set; }
         public virtual DbSet<tStaffProfile> tStaffProfile { get; set; }
         public virtual DbSet<tUserOrder> tUserOrder { get; set; }
-        public virtual DbSet<tFirmAccountInfomation> tFirmAccountInfomation { get; set; }
     }
 }

@@ -35,6 +35,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tFirmAccountInfomation">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tFirmAccountInfomation">
+        <MappingFragment StoreEntitySet="tFirmAccountInfomation">
+          <ScalarProperty Name="cFirmCellphone" ColumnName="cFirmCellphone" />
+          <ScalarProperty Name="cFirmPhone" ColumnName="cFirmPhone" />
+          <ScalarProperty Name="cFirmEmail" ColumnName="cFirmEmail" />
+          <ScalarProperty Name="cFirmOwner" ColumnName="cFirmOwner" />
+          <ScalarProperty Name="cFirmAddress" ColumnName="cFirmAddress" />
+          <ScalarProperty Name="cFirmAccountCreationDate" ColumnName="cFirmAccountCreationDate" />
+          <ScalarProperty Name="cFirmPWDSalt" ColumnName="cFirmPWDSalt" />
+          <ScalarProperty Name="cFirmPWDHash" ColumnName="cFirmPWDHash" />
+          <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+          <ScalarProperty Name="cFirmName" ColumnName="cFirmName" />
+          <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tGuestAccountInfomation">
       <EntityTypeMapping TypeName="dbtravelwebModel.tGuestAccountInfomation">
         <MappingFragment StoreEntitySet="tGuestAccountInfomation">
@@ -322,23 +339,6 @@
           <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
           <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
           <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tFirmAccountInfomation">
-      <EntityTypeMapping TypeName="dbtravelwebModel.tFirmAccountInfomation">
-        <MappingFragment StoreEntitySet="tFirmAccountInfomation">
-          <ScalarProperty Name="cFirmCellphone" ColumnName="cFirmCellphone" />
-          <ScalarProperty Name="cFirmPhone" ColumnName="cFirmPhone" />
-          <ScalarProperty Name="cFirmEmail" ColumnName="cFirmEmail" />
-          <ScalarProperty Name="cFirmOwner" ColumnName="cFirmOwner" />
-          <ScalarProperty Name="cFirmAddress" ColumnName="cFirmAddress" />
-          <ScalarProperty Name="cFirmAccountCreationDate" ColumnName="cFirmAccountCreationDate" />
-          <ScalarProperty Name="cFirmPWDSalt" ColumnName="cFirmPWDSalt" />
-          <ScalarProperty Name="cFirmPWDHash" ColumnName="cFirmPWDHash" />
-          <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
-          <ScalarProperty Name="cFirmName" ColumnName="cFirmName" />
-          <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

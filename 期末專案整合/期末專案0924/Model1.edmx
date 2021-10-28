@@ -356,6 +356,7 @@
           <EntitySet Name="tAdvertising" EntityType="dbtravelwebModel.tAdvertising" />
           <EntitySet Name="tCreditCardTypeTable" EntityType="dbtravelwebModel.tCreditCardTypeTable" />
           <EntitySet Name="tCurrency" EntityType="dbtravelwebModel.tCurrency" />
+          <EntitySet Name="tFirmAccountInfomation" EntityType="dbtravelwebModel.tFirmAccountInfomation" />
           <EntitySet Name="tGuestAccountInfomation" EntityType="dbtravelwebModel.tGuestAccountInfomation" />
           <EntitySet Name="tGuestCollection" EntityType="dbtravelwebModel.tGuestCollection" />
           <EntitySet Name="tGuestPaymentInfomation" EntityType="dbtravelwebModel.tGuestPaymentInfomation" />
@@ -379,7 +380,6 @@
           <EntitySet Name="tRoomFacilityStandardForm" EntityType="dbtravelwebModel.tRoomFacilityStandardForm" />
           <EntitySet Name="tStaffProfile" EntityType="dbtravelwebModel.tStaffProfile" />
           <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
-          <EntitySet Name="tFirmAccountInfomation" EntityType="dbtravelwebModel.tFirmAccountInfomation" />
         </EntityContainer>
         <EntityType Name="tAdvertising">
           <Key>
@@ -411,6 +411,22 @@
           </Key>
           <Property Name="cCurrencySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cCurrencyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tFirmAccountInfomation">
+          <Key>
+            <PropertyRef Name="cFirmSN" />
+          </Key>
+          <Property Name="cFirmSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmPWDHash" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="cFirmPWDSalt" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="cFirmAccountCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cFirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmCellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tGuestAccountInfomation">
           <Key>
@@ -679,22 +695,6 @@
           <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="tFirmAccountInfomation">
-          <Key>
-            <PropertyRef Name="cFirmSN" />
-          </Key>
-          <Property Name="cFirmSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cFirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmPWDHash" Type="Binary" MaxLength="50" FixedLength="false" />
-          <Property Name="cFirmPWDSalt" Type="Binary" MaxLength="50" FixedLength="false" />
-          <Property Name="cFirmAccountCreationDate" Type="DateTime" Precision="3" />
-          <Property Name="cFirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cFirmCellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -732,6 +732,23 @@
               <MappingFragment StoreEntitySet="tCurrency">
                 <ScalarProperty Name="cCurrencyType" ColumnName="cCurrencyType" />
                 <ScalarProperty Name="cCurrencySN" ColumnName="cCurrencySN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFirmAccountInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tFirmAccountInfomation">
+              <MappingFragment StoreEntitySet="tFirmAccountInfomation">
+                <ScalarProperty Name="cFirmCellphone" ColumnName="cFirmCellphone" />
+                <ScalarProperty Name="cFirmPhone" ColumnName="cFirmPhone" />
+                <ScalarProperty Name="cFirmEmail" ColumnName="cFirmEmail" />
+                <ScalarProperty Name="cFirmOwner" ColumnName="cFirmOwner" />
+                <ScalarProperty Name="cFirmAddress" ColumnName="cFirmAddress" />
+                <ScalarProperty Name="cFirmAccountCreationDate" ColumnName="cFirmAccountCreationDate" />
+                <ScalarProperty Name="cFirmPWDSalt" ColumnName="cFirmPWDSalt" />
+                <ScalarProperty Name="cFirmPWDHash" ColumnName="cFirmPWDHash" />
+                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+                <ScalarProperty Name="cFirmName" ColumnName="cFirmName" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1022,23 +1039,6 @@
                 <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
                 <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
                 <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tFirmAccountInfomation">
-            <EntityTypeMapping TypeName="dbtravelwebModel.tFirmAccountInfomation">
-              <MappingFragment StoreEntitySet="tFirmAccountInfomation">
-                <ScalarProperty Name="cFirmCellphone" ColumnName="cFirmCellphone" />
-                <ScalarProperty Name="cFirmPhone" ColumnName="cFirmPhone" />
-                <ScalarProperty Name="cFirmEmail" ColumnName="cFirmEmail" />
-                <ScalarProperty Name="cFirmOwner" ColumnName="cFirmOwner" />
-                <ScalarProperty Name="cFirmAddress" ColumnName="cFirmAddress" />
-                <ScalarProperty Name="cFirmAccountCreationDate" ColumnName="cFirmAccountCreationDate" />
-                <ScalarProperty Name="cFirmPWDSalt" ColumnName="cFirmPWDSalt" />
-                <ScalarProperty Name="cFirmPWDHash" ColumnName="cFirmPWDHash" />
-                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
-                <ScalarProperty Name="cFirmName" ColumnName="cFirmName" />
-                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

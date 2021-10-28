@@ -2,7 +2,12 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<head>
+    @*左右箭頭的樣式來源*@
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="~/css/cssADShow.css" />
+</head>
 
 <section class="tm-banner">
     <div class="tm-container-outer tm-banner-bg">
@@ -89,7 +94,7 @@
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="btnSubmit">&nbsp;</label>
                             <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Check Availability</button>
-                        </div>                      
+                        </div>
                     </div>
                 </form>
 
@@ -98,6 +103,32 @@
         </div>  <!-- .container -->
     </div>     <!-- .tm-container-outer -->
 </section>
+
+<div class="container">
+    <div class="warpper">
+        <a class="slide-arrow" id="slideBefore"><i class="fas fa-chevron-left"></i></a>
+        <a class="slide-arrow right" id="slideNext"><i class="fas fa-chevron-right"></i></a>
+        <ul class="slider-img" id="slideImg">
+            @for (int i = 0; i < @ViewBag.adCount; i++)
+            {
+                <li>
+                    <a href="@ViewBag.adURL[i]">
+                        <img src="~/ADImage/@ViewBag.adName[i]" alt="@(i+1)">
+                    </a>
+                </li>
+            }
+        </ul>
+        <ul class="pages" id="pages">
+            @for (int i = 0; i < @ViewBag.adCount; i++)
+            {
+                <li></li>
+            }
+        </ul>
+        <div id="testDiv">
+
+        </div>
+    </div>
+</div>
 
 <section class="p-5 tm-container-outer tm-bg-gray">
     <div class="container">
@@ -637,7 +668,8 @@
     </form>
 </div> <!-- .tm-container-outer -->
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/jsADShow.js"></script>
 @section Scripts{
     <script>
 
