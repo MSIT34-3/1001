@@ -25,20 +25,24 @@ namespace 期末專案0924
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tAdvertising> tAdvertising { get; set; }
         public virtual DbSet<tCreditCardTypeTable> tCreditCardTypeTable { get; set; }
         public virtual DbSet<tCurrency> tCurrency { get; set; }
-        public virtual DbSet<tFirmAccountInfomation> tFirmAccountInfomation { get; set; }
         public virtual DbSet<tGuestAccountInfomation> tGuestAccountInfomation { get; set; }
         public virtual DbSet<tGuestCollection> tGuestCollection { get; set; }
+        public virtual DbSet<tGuestPaymentInfomation> tGuestPaymentInfomation { get; set; }
         public virtual DbSet<tGuestPreference> tGuestPreference { get; set; }
         public virtual DbSet<tGuestReviews> tGuestReviews { get; set; }
         public virtual DbSet<tHotelActivityManage> tHotelActivityManage { get; set; }
         public virtual DbSet<tHotelCityForm> tHotelCityForm { get; set; }
         public virtual DbSet<tHotelFacilityForm> tHotelFacilityForm { get; set; }
         public virtual DbSet<tHotelFacilityStandardForm> tHotelFacilityStandardForm { get; set; }
+        public virtual DbSet<tHotelInfomation> tHotelInfomation { get; set; }
+        public virtual DbSet<tHotelOrderSystem> tHotelOrderSystem { get; set; }
         public virtual DbSet<tHotelPhoto> tHotelPhoto { get; set; }
         public virtual DbSet<tHotelRoomFacility> tHotelRoomFacility { get; set; }
         public virtual DbSet<tHotelRoomPhoto> tHotelRoomPhoto { get; set; }
+        public virtual DbSet<tHotelRoomType> tHotelRoomType { get; set; }
         public virtual DbSet<tHotelTownForm> tHotelTownForm { get; set; }
         public virtual DbSet<tHotelTypeForm> tHotelTypeForm { get; set; }
         public virtual DbSet<tJobTable> tJobTable { get; set; }
@@ -46,13 +50,7 @@ namespace 期末專案0924
         public virtual DbSet<tManagementAuthority> tManagementAuthority { get; set; }
         public virtual DbSet<tRoomFacilityStandardForm> tRoomFacilityStandardForm { get; set; }
         public virtual DbSet<tStaffProfile> tStaffProfile { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
-        public virtual DbSet<ipv6_database_firewall_rules> ipv6_database_firewall_rules { get; set; }
-        public virtual DbSet<tAdvertising> tAdvertising { get; set; }
-        public virtual DbSet<tGuestPaymentInfomation> tGuestPaymentInfomation { get; set; }
-        public virtual DbSet<tHotelInfomation> tHotelInfomation { get; set; }
-        public virtual DbSet<tHotelOrderSystem> tHotelOrderSystem { get; set; }
-        public virtual DbSet<tHotelRoomType> tHotelRoomType { get; set; }
         public virtual DbSet<tUserOrder> tUserOrder { get; set; }
+        public virtual DbSet<tFirmAccountInfomation> tFirmAccountInfomation { get; set; }
     }
 }

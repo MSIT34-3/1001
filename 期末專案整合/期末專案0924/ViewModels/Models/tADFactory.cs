@@ -16,7 +16,7 @@ namespace 期末專案0924.Models
         //"E:/資策會/003專題/GitHub/Travel/期末專案整合/期末專案0924/ADImage/"
         string savePath = "E:/資策會/003專題/GitHub/Travel/期末專案整合/期末專案0924/ADImage/";
         //新增圖片
-        public void Create(HttpPostedFileBase image, tAD tad)
+        public void Create(HttpPostedFileBase image, CADViewModel tad)
         {
             //圖片存到ADImage資料夾，檔名為現在時間+廠商名稱+圖片檔名
             string adFileName = DateTime.Now.ToString("yyyyMMdd") + "-" + DateTime.Now.Millisecond + "-" + image.FileName;

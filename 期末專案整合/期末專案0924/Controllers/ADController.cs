@@ -40,10 +40,10 @@ namespace 期末專案0924.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ADUpload(HttpPostedFileBase image, tAD tad)
+        public ActionResult ADUpload(HttpPostedFileBase image, CADViewModel cADViewModel)
         {
             tADFactory factory = new tADFactory();
-            factory.Create(image, tad);
+            factory.Create(image, cADViewModel);
 
             return RedirectToAction("ADList");
         }
@@ -97,6 +97,6 @@ namespace 期末專案0924.Controllers
             CADViewModel models = new CADViewModel();
             models.advertising = tad;
             return models;
-        }
+        }       
     }
 }

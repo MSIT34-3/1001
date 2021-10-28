@@ -2,8 +2,10 @@
 
 namespace 期末專案0924.Models
 {
+    //原始
     public class tAD
     {
+        public int cADSN { get; set; }
         public string cFirmSN { get; set; }
         public string cADName { get; set; }
         public string cADFileName { get; set; }
