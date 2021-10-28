@@ -75,7 +75,7 @@ namespace 期末專案0924.Controllers
             dbtravelwebEntities db = new dbtravelwebEntities();
             db.tHotelRoomType.Add(p);
             db.SaveChanges();
-
+            
             return RedirectToAction("List",new { id = p.cHotelSN });
         }
 

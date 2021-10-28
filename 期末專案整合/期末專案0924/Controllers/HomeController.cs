@@ -65,7 +65,9 @@ namespace 期末專案0924.Controllers
                 return View("Select", checkViewModel);
             }
         }
-
+        
+        
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

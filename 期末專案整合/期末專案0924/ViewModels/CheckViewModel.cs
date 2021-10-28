@@ -69,5 +69,7 @@ namespace 期末專案0924.ViewModels
         /// 飯店位置
         /// </summary>
         public string cHotelCity { get; set; }
+
+        public string cHotelAdress { get; set; }
     }
 }

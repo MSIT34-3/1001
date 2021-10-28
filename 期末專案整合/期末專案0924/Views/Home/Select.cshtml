@@ -9,10 +9,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <style>
+        .first_cot {
+            margin: 0 auto;
+            width: 80%;
+        }
+
         .outframe {
             width: auto;
             margin: 50px auto;
-            border: solid 1px gray;
+            border-bottom: solid 1px gray;
             overflow: hidden; /* 避免長方框下面顯示不正常 */
         }
 
@@ -35,7 +40,7 @@
     <title></title>
 </head>
 <body>
-    <div>
+    <div class="first_cot">
         @if (Model.selects != null)
         {
             <button id="forPrice">依價格排序</button>
@@ -61,7 +66,10 @@
                         <div class="textframe" style="width:300px">
                             <h1 style="color:orange">TWD @p.cHotelRoomTypePrice</h1>起
                             平均每晚含稅價
-                            <button style="" value="@p.cHotelSN">訂購</button>
+                            <br />
+                            <p>@Html.ActionLink("訂購", "Create", "UserOrder", "", new { @class = "btn btn-outline-primary" })</p>
+                            
+                            
                         </div>
                     </div>
                 </div>

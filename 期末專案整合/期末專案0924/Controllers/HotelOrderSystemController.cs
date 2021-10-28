@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 期末專案0924.Model;
 using 期末專案0924.ViewModels;
 
 namespace 期末專案0924.Controllers
@@ -12,39 +13,55 @@ namespace 期末專案0924.Controllers
         // GET: HotelOrderSystem
         public ActionResult List(int? id, int? HotelId)
         {
-            IEnumerable<tHotelOrderSystem> hotelOrderSystems = null;
-            string keyword = Request.Form["txtKeyword"];
-            if (string.IsNullOrEmpty(keyword))
-            {
-                hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
-                                    where p.cHotelRoomTypeSN == id
-                                    select p;
-            }
-            else
-            {
-                hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
-                                    where p.cHotelRoomTypeSN == id &&
-                                    p.OrderDate.ToString().Contains(keyword) 
-                                   select p;
-            }
-            List<CHotelOrderSystemViewModel> models = new List<CHotelOrderSystemViewModel>();
-            foreach (tHotelOrderSystem t in hotelOrderSystems)
-                models.Add(new CHotelOrderSystemViewModel() { hotelOrderSystem = t });
+
             //如果沒資料直接跳Create 有資料的話跳List
-            if (models.Count == 0)
+
+            SessionRoomType sessionRoomType = (SessionRoomType)Session[CDictionary.SK_PUCHARSED_ROOMTYPE];
+
+            using (dbtravelwebEntities db = new dbtravelwebEntities())
             {
-                return RedirectToAction("Create", new { id , HotelId });
-            }
-            else
-            {
+                if (sessionRoomType != null)
+                {
+                    var qqq = (from p in db.tHotelOrderSystem
+                               where p.cHotelRoomTypeSN == sessionRoomType.cHotelRoomTypeSN &&
+                               p.OrderDate == sessionRoomType.OrderDate
+                               select p).First();
+                    qqq.CanBookNumber++;
+                    qqq.BookedNumber--;
+                    db.SaveChanges();
+
+                }
+                IEnumerable<tHotelOrderSystem> hotelOrderSystems = null;
+                string keyword = Request.Form["txtKeyword"];
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
+                                        where p.cHotelRoomTypeSN == id
+                                        select p;
+                }
+                else
+                {
+                    hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
+                                        where p.cHotelRoomTypeSN == id &&
+                                        p.OrderDate.ToString().Contains(keyword)
+                                        select p;
+                }
+                List<CHotelOrderSystemViewModel> models = new List<CHotelOrderSystemViewModel>();
+                foreach (tHotelOrderSystem t in hotelOrderSystems)
+                    models.Add(new CHotelOrderSystemViewModel() { hotelOrderSystem = t });
+                if (models.Count == 0)
+                {
+                    return RedirectToAction("Create", new { id, HotelId });
+                }
                 return View(models);
+
             }
         }
         public ActionResult Delete(int? id)
         {
             dbtravelwebEntities db = new dbtravelwebEntities();
             tHotelOrderSystem prod = db.tHotelOrderSystem.FirstOrDefault(p => p.OrderSystemSN == id);
-            
+
             if (prod != null)
             {
                 db.tHotelOrderSystem.Remove(prod);
@@ -54,11 +71,11 @@ namespace 期末專案0924.Controllers
             tHotelOrderSystem OrderZero = db.tHotelOrderSystem.FirstOrDefault(p => p.cHotelRoomTypeSN == prod.cHotelRoomTypeSN);
             if (OrderZero == null)
             {
-                return RedirectToAction("List","HotelRoomType", new { id = prod.cHotelSN });
+                return RedirectToAction("List", "HotelRoomType", new { id = prod.cHotelSN });
             }
             return RedirectToAction("List", new { id = prod.cHotelRoomTypeSN });
         }
-        public ActionResult Create(int? id , int? HotelId)
+        public ActionResult Create(int? id, int? HotelId)
         {
             Session["tHotelOrderSystemRoomSN"] = id;
             Session["tHotelOrderSystemHotelSN"] = HotelId;
@@ -73,12 +90,12 @@ namespace 期末專案0924.Controllers
             db.tHotelOrderSystem.Add(p);
             db.SaveChanges();
 
-            return RedirectToAction("List", new { id = p.cHotelRoomTypeSN , HotelId = p.cHotelSN });
+            return RedirectToAction("List", new { id = p.cHotelRoomTypeSN, HotelId = p.cHotelSN });
         }
 
         public ActionResult Edit(int? id)
         {
-            
+
             if (id == null)
                 return RedirectToAction("List");
 

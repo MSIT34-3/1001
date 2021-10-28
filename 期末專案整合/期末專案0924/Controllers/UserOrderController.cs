@@ -53,7 +53,6 @@ namespace 期末專案0924.Controllers
         }
         public ActionResult Create()
         {
-            
             return View();
         }
         [HttpPost]

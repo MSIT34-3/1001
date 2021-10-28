@@ -1,7 +1,7 @@
-﻿@{
+﻿@*@using 期末專案0924.ViewModels*@
+@{
     ViewBag.Title = "Home Page";
 }
-
 
 
 <section class="tm-banner">
@@ -19,16 +19,16 @@
                 </div>  <!-- col-xs-12 -->
             </div> <!-- row -->
             <div class="row tm-banner-row" id="tm-section-search">
-
+                @*搜尋*@
                 <form action="@Url.Action("index","Home")" method="post" class="tm-search-form tm-section-pad-2">
                     <div class="form-row tm-search-form-row">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
-                            <label for="inputCity">選擇您的地區</label>
+                            <label for="inputCity">Choose Your Destination</label>
                             <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Type your destination...">
                         </div>
                         <div class="form-group tm-form-group tm-form-group-1">
                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
-                                <label for="inputRoom">需要房數</label>
+                                <label for="inputRoom">How many rooms?</label>
                                 <select name="room" class="form-control tm-select" id="inputRoom">
                                     <option value="1" selected>1 Room</option>
                                     <option value="2">2 Rooms</option>
@@ -43,7 +43,7 @@
                                 </select>
                             </div>
                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
-                                <label for="inputAdult">成人</label>
+                                <label for="inputAdult">Adult</label>
                                 <select name="adult" class="form-control tm-select" id="inputAdult">
                                     <option value="1" selected>1</option>
                                     <option value="2">2</option>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
 
-                                <label for="inputChildren">孩童</label>
+                                <label for="inputChildren">Children</label>
                                 <select name="children" class="form-control tm-select" id="inputChildren">
                                     <option value="0" selected>0</option>
                                     <option value="1">1</option>
@@ -78,17 +78,18 @@
                     <div class="form-row tm-search-form-row">
 
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
-                            <label for="inputCheckIn">入住日期</label>
-                            <input name="check-in" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                            <label for="inputCheckIn">Check In Date</label>
+                            <input name="checkin" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
-                            <label for="inputCheckOut">退房日期</label>
-                            <input name="check-out" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                            <label for="inputCheckOut">Check Out Date</label>
+                            <input name="checkout" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
                         </div>
+                        @*搜尋按鈕*@
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="btnSubmit">&nbsp;</label>
-                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">搜尋</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">Check Availability</button>
+                        </div>                      
                     </div>
                 </form>
 
@@ -720,4 +721,6 @@
         });
 
     </script>
+
+
 }

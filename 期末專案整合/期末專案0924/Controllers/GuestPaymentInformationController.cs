@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 期末專案0924.Model;
 using 期末專案0924.ViewModels;
 
 namespace 期末專案0924.Controllers
@@ -91,6 +92,13 @@ namespace 期末專案0924.Controllers
                 db.tGuestPaymentInfomation.Add(pay);
                 db.tUserOrder.Add(p);
                 db.SaveChanges();
+
+                SessionRoomType sessionRoomType = new SessionRoomType()
+                {
+                    cHotelRoomTypeSN = p.cHotelRoomTypeSN,
+                    OrderDate = (DateTime)p.cCheckInDate
+                };
+                Session[CDictionary.SK_PUCHARSED_ROOMTYPE] = sessionRoomType;
             }
             return RedirectToAction("Index", "Home");
         }
