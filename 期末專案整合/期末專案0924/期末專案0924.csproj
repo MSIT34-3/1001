@@ -167,6 +167,7 @@
     <Compile Include="Controllers\GuestPaymentInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelInformationController.cs" />
+    <Compile Include="Controllers\HotelOrderSystemController.cs" />
     <Compile Include="Controllers\HotelRoomTypeController.cs" />
     <Compile Include="Controllers\UserOrderController.cs" />
     <Compile Include="Global.asax.cs">
@@ -275,6 +276,7 @@
     <Compile Include="ViewModels\CheckOrderViewModel.cs" />
     <Compile Include="ViewModels\CheckViewModel.cs" />
     <Compile Include="ViewModels\CHotelInformationViewModel.cs" />
+    <Compile Include="ViewModels\CHotelOrderSystemViewModel.cs" />
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
     <Compile Include="ViewModels\GuestModel.cs" />
@@ -543,6 +545,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
     <Content Include="slick\config.rb" />
     <Content Include="slick\fonts\slick.eot" />
     <Content Include="slick\fonts\slick.ttf" />
@@ -567,9 +570,16 @@
     <Content Include="Views\HotelRoomType\Create.cshtml" />
     <Content Include="Views\HotelRoomType\Edit.cshtml" />
     <Content Include="Views\HotelRoomType\List.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Firm\FirmList.cshtml" />
     <Content Include="Views\Firm\FirmCreate.cshtml" />
+=======
+    <Content Include="Views\HotelOrderSystem\Create.cshtml" />
+    <Content Include="Views\HotelOrderSystem\Edit.cshtml" />
+    <Content Include="Views\HotelOrderSystem\List.cshtml" />
+    <Content Include="Views\Home\Select.cshtml" />
+>>>>>>> f849ddbf0c650f0f33007e92c602735076ddf536
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

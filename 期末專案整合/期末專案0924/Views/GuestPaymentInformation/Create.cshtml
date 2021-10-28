@@ -107,20 +107,24 @@
 <script src="~/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
 <script>
     $("#cardClick").click(function () {
-        if ($("#card1").val().length != 4) {
-            alert("信用卡卡號為16碼!!");
+        var intcard1 = parseInt($("#card1").val());
+        var intcard2 = parseInt($("#card2").val());
+        var intcard3 = parseInt($("#card3").val());
+        var intcard4 = parseInt($("#card4").val());
+        if ($("#card1").val().length != 4 || isNaN(intcard1)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
             return false;
         }
-        if ($("#card2").val().length != 4) {
-            alert("信用卡卡號為16碼!!");
+        if ($("#card2").val().length != 4 || isNaN(intcard2)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
             return false;
         }
-        if ($("#card3").val().length != 4) {
-            alert("信用卡卡號為16碼!!");
+        if ($("#card3").val().length != 4 || isNaN(intcard3)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
             return false;
         }
-        if ($("#card4").val().length != 4) {
-            alert("信用卡卡號為16碼!!");
+        if ($("#card4").val().length != 4 || isNaN(intcard4)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
             return false;
         };
         $("#cardForm").submit();

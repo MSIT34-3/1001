@@ -3,12 +3,6 @@
 }
 
 
-<head>
-    @*左右箭頭的樣式來源+廣告css*@
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="~/css/cssADShow.css" />
-</head>
 
 <section class="tm-banner">
     <div class="tm-container-outer tm-banner-bg">
@@ -26,7 +20,7 @@
             </div> <!-- row -->
             <div class="row tm-banner-row" id="tm-section-search">
 
-                <form action="index.html" method="get" class="tm-search-form tm-section-pad-2">
+                <form action="@Url.Action("index","Home")" method="post" class="tm-search-form tm-section-pad-2">
                     <div class="form-row tm-search-form-row">
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                             <label for="inputCity">選擇您的地區</label>
@@ -103,32 +97,6 @@
         </div>  <!-- .container -->
     </div>     <!-- .tm-container-outer -->
 </section>
-
-<div class="container">
-    <div class="warpper">
-        <a class="slide-arrow" id="slideBefore"><i class="fas fa-chevron-left"></i></a>
-        <a class="slide-arrow right" id="slideNext"><i class="fas fa-chevron-right"></i></a>
-        <ul class="slider-img" id="slideImg">
-            @for (int i = 0; i < @ViewBag.adCount; i++)
-            {
-                <li>
-                    <a href="@ViewBag.adURL[i]">
-                        <img src="~/ADImage/@ViewBag.adName[i]" alt="@(i+1)">
-                    </a>
-                </li>
-            }
-        </ul>
-        <ul class="pages" id="pages">
-            @for (int i = 0; i < @ViewBag.adCount; i++)
-            {
-                <li></li>
-            }
-        </ul>
-        <div id="testDiv">
-
-        </div>
-    </div>
-</div>
 
 <section class="p-5 tm-container-outer tm-bg-gray">
     <div class="container">
@@ -669,12 +637,7 @@
 </div> <!-- .tm-container-outer -->
 
 
-
-
 @section Scripts{
-    @*廣告JS*@
-    <script src="~/Scripts/jsADShow.js"></script>
-
     <script>
 
         /* Google Maps

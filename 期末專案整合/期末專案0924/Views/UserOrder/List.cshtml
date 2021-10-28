@@ -14,7 +14,7 @@
     </p>
 }
 <p>
-    @Html.ActionLink("新增訂單", "Create")
+    @Html.ActionLink("新增訂單", "Create","", new { @class = "btn btn-outline-primary" })
 </p>
 <table class="table">
     <tr>
@@ -87,8 +87,8 @@
                 @Html.DisplayFor(modelItem => item.cOrderPrice)
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.cOrderSN }) |
-                @Html.ActionLink("刪除", "Delete", "UserOrder", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要刪除嗎?')" })
+                @Html.ActionLink("修改", "Edit", new { id = item.cOrderSN }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("刪除", "Delete", "UserOrder", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
             </td>
         </tr>
         }

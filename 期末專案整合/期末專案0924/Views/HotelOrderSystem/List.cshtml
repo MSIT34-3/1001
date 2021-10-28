@@ -14,8 +14,8 @@
     </p>
 }
 <p>
-    @Html.ActionLink("新增訂單系統", "Create", new { id = Model[0].cHotelRoomTypeSN, HotelId = Model[0].cHotelSN }, new { @class = "btn btn-light" })
-    @Html.ActionLink("返回房型列表", "List", new { id = Model[0].cHotelSN }, new { @class = "btn btn-light" })
+    @Html.ActionLink("新增訂單系統", "Create", new { id = Model[0].cHotelRoomTypeSN, HotelId = Model[0].cHotelSN }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("返回房型列表", "List", "HotelRoomType",new { id = Model[0].cHotelSN }, new { @class = "btn btn-outline-primary" })
 </p>
 <table class="table">
     <tr>
