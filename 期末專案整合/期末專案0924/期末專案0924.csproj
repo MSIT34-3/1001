@@ -162,20 +162,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ADController.cs" />
+    <Compile Include="Controllers\FirmController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\GuestPaymentInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelInformationController.cs" />
     <Compile Include="Controllers\HotelRoomTypeController.cs" />
     <Compile Include="Controllers\UserOrderController.cs" />
-    <Compile Include="database_firewall_rules.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="ipv6_database_firewall_rules.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -275,6 +270,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CADViewModel.cs" />
+    <Compile Include="ViewModels\CFirmAccountInfoViewModel.cs" />
     <Compile Include="ViewModels\CGuestPaymentInformationViewModel.cs" />
     <Compile Include="ViewModels\CheckOrderViewModel.cs" />
     <Compile Include="ViewModels\CheckViewModel.cs" />
@@ -282,9 +278,12 @@
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
     <Compile Include="ViewModels\GuestModel.cs" />
+    <Compile Include="ViewModels\Models\PasswordHashAndSalt.cs" />
+    <Compile Include="ViewModels\Models\tFirmAccountInfo.cs" />
+    <Compile Include="ViewModels\Models\tFirmAccountInfoFactory.cs" />
     <Compile Include="ViewModels\PaymentModel.cs" />
-    <Compile Include="ViewModels\tAD.cs" />
-    <Compile Include="ViewModels\tADFactory.cs" />
+    <Compile Include="ViewModels\Models\tAD.cs" />
+    <Compile Include="ViewModels\Models\tADFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ADImage\讚.jpg" />
@@ -569,6 +568,8 @@
     <Content Include="Views\HotelRoomType\Edit.cshtml" />
     <Content Include="Views\HotelRoomType\List.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Firm\FirmList.cshtml" />
+    <Content Include="Views\Firm\FirmCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

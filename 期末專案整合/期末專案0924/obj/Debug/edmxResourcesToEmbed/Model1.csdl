@@ -1,287 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="dbtravelwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="tCreditCardTypeTable">
-    <Key>
-      <PropertyRef Name="cCreditCardTypeSN" />
-    </Key>
-    <Property Name="cCreditCardTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cCreditCardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tCurrency">
-    <Key>
-      <PropertyRef Name="cCurrencySN" />
-    </Key>
-    <Property Name="cCurrencySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cCurrencyType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tFirmAccountInfomation">
-    <Key>
-      <PropertyRef Name="cFirmSN" />
-    </Key>
-    <Property Name="cFirmSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cFirmTaxID" Type="Int32" Nullable="false" />
-    <Property Name="cFirmPWDHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmPWDSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmAccountCreationDate" Type="DateTime" Precision="3" />
-    <Property Name="cFirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cFirmCellphone" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tGuestAccountInfomation">
-    <Key>
-      <PropertyRef Name="cGuestSN" />
-    </Key>
-    <Property Name="cGuestSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cGuestEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestPWDHash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestPWDSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestAccountCreationDate" Type="DateTime" Precision="3" />
-    <Property Name="cGuestLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="cGuestFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="cGuestLastNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="cGuestFirstNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="cGuestBirth" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="cGuestCitizenship" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestPhoneNumber" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tGuestCollection">
-    <Key>
-      <PropertyRef Name="cGuestCollSN" />
-    </Key>
-    <Property Name="cGuestCollSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
-    <Property Name="cGuestCollDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tGuestPreference">
-    <Key>
-      <PropertyRef Name="cGuestPrefSN" />
-    </Key>
-    <Property Name="cGuestPrefSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
-    <Property Name="cCurrencyType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cLanguageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestBarrierFreeFacility" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tGuestReviews">
-    <Key>
-      <PropertyRef Name="cGuestRevSN" />
-    </Key>
-    <Property Name="cGuestRevSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
-    <Property Name="cGuestRevText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cGuestRatingService" Type="Int32" Nullable="false" />
-    <Property Name="cGuestRatingFacility" Type="Int32" />
-    <Property Name="cGuestRatingCleanliness" Type="Int32" />
-    <Property Name="cGuestRatingComfort" Type="Int32" />
-    <Property Name="cGuestRatingLocation" Type="Int32" Nullable="false" />
-    <Property Name="cGuestRatingCP" Type="Int32" Nullable="false" />
-    <Property Name="cGuestRatingAverage" Type="Double" Nullable="false" />
-    <Property Name="cGuestRevDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-    <Property Name="cGuestRevHotelReason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelActivityManage">
-    <Key>
-      <PropertyRef Name="cHotelActivitySN" />
-    </Key>
-    <Property Name="cHotelActivitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelActivityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelActivityType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelActivityPrice" Type="Int32" Nullable="false" />
-    <Property Name="cHotelActivityStartDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="cHotelActivityEndDate" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="tHotelCityForm">
-    <Key>
-      <PropertyRef Name="cHotelCitySN" />
-    </Key>
-    <Property Name="cHotelCitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelCity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelCityEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelFacilityForm">
-    <Key>
-      <PropertyRef Name="cHotelFacilityFormID" />
-    </Key>
-    <Property Name="cHotelFacilityFormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-    <Property Name="ccHotelFacilitySN" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelFacilityStandardForm">
-    <Key>
-      <PropertyRef Name="cHotelFacilitySN" />
-    </Key>
-    <Property Name="cHotelFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelFacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelPhoto">
-    <Key>
-      <PropertyRef Name="cHotelPhotoSN" />
-    </Key>
-    <Property Name="cHotelPhotoSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelFacilitySN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="tHotelRoomFacility">
-    <Key>
-      <PropertyRef Name="cHotelRoomFacilitySN" />
-    </Key>
-    <Property Name="cHotelRoomFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-    <Property Name="cRoomFacilitySN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelRoomPhoto">
-    <Key>
-      <PropertyRef Name="cHotelRoomPhotoSN" />
-    </Key>
-    <Property Name="cHotelRoomPhotoSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelRoomPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelRoomPhoto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-    <Property Name="cHotelRoomTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelTownForm">
-    <Key>
-      <PropertyRef Name="cHotelCitySN" />
-    </Key>
-    <Property Name="cHotelCitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelCity" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelTown" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cHotelTownEN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tHotelTypeForm">
-    <Key>
-      <PropertyRef Name="cHotelTypeSN" />
-    </Key>
-    <Property Name="cHotelTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cHotelType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tJobTable">
-    <Key>
-      <PropertyRef Name="cJobTitleID" />
-    </Key>
-    <Property Name="cJobTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cJobTitle" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tLanguage">
-    <Key>
-      <PropertyRef Name="cLanguageSN" />
-    </Key>
-    <Property Name="cLanguageSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cLanguageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tManagementAuthority">
-    <Key>
-      <PropertyRef Name="AuthoritySN" />
-    </Key>
-    <Property Name="AuthoritySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cJobTitle" Type="Int32" Nullable="false" />
-    <Property Name="Authority" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tRoomFacilityStandardForm">
-    <Key>
-      <PropertyRef Name="cRoomFacilitySN" />
-    </Key>
-    <Property Name="cRoomFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cRoomFacilityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="tStaffProfile">
-    <Key>
-      <PropertyRef Name="cStaffProfileSN" />
-    </Key>
-    <Property Name="cStaffProfileSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cStaffAccountID" Type="Int32" Nullable="false" />
-    <Property Name="cStaffPWDHash" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
-    <Property Name="cStaffPWDSalt" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
-    <Property Name="cStaffProfileCreationDate" Type="DateTime" Precision="3" />
-    <Property Name="cStaffLastName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffFirstName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffGender" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffCellphone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffResidenceAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffMailingAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cJobTitleSN" Type="Int32" Nullable="false" />
-    <Property Name="cStaffERContactName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="cStaffERContactRelationship" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffERContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="cStaffBirth" Type="DateTime" Nullable="false" Precision="0" />
-  </EntityType>
-  <EntityType Name="database_firewall_rules">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="name" />
-      <PropertyRef Name="start_ip_address" />
-      <PropertyRef Name="end_ip_address" />
-      <PropertyRef Name="create_date" />
-      <PropertyRef Name="modify_date" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="ipv6_database_firewall_rules">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="name" />
-      <PropertyRef Name="start_ipv6_address" />
-      <PropertyRef Name="end_ipv6_address" />
-      <PropertyRef Name="create_date" />
-      <PropertyRef Name="modify_date" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="start_ipv6_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="end_ipv6_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
   <EntityContainer Name="dbtravelwebEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tCreditCardTypeTable" EntityType="Self.tCreditCardTypeTable" />
-    <EntitySet Name="tCurrency" EntityType="Self.tCurrency" />
-    <EntitySet Name="tFirmAccountInfomation" EntityType="Self.tFirmAccountInfomation" />
-    <EntitySet Name="tGuestAccountInfomation" EntityType="Self.tGuestAccountInfomation" />
-    <EntitySet Name="tGuestCollection" EntityType="Self.tGuestCollection" />
-    <EntitySet Name="tGuestPreference" EntityType="Self.tGuestPreference" />
-    <EntitySet Name="tGuestReviews" EntityType="Self.tGuestReviews" />
-    <EntitySet Name="tHotelActivityManage" EntityType="Self.tHotelActivityManage" />
-    <EntitySet Name="tHotelCityForm" EntityType="Self.tHotelCityForm" />
-    <EntitySet Name="tHotelFacilityForm" EntityType="Self.tHotelFacilityForm" />
-    <EntitySet Name="tHotelFacilityStandardForm" EntityType="Self.tHotelFacilityStandardForm" />
-    <EntitySet Name="tHotelPhoto" EntityType="Self.tHotelPhoto" />
-    <EntitySet Name="tHotelRoomFacility" EntityType="Self.tHotelRoomFacility" />
-    <EntitySet Name="tHotelRoomPhoto" EntityType="Self.tHotelRoomPhoto" />
-    <EntitySet Name="tHotelTownForm" EntityType="Self.tHotelTownForm" />
-    <EntitySet Name="tHotelTypeForm" EntityType="Self.tHotelTypeForm" />
-    <EntitySet Name="tJobTable" EntityType="Self.tJobTable" />
-    <EntitySet Name="tLanguage" EntityType="Self.tLanguage" />
-    <EntitySet Name="tManagementAuthority" EntityType="Self.tManagementAuthority" />
-    <EntitySet Name="tRoomFacilityStandardForm" EntityType="Self.tRoomFacilityStandardForm" />
-    <EntitySet Name="tStaffProfile" EntityType="Self.tStaffProfile" />
-    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-    <EntitySet Name="ipv6_database_firewall_rules" EntityType="Self.ipv6_database_firewall_rules" />
     <EntitySet Name="tAdvertising" EntityType="dbtravelwebModel.tAdvertising" />
+    <EntitySet Name="tCreditCardTypeTable" EntityType="dbtravelwebModel.tCreditCardTypeTable" />
+    <EntitySet Name="tCurrency" EntityType="dbtravelwebModel.tCurrency" />
+    <EntitySet Name="tGuestAccountInfomation" EntityType="dbtravelwebModel.tGuestAccountInfomation" />
+    <EntitySet Name="tGuestCollection" EntityType="dbtravelwebModel.tGuestCollection" />
     <EntitySet Name="tGuestPaymentInfomation" EntityType="dbtravelwebModel.tGuestPaymentInfomation" />
+    <EntitySet Name="tGuestPreference" EntityType="dbtravelwebModel.tGuestPreference" />
+    <EntitySet Name="tGuestReviews" EntityType="dbtravelwebModel.tGuestReviews" />
+    <EntitySet Name="tHotelActivityManage" EntityType="dbtravelwebModel.tHotelActivityManage" />
+    <EntitySet Name="tHotelCityForm" EntityType="dbtravelwebModel.tHotelCityForm" />
+    <EntitySet Name="tHotelFacilityForm" EntityType="dbtravelwebModel.tHotelFacilityForm" />
+    <EntitySet Name="tHotelFacilityStandardForm" EntityType="dbtravelwebModel.tHotelFacilityStandardForm" />
     <EntitySet Name="tHotelInfomation" EntityType="dbtravelwebModel.tHotelInfomation" />
     <EntitySet Name="tHotelOrderSystem" EntityType="dbtravelwebModel.tHotelOrderSystem" />
+    <EntitySet Name="tHotelPhoto" EntityType="dbtravelwebModel.tHotelPhoto" />
+    <EntitySet Name="tHotelRoomFacility" EntityType="dbtravelwebModel.tHotelRoomFacility" />
+    <EntitySet Name="tHotelRoomPhoto" EntityType="dbtravelwebModel.tHotelRoomPhoto" />
     <EntitySet Name="tHotelRoomType" EntityType="dbtravelwebModel.tHotelRoomType" />
+    <EntitySet Name="tHotelTownForm" EntityType="dbtravelwebModel.tHotelTownForm" />
+    <EntitySet Name="tHotelTypeForm" EntityType="dbtravelwebModel.tHotelTypeForm" />
+    <EntitySet Name="tJobTable" EntityType="dbtravelwebModel.tJobTable" />
+    <EntitySet Name="tLanguage" EntityType="dbtravelwebModel.tLanguage" />
+    <EntitySet Name="tManagementAuthority" EntityType="dbtravelwebModel.tManagementAuthority" />
+    <EntitySet Name="tRoomFacilityStandardForm" EntityType="dbtravelwebModel.tRoomFacilityStandardForm" />
+    <EntitySet Name="tStaffProfile" EntityType="dbtravelwebModel.tStaffProfile" />
     <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
+    <EntitySet Name="tFirmAccountInfomation" EntityType="dbtravelwebModel.tFirmAccountInfomation" />
   </EntityContainer>
   <EntityType Name="tAdvertising">
     <Key>
@@ -300,6 +46,48 @@
     <Property Name="cADCreateDate" Type="DateTime" Precision="0" />
     <Property Name="cADEditDate" Type="DateTime" Precision="0" />
   </EntityType>
+  <EntityType Name="tCreditCardTypeTable">
+    <Key>
+      <PropertyRef Name="cCreditCardTypeSN" />
+    </Key>
+    <Property Name="cCreditCardTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cCreditCardType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tCurrency">
+    <Key>
+      <PropertyRef Name="cCurrencySN" />
+    </Key>
+    <Property Name="cCurrencySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cCurrencyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tGuestAccountInfomation">
+    <Key>
+      <PropertyRef Name="cGuestSN" />
+    </Key>
+    <Property Name="cGuestSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cGuestEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestPWDHash" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestPWDSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestAccountCreationDate" Type="DateTime" Precision="3" />
+    <Property Name="cGuestLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestLastNameEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cGuestFirstNameEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cGuestBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cGuestCitizenship" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestPhoneNumber" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tGuestCollection">
+    <Key>
+      <PropertyRef Name="cGuestCollSN" />
+    </Key>
+    <Property Name="cGuestCollSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+    <Property Name="cGuestCollDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="tGuestPaymentInfomation">
     <Key>
       <PropertyRef Name="cGuestPaymentInfoSN" />
@@ -314,6 +102,71 @@
     <Property Name="cGuestCreditCardDeadlineMonth" Type="Int32" />
     <Property Name="cGuestCreditCardDeadlineYear" Type="Int32" />
     <Property Name="cGuestCreditCardSecurityCode" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tGuestPreference">
+    <Key>
+      <PropertyRef Name="cGuestPrefSN" />
+    </Key>
+    <Property Name="cGuestPrefSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+    <Property Name="cCurrencyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cLanguageType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestBarrierFreeFacility" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tGuestReviews">
+    <Key>
+      <PropertyRef Name="cGuestRevSN" />
+    </Key>
+    <Property Name="cGuestRevSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+    <Property Name="cGuestRevText" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cGuestRatingService" Type="Int32" Nullable="false" />
+    <Property Name="cGuestRatingFacility" Type="Int32" />
+    <Property Name="cGuestRatingCleanliness" Type="Int32" />
+    <Property Name="cGuestRatingComfort" Type="Int32" />
+    <Property Name="cGuestRatingLocation" Type="Int32" Nullable="false" />
+    <Property Name="cGuestRatingCP" Type="Int32" Nullable="false" />
+    <Property Name="cGuestRatingAverage" Type="Double" Nullable="false" />
+    <Property Name="cGuestRevDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+    <Property Name="cGuestRevHotelReason" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="cOrderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tHotelActivityManage">
+    <Key>
+      <PropertyRef Name="cHotelActivitySN" />
+    </Key>
+    <Property Name="cHotelActivitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelActivityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelActivityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelActivityPrice" Type="Int32" Nullable="false" />
+    <Property Name="cHotelActivityStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="cHotelActivityEndDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tHotelCityForm">
+    <Key>
+      <PropertyRef Name="cHotelCitySN" />
+    </Key>
+    <Property Name="cHotelCitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelCity" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelCityEN" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tHotelFacilityForm">
+    <Key>
+      <PropertyRef Name="cHotelFacilityFormID" />
+    </Key>
+    <Property Name="cHotelFacilityFormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+    <Property Name="ccHotelFacilitySN" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tHotelFacilityStandardForm">
+    <Key>
+      <PropertyRef Name="cHotelFacilitySN" />
+    </Key>
+    <Property Name="cHotelFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelFacilityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tHotelInfomation">
     <Key>
@@ -345,6 +198,35 @@
     <Property Name="CanBookNumber" Type="Int32" Nullable="false" />
     <Property Name="BookedNumber" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="tHotelPhoto">
+    <Key>
+      <PropertyRef Name="cHotelPhotoSN" />
+    </Key>
+    <Property Name="cHotelPhotoSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelFacilitySN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tHotelRoomFacility">
+    <Key>
+      <PropertyRef Name="cHotelRoomFacilitySN" />
+    </Key>
+    <Property Name="cHotelRoomFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+    <Property Name="cRoomFacilitySN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tHotelRoomPhoto">
+    <Key>
+      <PropertyRef Name="cHotelRoomPhotoSN" />
+    </Key>
+    <Property Name="cHotelRoomPhotoSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelRoomPhotoName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelRoomPhoto" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+    <Property Name="cHotelRoomTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="tHotelRoomType">
     <Key>
       <PropertyRef Name="cHotelRoomTypeSN" />
@@ -361,6 +243,74 @@
     <Property Name="cHotelRoomTypePriceOfHoliday" Type="Int32" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfFestival" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityType Name="tHotelTownForm">
+    <Key>
+      <PropertyRef Name="cHotelCitySN" />
+    </Key>
+    <Property Name="cHotelCitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelCity" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelTown" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cHotelTownEN" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tHotelTypeForm">
+    <Key>
+      <PropertyRef Name="cHotelTypeSN" />
+    </Key>
+    <Property Name="cHotelTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cHotelType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tJobTable">
+    <Key>
+      <PropertyRef Name="cJobTitleID" />
+    </Key>
+    <Property Name="cJobTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cJobTitle" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tLanguage">
+    <Key>
+      <PropertyRef Name="cLanguageSN" />
+    </Key>
+    <Property Name="cLanguageSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cLanguageType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tManagementAuthority">
+    <Key>
+      <PropertyRef Name="AuthoritySN" />
+    </Key>
+    <Property Name="AuthoritySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cJobTitle" Type="Int32" Nullable="false" />
+    <Property Name="Authority" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tRoomFacilityStandardForm">
+    <Key>
+      <PropertyRef Name="cRoomFacilitySN" />
+    </Key>
+    <Property Name="cRoomFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cRoomFacilityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tStaffProfile">
+    <Key>
+      <PropertyRef Name="cStaffProfileSN" />
+    </Key>
+    <Property Name="cStaffProfileSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cStaffAccountID" Type="Int32" Nullable="false" />
+    <Property Name="cStaffPWDHash" Type="Binary" Nullable="false" MaxLength="20" FixedLength="false" />
+    <Property Name="cStaffPWDSalt" Type="Binary" Nullable="false" MaxLength="20" FixedLength="false" />
+    <Property Name="cStaffProfileCreationDate" Type="DateTime" Precision="3" />
+    <Property Name="cStaffLastName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffFirstName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffGender" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffCellphone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffResidenceAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffMailingAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cJobTitleSN" Type="Int32" Nullable="false" />
+    <Property Name="cStaffERContactName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffERContactRelationship" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffERContactNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="cStaffBirth" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
   <EntityType Name="tUserOrder">
     <Key>
       <PropertyRef Name="cOrderSN" />
@@ -376,5 +326,21 @@
     <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
     <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tFirmAccountInfomation">
+    <Key>
+      <PropertyRef Name="cFirmSN" />
+    </Key>
+    <Property Name="cFirmSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cFirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmPWDHash" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="cFirmPWDSalt" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="cFirmAccountCreationDate" Type="DateTime" Precision="3" />
+    <Property Name="cFirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cFirmCellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

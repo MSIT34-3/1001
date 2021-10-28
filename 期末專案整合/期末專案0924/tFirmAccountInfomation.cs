@@ -15,15 +15,15 @@ namespace 期末專案0924
     public partial class tFirmAccountInfomation
     {
         public int cFirmSN { get; set; }
-        public int cFirmTaxID { get; set; }
-        public string cFirmPWDHash { get; set; }
-        public string cFirmPWDSalt { get; set; }
-        public Nullable<System.DateTime> cFirmAccountCreationDate { get; set; }
         public string cFirmName { get; set; }
+        public string cFirmTaxID { get; set; }
+        public byte[] cFirmPWDHash { get; set; }
+        public byte[] cFirmPWDSalt { get; set; }
+        public Nullable<System.DateTime> cFirmAccountCreationDate { get; set; }
         public string cFirmAddress { get; set; }
         public string cFirmOwner { get; set; }
         public string cFirmEmail { get; set; }
         public string cFirmPhone { get; set; }
-        public Nullable<int> cFirmCellphone { get; set; }
+        public string cFirmCellphone { get; set; }
     }
 }

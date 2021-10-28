@@ -1,0 +1,108 @@
+﻿@using 期末專案0924.ViewModels
+@model List<CFirmAccountInfoViewModel>
+
+@{
+    ViewBag.Title = "FirmList";
+}
+
+<h2>FirmList</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" id="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("新增廠商帳號", "FirmCreate")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmTaxID)
+        </th>
+        <th>
+            密碼
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmAccountCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmOwner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmCellphone)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        int count = 0;
+        foreach (var item in Model)
+        {
+            count++;
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmTaxID)
+            </td>
+            <th>
+                @Html.ActionLink("更改密碼", "ChangePWD", new { sn=item.cFirmSN })
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmAccountCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmOwner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cFirmCellphone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+    }
+
+</table>
