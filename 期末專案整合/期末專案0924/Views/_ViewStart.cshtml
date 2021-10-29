@@ -1,3 +1,27 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{      switch (Session["identity"])
+    {
+        case 0:
+            Layout = "~/Views/Shared/_Layout0.cshtml";
+            break;
+        case 1:
+            Layout = "~/Views/Shared/_Layout1.cshtml";
+            break;
+        case 2:
+            Layout = "~/Views/Shared/_Layout2.cshtml";
+            break;
+        case 3:
+            Layout = "~/Views/Shared/_Layout3.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_Layout0.cshtml";
+            break;
+    }
+    //if(Session["identity"]==null)
+    //{
+    //    Layout = "~/Views/Shared/_Layout.cshtml";
+    //}
+    //else
+    //{
+    //    Layout = "~/Views/Shared/_Layout2.cshtml";
+    //}
 }

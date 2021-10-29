@@ -33,12 +33,44 @@ namespace 期末專案0924.Controllers
             return RedirectToAction("FirmList");
         }
 
-
-
-        public ActionResult ChangePWD(int sn)
+        public ActionResult FirmEdit(int cFirmSN)
         {
-            return View();
+            tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
+            tFirmAccountInfomation firm = factory.QueryBySN(cFirmSN);
+
+            return View(tableToViewModel(firm));
         }
+        [HttpPost]
+        public ActionResult FirmEdit(CFirmAccountInfoViewModel cFirmAccountInfo)
+        {
+            tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
+            factory.Update(cFirmAccountInfo);
+
+            return RedirectToAction("FirmList");
+        }
+        public ActionResult ChangePWD(int cFirmSN)
+        {
+            tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
+            tFirmAccountInfomation firm = factory.QueryBySN(cFirmSN);
+
+            return View(tableToViewModel(firm));
+        }
+        [HttpPost]
+        public ActionResult ChangePWD(CFirmAccountInfoViewModel cFirmAccountInfo)
+        {
+            tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
+            factory.ChangePWD(cFirmAccountInfo);
+
+            return RedirectToAction("FirmList");
+        }
+        public ActionResult FirmDelete(int firmSN)
+        {
+            tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
+            factory.Delete(firmSN);
+
+            return RedirectToAction("FirmList");
+        }
+
 
         List<CFirmAccountInfoViewModel> tableToViewModel(IQueryable<tFirmAccountInfomation> tFirmAccountInfo)
         {

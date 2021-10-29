@@ -7,6 +7,7 @@ using System.Web;
 
 namespace 期末專案0924.ViewModels.Models
 {
+    //密碼取得Hash跟Salt
     public class PasswordHashAndSalt
     {
         internal void PasswordHashSalt(string password, out byte[] pwHashSalt, out byte[] salt)
@@ -19,11 +20,20 @@ namespace 期末專案0924.ViewModels.Models
             {
                 Rng.GetBytes(salt1);
             }
-            byte[] passwordHashedAndSalt = passwordBytes.Concat(salt1).ToArray();
-            byte[] passwordHashedWithSalt = SHA256.Create().ComputeHash(passwordHashedAndSalt);
+            byte[] passwordConcatSalt = passwordBytes.Concat(salt1).ToArray();
+            byte[] passwordHashedWithSalt = SHA256.Create().ComputeHash(passwordConcatSalt);
 
             pwHashSalt = passwordHashedWithSalt;
             salt = salt1;
+        }
+
+        //密碼+Salt取得Hash
+        internal byte[] CheckPassword(string password, byte[] salt)
+        {
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            byte[] passwordConcatSalt = passwordBytes.Concat(salt).ToArray();
+            byte[] passwordHashedWithSalt = SHA256.Create().ComputeHash(passwordConcatSalt);
+            return passwordHashedWithSalt;
         }
     }
 }

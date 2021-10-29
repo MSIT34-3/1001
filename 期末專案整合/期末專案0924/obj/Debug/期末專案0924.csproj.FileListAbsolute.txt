@@ -541,7 +541,6 @@ F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.csproj.CoreCompileInputs.cache
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.dll
 F:\資策會2\期末專題\期末專案1025瑋宗 - 複製\期末專案0924\obj\Debug\期末專案0924.pdb
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.AssemblyReference.cache
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.CoreCompileInputs.cache
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.dll
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.pdb
@@ -683,35 +682,5 @@ E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\ros
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\roslyn\vbc.rsp
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\roslyn\VBCSCompiler.exe
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\roslyn\VBCSCompiler.exe.config
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\EntityFramework.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\EntityFramework.SqlServer.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\Microsoft.Bcl.AsyncInterfaces.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\Microsoft.OData.Edm.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Buffers.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Memory.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Numerics.Vectors.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Runtime.CompilerServices.Unsafe.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Text.Encodings.Web.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Text.Json.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Threading.Tasks.Extensions.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.ValueTuple.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.Helpers.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.Mvc.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.Optimization.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.Razor.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.WebPages.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.WebPages.Deployment.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\System.Web.WebPages.Razor.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\Newtonsoft.Json.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\Antlr3.Runtime.pdb
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\EntityFramework.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.Helpers.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.Mvc.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.Optimization.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.Razor.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.WebPages.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
-E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.CopyComplete
+E:\資策會\003專題\GitHub\Travel\期末專案整合\期末專案0924\obj\Debug\期末專案0924.csproj.AssemblyReference.cache

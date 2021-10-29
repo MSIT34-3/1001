@@ -61,18 +61,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="~/home/index#tm-section-4">Contact Us</a>
-                                </li>
+                                </li>                                
                                 <li class="nav-item">
-                                    <a class="nav-link" id="Login" href="/Guest/Login">會員登入</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="HotelInformation" href="/HotelInformation/List">旅館列表</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="UserOrder" href="/UserOrder/List">訂單列表</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="HomeLogin" href="/Home/Login">會員登入(未登入)</a>
+                                    <a class="nav-link" id="HomeLogin" href="/Home/Login">登入</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -101,21 +92,6 @@
     <script src="~/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
     <script src="~/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
     <script>
-        $('#HotelInformation').click(function () {
-            location.href = $(this).attr('href');
-        })
-        $('#UserOrder').click(function () {
-            location.href = $(this).attr('href');
-        })
-        $('#Login').click(function () {
-            location.href = $(this).attr('href');
-        })
-        $('#Register').click(function () {
-            location.href = $(this).attr('href');
-        })
-        $('#Member').click(function () {
-            location.href = $(this).attr('href');
-        })
         $('#HomeLogin').click(function () {
             location.href = $(this).attr('href');
         })
@@ -141,36 +117,36 @@
             //設退房時間
             var CheckOutstart = GetDate(startdate, 1);
             var CheckOutDatestart = GetDateOutput(CheckOutstart);
-            $('#inputCheckOut').attr('min', CheckOutDatestart);
+            $('#cCheckOutDate').attr('min', CheckOutDatestart);
             //開始+7天
             var enddatestart = GetDate(startdate, 7);
             var adenddatestart = GetDateOutput(enddatestart);
             //結束+30天
             var enddateend = GetDate(startdate, 30);
             var adenddateend = GetDateOutput(enddateend);
-            $('#inputCheckOut').attr('max', adenddateend);
+            $('#cCheckOutDate').attr('max', adenddateend);
 
             //超出範圍的話自動跳回範圍內
-            if ($('#inputCheckOut').val() < adenddatestart) {
-                $('#inputCheckOut').val(adenddatestart);
-            } else if ($('#inputCheckOut').val() > adenddateend) {
-                $('#inputCheckOut').val(adenddateend);
+            if ($('#cCheckOutDate').val() < adenddatestart) {
+                $('#cCheckOutDate').val(adenddatestart);
+            } else if ($('#cCheckOutDate').val() > adenddateend) {
+                $('#cCheckOutDate').val(adenddateend);
             } else {
                 return;
             }
         };
         // 取得標準時間  Date()設定預設值now
         var now = new Date();
-        //預設起始日期，並設定最小值
+        //預設起始日期+1天，並設定最小值
         var startDate = GetDate(now, 0);
         var adStartDate = GetDateOutput(startDate);
-        $('#inputCheckIn').val(adStartDate);
-        $('#inputCheckIn').attr('min', adStartDate);
+        $('#cCheckInDate').val(adStartDate);
+        $('#cCheckInDate').attr('min', adStartDate);
         //預設結束日期
         DateRange(adStartDate);
         //浮動
-        $('#inputCheckIn').change(function () {
-            DateRange($('#inputCheckIn').val())
+        $('#cCheckInDate').change(function () {
+            DateRange($('#cCheckInDate').val())
         });
     </script>
     <script>
