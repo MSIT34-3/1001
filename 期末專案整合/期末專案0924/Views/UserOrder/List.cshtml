@@ -37,6 +37,9 @@
             @Html.DisplayNameFor(model => model[0].cCheckOutDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model[0].cStayDays)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model[0].cOrderStatus)
         </th>
         <th>
@@ -73,6 +76,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cCheckOutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cStayDays)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cOrderStatus)

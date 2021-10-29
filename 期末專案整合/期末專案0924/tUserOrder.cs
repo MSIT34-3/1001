@@ -25,5 +25,6 @@ namespace 期末專案0924
         public int cHotelRoomTypeSN { get; set; }
         public string cOrderNotes { get; set; }
         public int cOrderPrice { get; set; }
+        public Nullable<int> cStayDays { get; set; }
     }
 }

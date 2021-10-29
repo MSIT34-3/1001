@@ -26,8 +26,8 @@ namespace 期末專案0924.Controllers
                                where p.cHotelRoomTypeSN == sessionRoomType.cHotelRoomTypeSN &&
                                p.OrderDate == sessionRoomType.OrderDate
                                select p).First();
-                    qqq.CanBookNumber++;
-                    qqq.BookedNumber--;
+                    qqq.CanBookNumber--;
+                    qqq.BookedNumber++;
                     db.SaveChanges();
 
                 }

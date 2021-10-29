@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 期末專案0924.Model;
 using 期末專案0924.Models;
 using 期末專案0924.ViewModels;
 
@@ -24,7 +25,7 @@ namespace 期末專案0924.Controllers
         }
         [HttpPost]
         public ActionResult Index(CheckViewModel checkViewModel)
-        { 
+        {
             using (dbtravelwebEntities db = new dbtravelwebEntities())
             {
                 var cHotels =
@@ -41,6 +42,16 @@ namespace 期末專案0924.Controllers
                      q.cHotelRoomContainChiidren >= checkViewModel.children &&
                      r.cHotelCity.Contains(checkViewModel.destination)
                      select r).ToList();
+                //入住日期及天數到Session裡
+                TimeSpan ts = checkViewModel.checkin - checkViewModel.checkout;
+                SessionOrderDate sessionOrderDate = new SessionOrderDate()
+                {
+                    CheckIndate = checkViewModel.checkin,
+                    CheckOutdate = checkViewModel.checkout,
+                    StayDays = (int)ts.Days
+
+                };
+                Session[CDictionary.SK_USER_ORDER] = sessionOrderDate;
 
                 cHotels = cHotels.OrderByDescending(m => m.cHotelRatingOfPeople).ToList();
 
@@ -53,7 +64,7 @@ namespace 期末專案0924.Controllers
                         if (!distin.Contains(SN.cHotelName))
                         {
                             var price = db.tHotelRoomType.Where(m => m.cHotelSN == SN.cHotelSN).OrderByDescending(m => m.cHotelRoomTypePriceOfWeekdays).FirstOrDefault().cHotelRoomTypePriceOfWeekdays;
-                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelPhoto = SN.cHotelInfoPhoto, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
+                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
                             distin.Add(SN.cHotelName);
                         }
                     }
@@ -65,9 +76,9 @@ namespace 期末專案0924.Controllers
                 return View("Select", checkViewModel);
             }
         }
-        
-        
-        
+
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

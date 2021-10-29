@@ -54,7 +54,12 @@ namespace 期末專案0924.ViewModels
             get { return this.userOrder.cCheckOutDate; }
             set { this.userOrder.cCheckOutDate = value; }
         }
-        
+        [DisplayName("入住天數")]
+        public Nullable<int> cStayDays
+        {
+            get { return this.userOrder.cStayDays; }
+            set { this.userOrder.cStayDays = value; }
+        }
         [DisplayName("訂單狀態")]
         public string cOrderStatus
         {
