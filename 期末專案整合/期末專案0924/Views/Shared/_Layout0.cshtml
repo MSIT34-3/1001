@@ -61,10 +61,13 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="~/home/index#tm-section-4">Contact Us</a>
-                                </li>                                
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="HomeLogin" href="/Home/Login">登入</a>
-                                </li>                                
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Login" href="/Guest/Login">旅客登入</a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -93,6 +96,9 @@
     <script src="~/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
     <script>
         $('#HomeLogin').click(function () {
+            location.href = $(this).attr('href');
+        })
+        $('#Login').click(function () {
             location.href = $(this).attr('href');
         })
     </script>

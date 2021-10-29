@@ -83,23 +83,31 @@ namespace 期末專案0924.Controllers
         [HttpPost]
         public ActionResult CheckOrder(tGuestPaymentInfomation q)
         {
+            dbtravelwebEntities db = new dbtravelwebEntities();
             if (this.ModelState.IsValid == true)
             {
                 tUserOrder p = (tUserOrder)Session["Data"];
                 tGuestPaymentInfomation pay = (tGuestPaymentInfomation)Session["tGuestPaymentInfomation"];
-                dbtravelwebEntities db = new dbtravelwebEntities();
+                
 
                 db.tGuestPaymentInfomation.Add(pay);
                 db.tUserOrder.Add(p);
                 db.SaveChanges();
 
-                SessionRoomType sessionRoomType = new SessionRoomType()
-                {
-                    cHotelRoomTypeSN = p.cHotelRoomTypeSN,
-                    OrderDate = (DateTime)p.cCheckInDate
-                };
-                Session[CDictionary.SK_PUCHARSED_ROOMTYPE] = sessionRoomType;
+                //如果訂單成立符合房型及下訂日期的訂單系統會更新資料庫
+                var OrderRoomtype = (from item in db.tHotelOrderSystem
+                           where item.cHotelRoomTypeSN == p.cHotelRoomTypeSN &&
+                           item.OrderDate == p.cCheckInDate
+                           select item).First();
+                OrderRoomtype.CanBookNumber--;
+                OrderRoomtype.BookedNumber++;
+                db.SaveChanges();
+                
             }
+
+            
+            
+
             return RedirectToAction("Index", "Home");
         }
         //目前用不到先留著

@@ -13,49 +13,30 @@ namespace 期末專案0924.Controllers
         // GET: HotelOrderSystem
         public ActionResult List(int? id, int? HotelId)
         {
-
             //如果沒資料直接跳Create 有資料的話跳List
-
-            SessionRoomType sessionRoomType = (SessionRoomType)Session[CDictionary.SK_PUCHARSED_ROOMTYPE];
-
-            using (dbtravelwebEntities db = new dbtravelwebEntities())
+            IEnumerable<tHotelOrderSystem> hotelOrderSystems = null;
+            string keyword = Request.Form["txtKeyword"];
+            if (string.IsNullOrEmpty(keyword))
             {
-                if (sessionRoomType != null)
-                {
-                    var qqq = (from p in db.tHotelOrderSystem
-                               where p.cHotelRoomTypeSN == sessionRoomType.cHotelRoomTypeSN &&
-                               p.OrderDate == sessionRoomType.OrderDate
-                               select p).First();
-                    qqq.CanBookNumber--;
-                    qqq.BookedNumber++;
-                    db.SaveChanges();
-
-                }
-                IEnumerable<tHotelOrderSystem> hotelOrderSystems = null;
-                string keyword = Request.Form["txtKeyword"];
-                if (string.IsNullOrEmpty(keyword))
-                {
-                    hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
-                                        where p.cHotelRoomTypeSN == id
-                                        select p;
-                }
-                else
-                {
-                    hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
-                                        where p.cHotelRoomTypeSN == id &&
-                                        p.OrderDate.ToString().Contains(keyword)
-                                        select p;
-                }
-                List<CHotelOrderSystemViewModel> models = new List<CHotelOrderSystemViewModel>();
-                foreach (tHotelOrderSystem t in hotelOrderSystems)
-                    models.Add(new CHotelOrderSystemViewModel() { hotelOrderSystem = t });
-                if (models.Count == 0)
-                {
-                    return RedirectToAction("Create", new { id, HotelId });
-                }
-                return View(models);
-
+                hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
+                                    where p.cHotelRoomTypeSN == id
+                                    select p;
             }
+            else
+            {
+                hotelOrderSystems = from p in (new dbtravelwebEntities()).tHotelOrderSystem
+                                    where p.cHotelRoomTypeSN == id &&
+                                    p.OrderDate.ToString().Contains(keyword)
+                                    select p;
+            }
+            List<CHotelOrderSystemViewModel> models = new List<CHotelOrderSystemViewModel>();
+            foreach (tHotelOrderSystem t in hotelOrderSystems)
+                models.Add(new CHotelOrderSystemViewModel() { hotelOrderSystem = t });
+            if (models.Count == 0)
+            {
+                return RedirectToAction("Create", new { id, HotelId });
+            }
+            return View(models);
         }
         public ActionResult Delete(int? id)
         {

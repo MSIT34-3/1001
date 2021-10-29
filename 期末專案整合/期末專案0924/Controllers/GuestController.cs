@@ -37,10 +37,10 @@ namespace 期末專案0924.Controllers
                 TempData["message"] = "請輸入正確電子郵件與密碼";
                 return RedirectToAction("Login");
             }
-                
+
 
             GuestModel models = new GuestModel() { GuestAccountInfomation = prod };
-            return RedirectToAction("Member", new { prod.cGuestEmail });
+            return RedirectToAction("AfterLogin", new { prod.cGuestEmail });
 
         }
         public ActionResult Register()
@@ -58,14 +58,14 @@ namespace 期末專案0924.Controllers
             {
                 db.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
             TempData["message"] = "請登入";
 
             return RedirectToAction("Login");
-            
+
         }
         public ActionResult Member(string cGuestEmail)
         {
@@ -74,13 +74,34 @@ namespace 期末專案0924.Controllers
 
             dbtravelwebEntities db = new dbtravelwebEntities();
             tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == cGuestEmail);
+            tGuestPaymentInfomation pay = db.tGuestPaymentInfomation.FirstOrDefault(p => p.cGuestCreditCardNameID == prod.cGuestID);
             if (prod == null)
             {
                 TempData["message"] = "帳號目前沒有資料";
                 return RedirectToAction("Login");
             }
+            //MODELS
+            GuestAndCreditCardModel models = new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = pay };
+            //GuestModel models = new GuestModel() { GuestAccountInfomation = prod };
+
+
+            IEnumerable<tGuestPaymentInfomation> PaymentIEnumerable = null;
+            string keyword = Request.Form["cGuestID"];
+            if (string.IsNullOrEmpty(keyword))
+            {
+                PaymentIEnumerable = from p in (new dbtravelwebEntities()).tGuestPaymentInfomation
+                                     select p;
+            }
+            else
+            {
+                PaymentIEnumerable = from p in (new dbtravelwebEntities()).tGuestPaymentInfomation
+                                     where p.cGuestCreditCardNameID.ToString().Contains(keyword)
+                                     select p;
+            }
+            List<GuestAndCreditCardModel> model2 = new List<GuestAndCreditCardModel>();
             
-            GuestModel models = new GuestModel() { GuestAccountInfomation = prod };
+            foreach (tGuestPaymentInfomation t in PaymentIEnumerable)
+                model2.Add(new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = t });
             return View(models);
 
 
@@ -89,7 +110,8 @@ namespace 期末專案0924.Controllers
 
 
 
-    }
+        }
+        
         [HttpPost]
         public ActionResult Member(tGuestAccountInfomation t)
         {
@@ -110,11 +132,19 @@ namespace 期末專案0924.Controllers
                 prod.cGuestID = t.cGuestID;
                 prod.cGuestLastNameEN = t.cGuestLastNameEN;
                 prod.cGuestPhoneNumber = t.cGuestPhoneNumber;
-                prod.cGuestPWDHash = t.cGuestPWDHash;
-
-
-
+                if (t.cGuestPWDHash == null || t.cGuestPWDSalt == null)
+                {
+                    prod.cGuestPWDHash = prod.cGuestPWDHash;
+                    prod.cGuestPWDSalt = prod.cGuestPWDSalt;
+                }
+                else
+                {
+                    prod.cGuestPWDHash = t.cGuestPWDHash;
+                    prod.cGuestPWDSalt = t.cGuestPWDSalt;
+                }
                 db.SaveChanges();
+
+
             }
             //p.cGuestAccountCreationDate.ToString().Contains(keyword) ||
             //                   p.cGuestBirth.ToString().Contains(keyword) ||
@@ -130,26 +160,69 @@ namespace 期末專案0924.Controllers
             //                   p.cGuestPWDHash.Contains(keyword) ||
             //                   p.cGuestPWDSalt.Contains(keyword)
             //                         select p;
-        
 
-        db.tGuestAccountInfomation.Add(prod);
 
-            db.SaveChanges();
+            //db.tGuestAccountInfomation.Add(prod);
+
+
+            TempData["message"] = "會員資料已做變更";
+            return RedirectToAction("Member", new { prod.cGuestEmail });
             
-            return RedirectToAction("Index", "Home");
 
-            
         }
-        public ActionResult CreditCard(string id)
+        public ActionResult CreditCard(string Id)
         {
+            ViewBag.Message = Id;
+            TempData["text"] = Id;
             return View();
         }
-        public ActionResult NewCreditCard(string id)
+        [HttpPost]
+        public ActionResult CreditCard(tGuestPaymentInfomation GuestPaymentInfomation)
         {
             dbtravelwebEntities db = new dbtravelwebEntities();
-            tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == id);
-            return RedirectToAction("CreditCard", new { prod.cGuestID });
+            GuestPaymentInfomation.cGuestCreditCardNameID = (string)TempData["text"];
+            db.tGuestPaymentInfomation.Add(GuestPaymentInfomation);
+
+            db.SaveChanges();
+            tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestID== GuestPaymentInfomation.cGuestCreditCardNameID);
+            return RedirectToAction("Member", new { prod.cGuestEmail });
         }
+        public ActionResult AfterLogin(string cGuestEmail)
+        {
+            if (cGuestEmail == null)
+                return RedirectToAction("Login");
+
+            dbtravelwebEntities db = new dbtravelwebEntities();
+            tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == cGuestEmail);
+            tGuestPaymentInfomation pay = db.tGuestPaymentInfomation.FirstOrDefault(p => p.cGuestCreditCardNameID == prod.cGuestID);
+            if (prod == null)
+            {
+                TempData["message"] = "帳號目前沒有資料";
+                return RedirectToAction("Login");
+            }
+            //MODELS
+            GuestAndCreditCardModel models = new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = pay };
+            return View(models);
+        }
+        //[HttpPost]
+        //public ActionResult AfterLogin(string cGuestEmail, int PhoneNumber)
+        //{
+        //    dbtravelwebEntities db = new dbtravelwebEntities();
+
+
+        //    tGuestAccountInfomation prod = (new dbtravelwebEntities()).tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == cGuestEmail);
+
+
+        //    GuestModel models = new GuestModel() { GuestAccountInfomation = prod };
+        //    return RedirectToAction("Member", new { prod.cGuestEmail });
+
+        //}
+        //public ActionResult NewCreditCard(string id)
+        //{
+        //    dbtravelwebEntities db = new dbtravelwebEntities();
+        //    tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == id);
+        //    return RedirectToAction("CreditCard", new { prod.cGuestID });
+        //}
 
 
     }

@@ -189,7 +189,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\CDictionary.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,8 +283,10 @@
     <Compile Include="ViewModels\CHotelOrderSystemViewModel.cs" />
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
+    <Compile Include="ViewModels\GuestAndCreditCardModel.cs" />
     <Compile Include="ViewModels\GuestModel.cs" />
     <Compile Include="ViewModels\CHomeLoginViewModel.cs" />
+    <Compile Include="ViewModels\Models\CDictionary.cs" />
     <Compile Include="ViewModels\Models\HomeLoginFactory.cs" />
     <Compile Include="ViewModels\Models\PasswordHashAndSalt.cs" />
     <Compile Include="ViewModels\Models\tAD.cs" />
@@ -870,6 +871,7 @@
     <Content Include="Views\Shared\_Layout3.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Hotel\HotelList.cshtml" />
+    <Content Include="Views\Guest\AfterLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -346,25 +346,4 @@
     <Property Name="cHotelBarrierfree" Type="Boolean" />
     <Property Name="cHotelVisitors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="tHotelInfomation">
-    <Key>
-      <PropertyRef Name="cHotelSN" />
-    </Key>
-    <Property Name="cHotelSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cFirmSN" Type="Int32" />
-    <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelCreationDate" Type="DateTime" Precision="3" />
-    <Property Name="cHotelInfoPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelInfoPhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelAverageRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelRatingOfPeople" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="cHotelBarrierfree" Type="Boolean" />
-    <Property Name="cHotelVisitors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>
