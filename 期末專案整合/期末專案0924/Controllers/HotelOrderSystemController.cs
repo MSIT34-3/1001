@@ -100,6 +100,7 @@ namespace 期末專案0924.Controllers
                 return RedirectToAction("List");
 
             tHotelOrderSystem prod = (new dbtravelwebEntities()).tHotelOrderSystem.FirstOrDefault(p => p.OrderSystemSN == id);
+            Session["OrderSystemEditHotelSN"] = prod.cHotelSN;
             if (prod == null)
                 return RedirectToAction("List");
             CHotelOrderSystemViewModel models = new CHotelOrderSystemViewModel() { hotelOrderSystem = prod };
@@ -113,14 +114,14 @@ namespace 期末專案0924.Controllers
             if (prod != null)
             {
                 prod.cHotelRoomTypeSN = input.cHotelRoomTypeSN;
-                prod.cHotelSN = input.cHotelSN;
+                prod.cHotelSN = (int)Session["OrderSystemEditHotelSN"];
                 prod.OrderDate = input.OrderDate;
                 prod.CanBookNumber = input.CanBookNumber;
                 prod.BookedNumber = input.BookedNumber;
                 db.SaveChanges();
             }
 
-            return RedirectToAction("List", new { id = prod.cHotelRoomTypeSN });
+            return RedirectToAction("List", new { id = prod.cHotelRoomTypeSN , HotelId  = prod.cHotelSN});
         }
     }
 }
