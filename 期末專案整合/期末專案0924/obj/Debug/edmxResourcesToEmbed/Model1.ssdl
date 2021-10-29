@@ -161,18 +161,20 @@
     </Key>
     <Property Name="cHotelSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cFirmSN" Type="int" />
-    <Property Name="cFirmTaxID" Type="int" />
+    <Property Name="cFirmTaxID" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelName" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelNameEN" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelCity" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelAdress" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelCreationDate" Type="datetime" />
-    <Property Name="cHotelInfoPhoto" Type="image" />
-    <Property Name="cHotelPhone" Type="varchar" MaxLength="20" />
-    <Property Name="cHotelAverageRating" Type="float" />
-    <Property Name="cHotelRatingOfPeople" Type="int" />
-    <Property Name="cHotelType" Type="nvarchar" MaxLength="20" />
+    <Property Name="cHotelInfoPhotoName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelInfoPhotoFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelAverageRating" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelRatingOfPeople" Type="nvarchar" MaxLength="50" />
+    <Property Name="cHotelType" Type="nvarchar" MaxLength="50" />
     <Property Name="cHotelBarrierfree" Type="bit" />
+    <Property Name="cHotelVisitors" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tHotelOrderSystem">
     <Key>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using 期末專案0924.Models;
 using 期末專案0924.ViewModels;
+using 期末專案0924.ViewModels.Models;
 
 namespace 期末專案0924.Controllers
 {
@@ -24,7 +25,7 @@ namespace 期末專案0924.Controllers
         }
         [HttpPost]
         public ActionResult Index(CheckViewModel checkViewModel)
-        { 
+        {
             using (dbtravelwebEntities db = new dbtravelwebEntities())
             {
                 var cHotels =
@@ -53,7 +54,7 @@ namespace 期末專案0924.Controllers
                         if (!distin.Contains(SN.cHotelName))
                         {
                             var price = db.tHotelRoomType.Where(m => m.cHotelSN == SN.cHotelSN).OrderByDescending(m => m.cHotelRoomTypePriceOfWeekdays).FirstOrDefault().cHotelRoomTypePriceOfWeekdays;
-                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelPhoto = SN.cHotelInfoPhoto, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
+                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelPhoto = SN.cHotelInfoPhotoName, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
                             distin.Add(SN.cHotelName);
                         }
                     }
@@ -65,9 +66,38 @@ namespace 期末專案0924.Controllers
                 return View("Select", checkViewModel);
             }
         }
-        
-        
-        
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(CHomeLoginViewModel login)
+        {
+            HomeLoginFactory factory = new HomeLoginFactory();
+            CHomeLoginViewModel info = factory.Identify(login);
+
+            Session.RemoveAll();
+            Session["identity"] = info.identity;
+            Session["sn"] = info.sn;
+            Session["name"] = info.name;
+            //登入失敗
+            if ((int)Session["identity"] == 0)
+                return View();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+
+            return RedirectToAction("Index");
+        }
+
+
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

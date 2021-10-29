@@ -44,11 +44,11 @@ namespace 期末專案0924.ViewModels
         /// <summary>
         /// 飯店平均評分
         /// </summary>
-        public double? cHotelAverageRating { get; set; }
+        public string cHotelAverageRating { get; set; }
         /// <summary>
         /// 飯店評價人數
         /// </summary>
-        public int? cHotelRatingOfPeople { get; set; }
+        public string cHotelRatingOfPeople { get; set; }
         /// <summary>
         /// 飯店名稱
         /// </summary>
@@ -64,7 +64,7 @@ namespace 期末專案0924.ViewModels
         /// <summary>
         /// 飯店照片
         /// </summary>
-        public byte[] cHotelPhoto { get; set; }
+        public string cHotelPhoto { get; set; }
         /// <summary>
         /// 飯店位置
         /// </summary>

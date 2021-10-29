@@ -76,7 +76,7 @@
                 @Html.DisplayFor(modelItem => item.cFirmTaxID)
             </td>
             <th>
-                @Html.ActionLink("更改密碼", "ChangePWD", new { sn=item.cFirmSN })
+                @Html.ActionLink("更改密碼", "ChangePWD", new { firmSN=item.cFirmSN })
             </th>
             <td>
                 @Html.DisplayFor(modelItem => item.cFirmAccountCreationDate)
@@ -97,9 +97,8 @@
                 @Html.DisplayFor(modelItem => item.cFirmCellphone)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("編輯", "FirmEdit", new { firmSN = item.cFirmSN }) |
+                @Html.ActionLink("刪除", "FirmDelete", new { firmSN = item.cFirmSN })
             </td>
         </tr>
         }

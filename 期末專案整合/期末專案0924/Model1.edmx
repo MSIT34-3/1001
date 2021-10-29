@@ -166,18 +166,20 @@
           </Key>
           <Property Name="cHotelSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cFirmSN" Type="int" />
-          <Property Name="cFirmTaxID" Type="int" />
+          <Property Name="cFirmTaxID" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelName" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelNameEN" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelCity" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelAdress" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelCreationDate" Type="datetime" />
-          <Property Name="cHotelInfoPhoto" Type="image" />
-          <Property Name="cHotelPhone" Type="varchar" MaxLength="20" />
-          <Property Name="cHotelAverageRating" Type="float" />
-          <Property Name="cHotelRatingOfPeople" Type="int" />
-          <Property Name="cHotelType" Type="nvarchar" MaxLength="20" />
+          <Property Name="cHotelInfoPhotoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelInfoPhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelAverageRating" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelRatingOfPeople" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelType" Type="nvarchar" MaxLength="50" />
           <Property Name="cHotelBarrierfree" Type="bit" />
+          <Property Name="cHotelVisitors" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tHotelOrderSystem">
           <Key>
@@ -366,7 +368,6 @@
           <EntitySet Name="tHotelCityForm" EntityType="dbtravelwebModel.tHotelCityForm" />
           <EntitySet Name="tHotelFacilityForm" EntityType="dbtravelwebModel.tHotelFacilityForm" />
           <EntitySet Name="tHotelFacilityStandardForm" EntityType="dbtravelwebModel.tHotelFacilityStandardForm" />
-          <EntitySet Name="tHotelInfomation" EntityType="dbtravelwebModel.tHotelInfomation" />
           <EntitySet Name="tHotelOrderSystem" EntityType="dbtravelwebModel.tHotelOrderSystem" />
           <EntitySet Name="tHotelPhoto" EntityType="dbtravelwebModel.tHotelPhoto" />
           <EntitySet Name="tHotelRoomFacility" EntityType="dbtravelwebModel.tHotelRoomFacility" />
@@ -380,6 +381,7 @@
           <EntitySet Name="tRoomFacilityStandardForm" EntityType="dbtravelwebModel.tRoomFacilityStandardForm" />
           <EntitySet Name="tStaffProfile" EntityType="dbtravelwebModel.tStaffProfile" />
           <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
+          <EntitySet Name="tHotelInfomation" EntityType="dbtravelwebModel.tHotelInfomation" />
         </EntityContainer>
         <EntityType Name="tAdvertising">
           <Key>
@@ -536,25 +538,6 @@
           <Property Name="cHotelFacilitySN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cHotelFacilityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tHotelInfomation">
-          <Key>
-            <PropertyRef Name="cHotelSN" />
-          </Key>
-          <Property Name="cHotelSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cFirmSN" Type="Int32" />
-          <Property Name="cFirmTaxID" Type="Int32" />
-          <Property Name="cHotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelCreationDate" Type="DateTime" Precision="3" />
-          <Property Name="cHotelInfoPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="cHotelPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="cHotelAverageRating" Type="Double" />
-          <Property Name="cHotelRatingOfPeople" Type="Int32" />
-          <Property Name="cHotelType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelBarrierfree" Type="Boolean" />
-        </EntityType>
         <EntityType Name="tHotelOrderSystem">
           <Key>
             <PropertyRef Name="OrderSystemSN" />
@@ -694,6 +677,27 @@
           <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
           <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tHotelInfomation">
+          <Key>
+            <PropertyRef Name="cHotelSN" />
+          </Key>
+          <Property Name="cHotelSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="Int32" />
+          <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cHotelInfoPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelInfoPhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelAverageRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelRatingOfPeople" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelBarrierfree" Type="Boolean" />
+          <Property Name="cHotelVisitors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -869,26 +873,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tHotelInfomation">
-            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelInfomation">
-              <MappingFragment StoreEntitySet="tHotelInfomation">
-                <ScalarProperty Name="cHotelBarrierfree" ColumnName="cHotelBarrierfree" />
-                <ScalarProperty Name="cHotelType" ColumnName="cHotelType" />
-                <ScalarProperty Name="cHotelRatingOfPeople" ColumnName="cHotelRatingOfPeople" />
-                <ScalarProperty Name="cHotelAverageRating" ColumnName="cHotelAverageRating" />
-                <ScalarProperty Name="cHotelPhone" ColumnName="cHotelPhone" />
-                <ScalarProperty Name="cHotelInfoPhoto" ColumnName="cHotelInfoPhoto" />
-                <ScalarProperty Name="cHotelCreationDate" ColumnName="cHotelCreationDate" />
-                <ScalarProperty Name="cHotelAdress" ColumnName="cHotelAdress" />
-                <ScalarProperty Name="cHotelCity" ColumnName="cHotelCity" />
-                <ScalarProperty Name="cHotelNameEN" ColumnName="cHotelNameEN" />
-                <ScalarProperty Name="cHotelName" ColumnName="cHotelName" />
-                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
-                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
-                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tHotelOrderSystem">
             <EntityTypeMapping TypeName="dbtravelwebModel.tHotelOrderSystem">
               <MappingFragment StoreEntitySet="tHotelOrderSystem">
@@ -1039,6 +1023,28 @@
                 <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
                 <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
                 <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tHotelInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelInfomation">
+              <MappingFragment StoreEntitySet="tHotelInfomation">
+                <ScalarProperty Name="cHotelVisitors" ColumnName="cHotelVisitors" />
+                <ScalarProperty Name="cHotelBarrierfree" ColumnName="cHotelBarrierfree" />
+                <ScalarProperty Name="cHotelType" ColumnName="cHotelType" />
+                <ScalarProperty Name="cHotelRatingOfPeople" ColumnName="cHotelRatingOfPeople" />
+                <ScalarProperty Name="cHotelAverageRating" ColumnName="cHotelAverageRating" />
+                <ScalarProperty Name="cHotelPhone" ColumnName="cHotelPhone" />
+                <ScalarProperty Name="cHotelInfoPhotoFileName" ColumnName="cHotelInfoPhotoFileName" />
+                <ScalarProperty Name="cHotelInfoPhotoName" ColumnName="cHotelInfoPhotoName" />
+                <ScalarProperty Name="cHotelCreationDate" ColumnName="cHotelCreationDate" />
+                <ScalarProperty Name="cHotelAdress" ColumnName="cHotelAdress" />
+                <ScalarProperty Name="cHotelCity" ColumnName="cHotelCity" />
+                <ScalarProperty Name="cHotelNameEN" ColumnName="cHotelNameEN" />
+                <ScalarProperty Name="cHotelName" ColumnName="cHotelName" />
+                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

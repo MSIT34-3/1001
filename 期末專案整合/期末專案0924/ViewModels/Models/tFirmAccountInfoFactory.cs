@@ -32,8 +32,50 @@ namespace 期末專案0924.ViewModels.Models
             db.tFirmAccountInfomation.Add(tFirmAccountInfomation);
             db.SaveChanges();
         }
+        //修改
+        public void Update(CFirmAccountInfoViewModel cFirmAccountInfo)
+        {
+            int firmSN = cFirmAccountInfo.cFirmSN;
+            var q = (from n in db.tFirmAccountInfomation
+                     where n.cFirmSN == firmSN
+                     select n).First();
+            q.cFirmTaxID = cFirmAccountInfo.cFirmTaxID;
+            q.cFirmName = cFirmAccountInfo.cFirmName;
+            q.cFirmAddress = cFirmAccountInfo.cFirmAddress;
+            q.cFirmEmail = cFirmAccountInfo.cFirmEmail;
+            q.cFirmOwner = cFirmAccountInfo.cFirmOwner;
+            q.cFirmCellphone = cFirmAccountInfo.cFirmCellphone;
+            q.cFirmPhone = cFirmAccountInfo.cFirmPhone;
+            db.SaveChanges();
+        }
+        //密碼變更
+        public void ChangePWD(CFirmAccountInfoViewModel cFirmAccountInfo)
+        {
+            int firmSN = cFirmAccountInfo.cFirmSN;
+            byte[] newPwHashSalt = null;
+            byte[] newSalt = null;
+            PasswordHashAndSalt PWSalt = new PasswordHashAndSalt();
+            PWSalt.PasswordHashSalt(cFirmAccountInfo.cFirmPWD, out newPwHashSalt, out newSalt);
 
-        
+            var q = (from n in db.tFirmAccountInfomation
+                    where n.cFirmSN == firmSN
+                    select n).First();
+            q.cFirmPWDHash = newPwHashSalt;
+            q.cFirmPWDSalt = newSalt;
+            db.SaveChanges();
+        }
+        //刪除
+        public void Delete(int sn)
+        {
+            var q = (from n in db.tFirmAccountInfomation
+                     where n.cFirmSN == sn
+                     select n).First();
+
+            db.tFirmAccountInfomation.Remove(q);
+            db.SaveChanges();
+        }
+
+
         //關鍵字查詢
         internal IQueryable<tFirmAccountInfomation> QueryAll()
         {

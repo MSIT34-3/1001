@@ -166,6 +166,7 @@
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\GuestPaymentInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\HotelInformationController.cs" />
     <Compile Include="Controllers\HotelOrderSystemController.cs" />
     <Compile Include="Controllers\HotelRoomTypeController.cs" />
@@ -279,15 +280,20 @@
     <Compile Include="ViewModels\CheckOrderViewModel.cs" />
     <Compile Include="ViewModels\CheckViewModel.cs" />
     <Compile Include="ViewModels\CHotelInformationViewModel.cs" />
+    <Compile Include="ViewModels\CHotelInfoViewModel.cs" />
     <Compile Include="ViewModels\CHotelOrderSystemViewModel.cs" />
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
     <Compile Include="ViewModels\GuestModel.cs" />
+    <Compile Include="ViewModels\CHomeLoginViewModel.cs" />
+    <Compile Include="ViewModels\Models\HomeLoginFactory.cs" />
     <Compile Include="ViewModels\Models\PasswordHashAndSalt.cs" />
     <Compile Include="ViewModels\Models\tAD.cs" />
     <Compile Include="ViewModels\Models\tADFactory.cs" />
     <Compile Include="ViewModels\Models\tFirmAccountInfo.cs" />
     <Compile Include="ViewModels\Models\tFirmAccountInfoFactory.cs" />
+    <Compile Include="ViewModels\Models\tHotelInfo.cs" />
+    <Compile Include="ViewModels\Models\tHotelInfoFactory.cs" />
     <Compile Include="ViewModels\PaymentModel.cs" />
     <Compile Include="ViewModels\SessionRoomType.cs" />
   </ItemGroup>
@@ -406,7 +412,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\cssADEdit.css" />
+    <Content Include="css\cssEdit.css" />
     <Content Include="css\cssADShow.css" />
     <Content Include="css\datepicker.css" />
     <Content Include="css\nicepage.css" />
@@ -855,6 +861,14 @@
     <Content Include="Views\Home\Select.cshtml" />
     <Content Include="Views\Firm\FirmCreate.cshtml" />
     <Content Include="Views\Firm\FirmList.cshtml" />
+    <Content Include="Views\Firm\ChangePWD.cshtml" />
+    <Content Include="Views\Firm\FirmEdit.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Shared\_Layout0.cshtml" />
+    <Content Include="Views\Shared\_Layout3.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Hotel\HotelList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

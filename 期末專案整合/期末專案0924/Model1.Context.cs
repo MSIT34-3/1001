@@ -38,7 +38,6 @@ namespace 期末專案0924
         public virtual DbSet<tHotelCityForm> tHotelCityForm { get; set; }
         public virtual DbSet<tHotelFacilityForm> tHotelFacilityForm { get; set; }
         public virtual DbSet<tHotelFacilityStandardForm> tHotelFacilityStandardForm { get; set; }
-        public virtual DbSet<tHotelInfomation> tHotelInfomation { get; set; }
         public virtual DbSet<tHotelOrderSystem> tHotelOrderSystem { get; set; }
         public virtual DbSet<tHotelPhoto> tHotelPhoto { get; set; }
         public virtual DbSet<tHotelRoomFacility> tHotelRoomFacility { get; set; }
@@ -52,5 +51,6 @@ namespace 期末專案0924
         public virtual DbSet<tRoomFacilityStandardForm> tRoomFacilityStandardForm { get; set; }
         public virtual DbSet<tStaffProfile> tStaffProfile { get; set; }
         public virtual DbSet<tUserOrder> tUserOrder { get; set; }
+        public virtual DbSet<tHotelInfomation> tHotelInfomation { get; set; }
     }
 }
