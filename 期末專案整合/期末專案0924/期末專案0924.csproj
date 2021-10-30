@@ -287,6 +287,7 @@
     <Compile Include="ViewModels\GuestModel.cs" />
     <Compile Include="ViewModels\CHomeLoginViewModel.cs" />
     <Compile Include="ViewModels\Models\CDictionary.cs" />
+    <Compile Include="ViewModels\Models\GetDates.cs" />
     <Compile Include="ViewModels\Models\HomeLoginFactory.cs" />
     <Compile Include="ViewModels\Models\PasswordHashAndSalt.cs" />
     <Compile Include="ViewModels\Models\tAD.cs" />
@@ -297,7 +298,6 @@
     <Compile Include="ViewModels\Models\tHotelInfoFactory.cs" />
     <Compile Include="ViewModels\PaymentModel.cs" />
     <Compile Include="ViewModels\SessionOrderDate.cs" />
-    <Compile Include="ViewModels\SessionRoomType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ADImage\讚.jpg" />
@@ -872,6 +872,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Hotel\HotelList.cshtml" />
     <Content Include="Views\Guest\AfterLogin.cshtml" />
+    <Content Include="Views\Home\SelectRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

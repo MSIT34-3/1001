@@ -84,11 +84,11 @@
 
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                             <label for="inputCheckIn">入住日期</label>
-                            <input name="checkin" type="text" class="form-control" id="inputCheckIn" placeholder="Check In">
+                            <input name="checkin" type="date" class="form-control" id="inputCheckIn" placeholder="Check In">
                         </div>
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                             <label for="inputCheckOut">退房時間</label>
-                            <input name="checkout" type="text" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                            <input name="checkout" type="date" class="form-control" id="inputCheckOut" placeholder="Check Out">
                         </div>
                         @*搜尋按鈕*@
                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
@@ -726,8 +726,8 @@
             });
 
             // Date Picker in Search form
-            var pickerCheckIn = datepicker('#inputCheckIn');
-            var pickerCheckOut = datepicker('#inputCheckOut');
+            //var pickerCheckIn = datepicker('#inputCheckIn');
+            //var pickerCheckOut = datepicker('#inputCheckOut');
 
             // Update nav links on scroll
             $('#tm-top-bar').singlePageNav({

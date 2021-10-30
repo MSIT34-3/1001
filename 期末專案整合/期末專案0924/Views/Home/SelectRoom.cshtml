@@ -1,4 +1,4 @@
-﻿@model 期末專案0924.ViewModels.CheckViewModel
+﻿@model 期末專案0924.ViewModels.SelectViewModel
 @{
     //Layout = null;
 }
@@ -41,12 +41,9 @@
 </head>
 <body>
     <div class="first_cot">
-        @if (Model.selects != null)
+        @if (Model.selectRoom != null)
         {
-            <button id="forPrice">依價格排序</button>
-            <button id="forRating">依評分排序</button>
-            <button id="forPeople">依人數排序</button>
-            foreach (var p in Model.selects)
+            foreach (var p in Model.selectRoom)
             {
                 <div class="outframe">
                     <div style="float:left">
@@ -54,21 +51,19 @@
                             <img src="~/img/tm-img-07.jpg" />@*換成飯店圖片*@
                         </div>
                         <div class="textframe" style="width:430px">
-                            <h1>@p.cHotelName</h1>
-                            <p>@p.cHotelNameEN</p>
-                            <p>@p.cHotelCity</p>
-                            <p>@p.cHotelAdress</p>
-                            <p>@p.cHotelAverageRating</p>
-                            <p>@p.cHotelRatingOfPeople</p>
+                            <h1>@p.cHotelRoomTypeName</h1>
+                            <p>可容納最多成人人數:@p.cHotelRoomContainAldults 人</p>
+                            <p>可容納最多孩童人數:@p.cHotelRoomContainChildren 人</p>
+                            <p>房間可容納最多人數(成人+孩童):@p.cHotelRoomContain 人</p>
                         </div>
+
                     </div>
                     <div style="float:right">
                         <div class="textframe" style="width:300px">
-                            <h1 style="color:orange">TWD @p.cHotelRoomTypePrice</h1>起
+                            <h1 style="color:orange">TWD @p.cHotelRoomTypePriceOfWeekdays</h1>起
                             平均每晚含稅價
                             <br />
-                            @*<p>@Html.ActionLink("訂購", "Create", "UserOrder", "", new { @class = "btn btn-outline-primary" })</p>*@
-                            <p>@Html.ActionLink("查看房型", "SelectRoom", new { cHotelSN = p.cHotelSN, cHotelName = p.cHotelName, cHotelRoomTypePrice = p.cHotelRoomTypePrice }, new { @class = "btn btn-outline-primary" })</p>
+                            <p>@Html.ActionLink("訂購", "Create", "UserOrder", "", new { @class = "btn btn-outline-primary" })</p>
 
 
                         </div>
@@ -83,12 +78,3 @@
     </div>
 </body>
 </html>
-
-
-<script>
-    var ar = @Model.selects;
-    $("#forPrice").click(function () {
-        alert("測試");
-    });
-</script>
-

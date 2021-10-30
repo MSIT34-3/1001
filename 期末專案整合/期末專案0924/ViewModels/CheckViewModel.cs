@@ -33,6 +33,7 @@ namespace 期末專案0924.ViewModels
         public DateTime checkout { get; set; }
 
         public List<SelectViewModel> selects { get; set; }
+        
     }
 
     public class SelectViewModel
@@ -72,5 +73,18 @@ namespace 期末專案0924.ViewModels
         public string cHotelCity { get; set; }
 
         public string cHotelAdress { get; set; }
+        public List<SelectRoomModel> selectRoom { get; set; }
+    }
+    public class SelectRoomModel
+    {
+        public int cHotelSN { get; set; }
+        public int cHotelRoomTypeSN { get; set; }
+        public  string cHotelRoomTypeName { get; set; }
+        public int cHotelRoomContain { get; set; }
+        public int cHotelRoomContainAldults { get; set; }
+        public int cHotelRoomContainChildren { get; set; }
+        public int cHotelRoomTypePriceOfWeekdays { get; set; }
+        public int cHotelRoomTypePriceOfHoliday { get; set; }
+        public int cHotelRoomTypePriceOfFestival { get; set; }
     }
 }

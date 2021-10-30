@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using 期末專案0924.Model;
 using 期末專案0924.ViewModels;
+using 期末專案0924.ViewModels.Models;
 
 namespace 期末專案0924.Controllers
 {
@@ -95,13 +96,22 @@ namespace 期末專案0924.Controllers
                 db.SaveChanges();
 
                 //如果訂單成立符合房型及下訂日期的訂單系統會更新資料庫
-                var OrderRoomtype = (from item in db.tHotelOrderSystem
-                           where item.cHotelRoomTypeSN == p.cHotelRoomTypeSN &&
-                           item.OrderDate == p.cCheckInDate
-                           select item).First();
-                OrderRoomtype.CanBookNumber--;
-                OrderRoomtype.BookedNumber++;
-                db.SaveChanges();
+                //GetTwoDates將兩個日期內的日期取出
+                GetDates getDates = new GetDates();
+                List<DateTime> gettwodates =getDates.GetTwoDates((DateTime)p.cCheckInDate, (DateTime)p.cCheckOutDate);
+                for (int i = 0; i < gettwodates.Count; i++)
+                {
+                    DateTime dateTime = new DateTime();
+                    dateTime = gettwodates[i];
+                    var OrderRoomtype = (from item in db.tHotelOrderSystem
+                                         where item.cHotelRoomTypeSN == p.cHotelRoomTypeSN &&
+                                         item.OrderDate == dateTime
+                                         select item).First();
+                    OrderRoomtype.CanBookNumber--;
+                    OrderRoomtype.BookedNumber++;
+                    db.SaveChanges();
+                }
+                
                 
             }
 

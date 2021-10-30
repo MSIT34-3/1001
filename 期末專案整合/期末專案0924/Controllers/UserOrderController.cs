@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 期末專案0924.Model;
 using 期末專案0924.ViewModels;
 
 namespace 期末專案0924.Controllers
@@ -53,7 +54,13 @@ namespace 期末專案0924.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            SessionOrderDate sessionOrderDate = (SessionOrderDate)Session[CDictionary.SK_USER_ORDER];
+            tUserOrder prod = (new dbtravelwebEntities()).tUserOrder.Create();
+            prod.cCheckInDate = sessionOrderDate.CheckIndate;
+            prod.cCheckOutDate = sessionOrderDate.CheckOutdate;
+            prod.cStayDays = sessionOrderDate.StayDays;
+            CUserOrderViewModel models = new CUserOrderViewModel() { userOrder = prod };
+            return View(models);
         }
         [HttpPost]
         public ActionResult Create(tUserOrder p)

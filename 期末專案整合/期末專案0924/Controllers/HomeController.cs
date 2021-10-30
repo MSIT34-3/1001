@@ -31,19 +31,20 @@ namespace 期末專案0924.Controllers
                 var cHotels =
                     (from p in db.tHotelOrderSystem
                      join q in db.tHotelRoomType
-                     on p.cHotelSN equals q.cHotelSN
+                     on p.cHotelRoomTypeSN equals q.cHotelRoomTypeSN
                      join r in db.tHotelInfomation
-                     on p.cHotelSN equals r.cHotelSN
+                     on q.cHotelSN equals r.cHotelSN
                      where
                      p.OrderDate == checkViewModel.checkin &&
                      p.OrderDate < checkViewModel.checkout &&
                      p.CanBookNumber >= checkViewModel.room &&
                      q.cHotelRoomContainAldults >= checkViewModel.adult &&
                      q.cHotelRoomContainChiidren >= checkViewModel.children &&
+                     q.cHotelRoomContain >= checkViewModel.adult+ checkViewModel.children &&
                      r.cHotelCity.Contains(checkViewModel.destination)
                      select r).ToList();
                 //入住日期及天數到Session裡
-                TimeSpan ts = checkViewModel.checkin - checkViewModel.checkout;
+                TimeSpan ts = checkViewModel.checkout - checkViewModel.checkin;
                 SessionOrderDate sessionOrderDate = new SessionOrderDate()
                 {
                     CheckIndate = checkViewModel.checkin,
@@ -64,7 +65,7 @@ namespace 期末專案0924.Controllers
                         if (!distin.Contains(SN.cHotelName))
                         {
                             var price = db.tHotelRoomType.Where(m => m.cHotelSN == SN.cHotelSN).OrderByDescending(m => m.cHotelRoomTypePriceOfWeekdays).FirstOrDefault().cHotelRoomTypePriceOfWeekdays;
-                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
+                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName,cHotelAdress = SN.cHotelAdress, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
                             distin.Add(SN.cHotelName);
                         }
                     }
@@ -76,7 +77,30 @@ namespace 期末專案0924.Controllers
                 return View("Select", checkViewModel);
             }
         }
+        public ActionResult SelectRoom(SelectViewModel selectRoomtype)
+        {
+            //抓不到selectRoomtype
+            dbtravelwebEntities db = new dbtravelwebEntities();
+            var cHotelRooms =
+                (from p in db.tHotelRoomType
+                 where p.cHotelSN == selectRoomtype.cHotelSN
+                 select p).ToList();
+            if (cHotelRooms.Count != 0)
+            {
+                List<SelectRoomModel> selectRoom = new List<SelectRoomModel>();
+                foreach (var SN in cHotelRooms)
+                {
+                    selectRoomtype.selectRoom = selectRoom;
+                    selectRoomtype.selectRoom.Add(new SelectRoomModel{cHotelSN = SN.cHotelSN , cHotelRoomTypeName = SN.cHotelRoomTypeName , cHotelRoomContain = SN.cHotelRoomContain, cHotelRoomContainAldults = SN.cHotelRoomContainAldults, cHotelRoomContainChildren = SN.cHotelRoomContainChiidren , cHotelRoomTypePriceOfWeekdays = SN.cHotelRoomTypePriceOfWeekdays , cHotelRoomTypePriceOfHoliday = SN.cHotelRoomTypePriceOfHoliday , cHotelRoomTypePriceOfFestival = SN.cHotelRoomTypePriceOfFestival});
+                }
+            }
+            else
+            {
+                selectRoomtype = null;
+            }
 
+            return View(selectRoomtype);
+        }
 
 
         public ActionResult About()
