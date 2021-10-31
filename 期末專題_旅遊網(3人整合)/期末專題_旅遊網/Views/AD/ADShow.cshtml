@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "ADShow";
+}
+
+<h2>廣告預覽</h2>
+
+<head>
+    @*左右箭頭的樣式來源*@
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="~/Content/cssADShow.css" />
+</head>
+
+@using (Html.BeginForm())
+{
+    <p>
+        請選擇日期
+        <input type="date" name="selectDate" id="selectDate" value="@ViewBag.date"/>
+        <input type="submit" value="查詢" />
+    </p>
+}
+
+<body>
+    <div class="container">
+        <div class="warpper">
+            <a class="slide-arrow" id="slideBefore"><i class="fas fa-chevron-left"></i></a>
+            <a class="slide-arrow right" id="slideNext"><i class="fas fa-chevron-right"></i></a>
+            <ul class="slider-img" id="slideImg">
+                @for (int i = 0; i < @ViewBag.adCount; i++)
+                {
+                    <li>
+                        <a href="@ViewBag.adURL[i]">
+                            <img src="~/img/ADImage/@ViewBag.adName[i]" alt="@(i+1)">
+                        </a>
+                    </li>
+                }
+            </ul>
+            <ul class="pages" id="pages">
+                @for (int i = 0; i < @ViewBag.adCount; i++)
+                {
+                    <li></li>
+                }
+            </ul>
+            <div id="testDiv">
+
+            </div>
+        </div>
+        <a href="~/AD/ADUpload">新增廣告</a><br />
+        <a href="~/AD/ADList">廣告列表</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jsADShow.js"></script>
+    <script>
+        //日期加減，輸入(Date()日期格式,加減天數)，輸出Date()日期格式
+        function GetDate(date, addDays) {
+            var getDate = date.setDate(date.getDate() + addDays);//加完後會轉碼
+            getDate = new Date(getDate);//再轉回標準時間
+            return getDate;
+        }
+        //輸入(Date()日期格式，輸出(yyyy-MM-dd)
+        function GetDateOutput(date) {
+            var day = ("0" + date.getDate()).slice(-2);//格式化日，如果小於9，前面補0
+            var month = ("0" + (date.getMonth() + 1)).slice(-2);//格式化月，如果小於9，前面補0
+            var Date = date.getFullYear() + "-" + (month) + "-" + (day);//拼裝完整日期格式
+            return Date;
+        }
+        //日期範圍浮動(輸入yyyy-MM-dd)
+        function DateRange() {
+            // 取得標準時間  Date()設定預設值now
+            var now = new Date();
+            //預設起始日期+1天，並設定最小值
+            var startDateStart = GetDate(now, 0);
+            var adStartDateStart = GetDateOutput(startDateStart);
+            //$('#selectDate').val(adStartDateStart);
+            $('#selectDate').attr('min', adStartDateStart);
+            //設定最大值+53
+            var startDateEnd = GetDate(startDateStart, 60);
+            var adStartDateEnd = GetDateOutput(startDateEnd);
+            $('#selectDate').attr('max', adStartDateEnd);
+        };
+        DateRange();
+    </script>
+</body>

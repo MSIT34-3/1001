@@ -1,0 +1,139 @@
+﻿@using 期末專題_旅遊網.ViewModels
+@model List<CHotelInfoViewModel>
+
+@{
+    ViewBag.Title = "HotelList";
+}
+
+<h2>HotelList</h2>
+@{if (ViewBag.Search == 1)
+    {
+        <p>
+            關鍵字
+            <input type="text" name="txtKeyword" id="txtKeyword" />
+            <input type="submit" value="查詢" />
+        </p>
+    }
+}
+<p>
+    @Html.ActionLink("新增旅館", "HotelCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        @{if (ViewBag.Search == 1)
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model[0].cFirmSN)
+                </th>
+            }
+        }
+        <th>
+            @Html.DisplayNameFor(model => model[0].cFirmTaxID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelNameEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelCreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelInfoPhotoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelAverageRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelRatingOfPeople)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelBarrierfree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelVisitors)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        int count = 0;
+        foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>
+                    @count
+                </td>
+                @{if (ViewBag.Search == 1)
+                    {
+                        <th>
+                            @Html.DisplayFor(modelItem => item.cFirmSN)
+                        </th>
+                    }
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.cFirmTaxID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelNameEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelCreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelInfoPhotoName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelAverageRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelRatingOfPeople)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelBarrierfree)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelVisitors)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

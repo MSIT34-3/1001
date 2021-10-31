@@ -1,0 +1,82 @@
+﻿@model 期末專案0924.ViewModels.SelectViewModel
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .first_cot {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .outframe {
+            width: auto;
+            margin: 50px auto;
+            border-bottom: solid 1px gray;
+            overflow: hidden; /* 避免長方框下面顯示不正常 */
+        }
+
+        .imgframe {
+            width: 300px;
+            float: left; /* 圖片在左邊 */
+            padding: 20px;
+        }
+
+            .imgframe img {
+                display: block;
+                width: 100%;
+            }
+
+        .textframe {
+            float: right; /* 文字在右邊 */
+            padding: 20px 20px 0px 0px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <div class="first_cot">
+        @if (Model.selectRoom != null)
+        {
+            foreach (var p in Model.selectRoom)
+            {
+                <div class="outframe">
+                    <div style="float:left">
+                        <div class="imgframe">
+                            <img src="~/img/tm-img-07.jpg" />@*換成飯店圖片*@
+                        </div>
+                        <div class="textframe" style="width:430px">
+                            <h1>@p.cHotelRoomTypeName</h1>
+                            <p>可容納最多成人人數:@p.cHotelRoomContainAldults 人</p>
+                            <p>可容納最多孩童人數:@p.cHotelRoomContainChildren 人</p>
+                            <p>房間可容納最多人數(成人+孩童):@p.cHotelRoomContain 人</p>
+                            @{Session["GetRoom"] = p;}
+
+                        </div>
+                        
+                    </div>
+                    <div style="float:right">
+                        <div class="textframe" style="width:300px">
+                            <h1 style="color:orange">TWD @p.cHotelRoomTypePriceOfWeekdays</h1>起
+                            平均每晚含稅價
+                            <br />
+                            <p>@Html.ActionLink("訂購", "Create", "UserOrder", new { HotelRoom = p.cHotelRoomTypeSN,HotelPrice = p.cHotelRoomTypePriceOfWeekdays }, new { @class = "btn btn-outline-primary" })</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h1>無資料</h1>
+        }
+    </div>
+</body>
+</html>

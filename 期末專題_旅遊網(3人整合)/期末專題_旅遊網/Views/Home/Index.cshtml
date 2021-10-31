@@ -1,0 +1,766 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    @*左右箭頭的樣式來源*@
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="~/Content/cssADShow.css" />
+</head>
+
+<div class="tm-page-wrap mx-auto">
+    <section class="tm-banner">
+        <div class="tm-container-outer tm-banner-bg">
+            <div class="container">
+
+                <div class="row tm-banner-row tm-banner-row-header">
+                    <div class="col-xs-12">
+                        <div class="tm-banner-header">
+                            <h1 class="text-uppercase tm-banner-title">Let's begin</h1>
+                            <img src="~/img/dots-3.png" alt="Dots">
+                            <p class="tm-banner-subtitle">我們會幫助您找到最好的選擇</p>
+                            <a href="javascript:void(0)" class="tm-down-arrow-link"><i class="fa fa-2x fa-angle-down tm-down-arrow"></i></a>
+                        </div>
+                    </div>  <!-- col-xs-12 -->
+                </div> <!-- row -->
+                <div class="row tm-banner-row" id="tm-section-search">
+                    @*搜尋*@
+                    <form action="@Url.Action("index","Home")" method="post" class="tm-search-form tm-section-pad-2">
+                        <div class="form-row tm-search-form-row">
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                <label for="inputCity">選擇您的地點</label>
+                                <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Type your destination...">
+                            </div>
+                            <div class="form-group tm-form-group tm-form-group-1">
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
+                                    <label for="inputRoom">需要幾間房間</label>
+                                    <select name="room" class="form-control tm-select" id="inputRoom">
+                                        <option value="1" selected>1 間</option>
+                                        <option value="2">2 間</option>
+                                        <option value="3">3 間</option>
+                                        <option value="4">4 間</option>
+                                        <option value="5">5 間</option>
+                                        <option value="6">6 間</option>
+                                        <option value="7">7 間</option>
+                                        <option value="8">8 間</option>
+                                        <option value="9">9 間</option>
+                                        <option value="10">10 間</option>
+                                    </select>
+                                </div>
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                                    <label for="inputAdult">成人</label>
+                                    <select name="adult" class="form-control tm-select" id="inputAdult">
+                                        <option value="1" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                                <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+
+                                    <label for="inputChildren">孩童(4歲以下)</label>
+                                    <select name="children" class="form-control tm-select" id="inputChildren">
+                                        <option value="0" selected>0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> <!-- form-row -->
+                        <div class="form-row tm-search-form-row">
+
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                                <label for="inputCheckIn">入住日期</label>
+                                <input name="checkin" type="date" class="form-control" id="inputCheckIn" placeholder="Check In">
+                            </div>
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
+                                <label for="inputCheckOut">退房時間</label>
+                                <input name="checkout" type="date" class="form-control" id="inputCheckOut" placeholder="Check Out">
+                            </div>
+                            @*搜尋按鈕*@
+                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
+                                <label for="btnSubmit">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="btnSubmit">搜尋</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div> <!-- row -->
+                <div class="tm-banner-overlay"></div>
+            </div>  <!-- .container -->
+        </div>     <!-- .tm-container-outer -->
+    </section>
+    <div class="container">
+        <div class="warpper">
+            <a class="slide-arrow" id="slideBefore"><i class="fas fa-chevron-left"></i></a>
+            <a class="slide-arrow right" id="slideNext"><i class="fas fa-chevron-right"></i></a>
+            <ul class="slider-img" id="slideImg">
+                @for (int i = 0; i < @ViewBag.adCount; i++)
+                {
+                    <li>
+                        <a href="@ViewBag.adURL[i]">
+                            <img src="~/img/ADImage/@ViewBag.adName[i]" alt="@(i+1)">
+                        </a>
+                    </li>
+                }
+            </ul>
+            <ul class="pages" id="pages">
+                @for (int i = 0; i < @ViewBag.adCount; i++)
+                {
+                    <li></li>
+                }
+            </ul>
+            <div id="testDiv">
+            </div>
+        </div>
+    </div>
+
+    <section class="p-5 tm-container-outer tm-bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">
+                    <h2 class="text-uppercase mb-4">您的 <strong>旅行</strong> 由我們把關</h2>
+                    <p class="mb-4">您的安全極為重要。若您認為新冠肺炎（COVID-19）可能會影響到您的計畫，請前往我們的 支援中心。或者，您也可參考此處關於這段期間的重要須知。</p>
+                    <a href="#" class="text-uppercase btn-primary tm-btn">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tm-container-outer" id="tm-section-2">
+        <section class="tm-slideshow-section">
+            <div class="tm-slideshow">
+                <img src="~/img/tm-img-01.jpg" alt="Image">
+                <img src="~/img/tm-img-04.jpg" alt="Image">
+                <img src="~/img/tm-img-05.jpg" alt="Image">
+            </div>
+            <div class="tm-slideshow-description tm-bg-primary">
+                <h2 class="">台中</h2>
+                <p>臺中位於臺灣西半部的樞紐位置，四季氣候宜人。日治時期，積極興建鐵路、開通公路及海港運輸，讓臺中遂躍身為中臺灣政治、經濟、交通、文化的重鎮。臺中市對古蹟的保存不遺餘力，完整保留了日治時期棋盤式街道、具有兩百年歷史的樂成宮、雕工華麗且香火鼎盛的城隍廟，以及三殿式格局的萬和宮、古蹟-張廖家廟，以及迄今同樣已有兩百多年歷史的大甲鎮瀾宮，在在都讓人發思古之幽情。</p>
+                <a href="https://travel.taichung.gov.tw/" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">詳見臺中觀光旅遊網</a>
+            </div>
+        </section>
+        <section class="clearfix tm-slideshow-section tm-slideshow-section-reverse">
+
+            <div class="tm-right tm-slideshow tm-slideshow-highlight">
+                <img src="~/img/tm-img-02.jpg" alt="Image">
+                <img src="~/img/tm-img-06.jpg" alt="Image">
+                <img src="~/img/tm-img-07.jpg" alt="Image">
+            </div>
+
+            <div class="tm-slideshow-description tm-slideshow-description-left tm-bg-highlight">
+                <h2 class="">花蓮</h2>
+                <p>
+                    擁有許多世界級的山水美景，西元1590年，葡萄牙人航經臺灣東岸，看見壯麗的山川美景呈現於眼前，不禁驚呼「FORMOSA福爾摩沙」，從此，花蓮的壯闊景緻便成為臺灣的代表。
+                    花蓮古稱奇萊，又因花蓮溪東注於海，其水與海濤激流迂迴澎湃，而稱為洄瀾，後人諧其音稱為花蓮。
+                    花蓮是臺灣最大的縣份，面積約4,628平方公里，人口約有35萬人，東臨浩瀚太平洋，西倚雄偉的中央山脈，以巍峨的高山、蔚藍的天空、浩瀚的海洋、景色秀麗的縱谷、多樣性的人文風貌、親切善良的人民，成為全國最喜歡旅遊縣市的首選，並深受國際遊客的喜愛。
+                </p>
+                <a href="https://tour-hualien.hl.gov.tw/" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">詳見花蓮觀光旅遊網</a>
+            </div>
+
+        </section>
+        <section class="tm-slideshow-section">
+            <div class="tm-slideshow">
+                <img src="~/img/tm-img-03.jpg" alt="Image">
+                <img src="~/img/tm-img-08.jpg" alt="Image">
+                <img src="~/img/tm-img-09.jpg" alt="Image">
+            </div>
+            <div class="tm-slideshow-description tm-bg-primary">
+                <h2 class="">台北</h2>
+                <p>
+                    從世界最高樓（2004~2010）到國際級的中華藝術典藏，我們誠摯的邀請您來到這個充滿著對比的城市。現代與傳統相互包容外，再結合了無比活力與親切笑容，臺北定會成為您在亞洲最美好的回憶。
+                    在臺北，您每個所到之處，多樣的文化特質都充沛鼓動著。雕龍畫棟的廟宇與現代的街道完美吻合，還有許多世界級餐廳隨時提供您最正統的各式中華料理。別忘了，美味的夜市小吃不僅僅帶給您口腹的滿足，更是引領您體驗臺灣生活的理想去處。
+                    臺北的相對性也在都市與自然接壤之間顯現。幾分鐘的車程，您就能在山林環繞下，浸醞於柔潤的溫泉中。還有許多親山步道與公園在城市間穿梭點綴，一日庸碌繁忙後，陪伴著您沉靜心靈。
+                </p>
+                <a href="https://www.travel.taipei/zh-tw" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">詳見臺北旅遊網</a>
+            </div>
+        </section>
+    </div>
+    <div class="tm-container-outer" id="tm-section-3">
+        <!--<ul class="nav nav-pills tm-tabs-links">
+            <li class="tm-tab-link-li">
+                <a href="#1a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/north-america.png" alt="Image" class="img-fluid">
+                    桃園地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#2a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/south-america.png" alt="Image" class="img-fluid">
+                    苗栗地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#3a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/europe.png" alt="Image" class="img-fluid">
+                    彰化地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#4a" data-toggle="tab" class="tm-tab-link active">-->
+                    <!-- Current Active Tab -->
+                    <!--<img src="~/img/asia.png" alt="Image" class="img-fluid">
+                    雲林地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#5a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/africa.png" alt="Image" class="img-fluid">
+                    嘉義地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#6a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/australia.png" alt="Image" class="img-fluid">
+                    台南地區
+                </a>
+            </li>
+            <li class="tm-tab-link-li">
+                <a href="#7a" data-toggle="tab" class="tm-tab-link">
+                    <img src="~/img/antartica.png" alt="Image" class="img-fluid">
+                    高雄地區
+                </a>
+            </li>
+        </ul>-->
+        <div class="tab-content clearfix">
+
+            <!-- Tab 1 -->
+            <div class="tab-pane fade" id="1a">
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">North Garden Resort</h3>
+                            <p class="tm-text-highlight">One North</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$110</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Felis nec dignissim</h3>
+                            <p class="tm-text-highlight">Two North</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <div id="preload-hover-img"></div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$120</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Sed fermentum justo</h3>
+                            <p class="tm-text-highlight">Three North</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$130</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Maecenas ultricies neque</h3>
+                            <p class="tm-text-highlight">Four North</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$140</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 2 -->
+            <div class="tab-pane fade" id="2a">
+
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">South Resort Hotel</h3>
+                            <p class="tm-text-highlight">South One</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$220</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Aenean ac ante nec diam</h3>
+                            <p class="tm-text-highlight">South Second</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$230</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Suspendisse nec dapibus</h3>
+                            <p class="tm-text-highlight">South Third</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$240</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Aliquam viverra mi at nisl</h3>
+                            <p class="tm-text-highlight">South Fourth</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$250</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 3 -->
+            <div class="tab-pane fade" id="3a">
+
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Europe Hotel</h3>
+                            <p class="tm-text-highlight">Venecia, Italy</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$330</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">In viverra enim turpis</h3>
+                            <p class="tm-text-highlight">Paris, France</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$340</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Volutpat pellentesque</h3>
+                            <p class="tm-text-highlight">Barcelona, Spain</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$350</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Grand Resort Pasha</h3>
+                            <p class="tm-text-highlight">Istanbul, Turkey</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$360</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 4 -->
+            <div class="tab-pane fade show active" id="4a">
+                <!-- Current Active Tab WITH "show active" classes in DIV tag -->
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-10.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">台北大倉久和大飯店</h3>
+                            <p class="tm-text-highlight">台北市</p>
+                            <p class="tm-text-gray">台北大倉久和大飯店設有附太陽椅的溫水頂樓游泳池，享有台北市全景，現代化客房提供免費 WiFi。飯店距離捷運中山站（淡水線）僅有 5 分鐘步行路程，館內 SPA 中心設有三溫暖，另設有 3 間餐廳和 1 間酒吧。</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$10000起</p>
+                            <p class="tm-recommended-price-link">進來看看</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-11.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">台南晶英酒店</h3>
+                            <p class="tm-text-highlight">台南市</p>
+                            <p class="tm-text-gray">台南晶英酒店位於台南，提供 5 星級住宿，並設有室外游泳池和健身中心。飯店距離台南孔廟 10 分鐘步行路程，距離赤崁樓 15 分鐘步行路程。全館均可使用免費 WiFi。</p>
+                        </div>
+                        <div id="preload-hover-img"></div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$15000起</p>
+                            <p class="tm-recommended-price-link">進來看看</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-12.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">娜路彎銀河酒店</h3>
+                            <p class="tm-text-highlight">台東市</p>
+                            <p class="tm-text-gray">
+                                娜路彎銀河酒店位於台東市，設有全年開放的室外泳池和 SPA 中心。此住宿附設免費私人停車位。
+                                此住宿距離台東火車站 10 分鐘車程。此住宿距離鐵花村音樂聚落和台東鐵道藝術村均 15 分鐘車程。顧客可租車或摩托車探索附近地區。
+                            </p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$8000起</p>
+                            <p class="tm-recommended-price-link">進來看看</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-13.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">長榮桂冠酒店(台中)</h3>
+                            <p class="tm-text-highlight">台中市</p>
+                            <p class="tm-text-gray">
+                                台中長榮桂冠酒店位於西屯區，設有 SPA、室外游泳池、3 家餐廳和大廳酒吧。飯店全面禁菸，全館提供免費 WiFi，並附設免費停車位。
+                                台中長榮桂冠酒店距離台中火車站 5 公里，距離台灣高鐵台中站 12 公里，距離台中機場 18 公里。
+                            </p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$7900起</p>
+                            <p class="tm-recommended-price-link">進來看看</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">觀賞更多優質旅館</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 5 -->
+            <div class="tab-pane fade" id="5a">
+
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Africa Resort Hotel</h3>
+                            <p class="tm-text-highlight">First City</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$550</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Aenean ac magna diam</h3>
+                            <p class="tm-text-highlight">Second City</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$560</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Beach Barbecue Sunset</h3>
+                            <p class="tm-text-highlight">Third City</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$570</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Grand Resort Pasha</h3>
+                            <p class="tm-text-highlight">Fourth City</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$580</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 6 -->
+            <div class="tab-pane fade" id="6a">
+
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Hotel Australia</h3>
+                            <p class="tm-text-highlight">City One</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$660</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Proin interdum ullamcorper</h3>
+                            <p class="tm-text-highlight">City Two</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$650</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Beach Barbecue Sunset</h3>
+                            <p class="tm-text-highlight">City Three</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$640</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Grand Resort Pasha</h3>
+                            <p class="tm-text-highlight">City Four</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$630</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+            <!-- Tab 7 -->
+            <div class="tab-pane fade" id="7a">
+
+                <div class="tm-recommended-place-wrap">
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-04.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Antartica Resort</h3>
+                            <p class="tm-text-highlight">Ant City One</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$770</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-05.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Pulvinar Semper</h3>
+                            <p class="tm-text-highlight">Ant City Two</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$230</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-06.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Cras vel sapien</h3>
+                            <p class="tm-text-highlight">Ant City Three</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$140</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+
+                    <div class="tm-recommended-place">
+                        <img src="~/img/tm-img-07.jpg" alt="Image" class="img-fluid tm-recommended-img">
+                        <div class="tm-recommended-description-box">
+                            <h3 class="tm-recommended-title">Nullam eget est</h3>
+                            <p class="tm-text-highlight">Ant City Four</p>
+                            <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>
+                        </div>
+                        <a href="#" class="tm-recommended-price-box">
+                            <p class="tm-recommended-price">$190</p>
+                            <p class="tm-recommended-price-link">Continue Reading</p>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="text-uppercase btn-primary tm-btn mx-auto tm-d-table">Show More Places</a>
+            </div> <!-- tab-pane -->
+        </div>
+    </div>
+
+    <!--<div class="tm-container-outer tm-position-relative" id="tm-section-4">
+        <div id="google-map"></div>
+        <form action="index.html" method="post" class="tm-contact-form">
+            <div class="form-group tm-name-container">
+                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required />
+            </div>
+            <div class="form-group tm-email-container">
+                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+                <input type="text" id="contact_subject" name="contact_subject" class="form-control" placeholder="Subject" required />
+            </div>
+            <div class="form-group">
+                <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary tm-btn-primary tm-btn-send text-uppercase">Send Message Now</button>
+        </form>
+    </div>--> <!-- .tm-container-outer -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/jsADShow.js"></script>
+<script>
+        /* Google Maps
+        ------------------------------------------------*/
+        var map = '';
+        var center;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 16,
+                center: new google.maps.LatLng(23.769725, 120.462154),
+                scrollwheel: false
+            };
+
+            map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+            google.maps.event.addDomListener(map, 'idle', function () {
+                calculateCenter();
+            });
+
+            google.maps.event.addDomListener(window, 'resize', function () {
+                map.setCenter(center);
+            });
+        }
+
+        function calculateCenter() {
+            center = map.getCenter();
+        }
+
+        function loadGoogleMap() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
+            document.body.appendChild(script);
+        }
+
+        /* DOM is ready
+        ------------------------------------------------*/
+        $(function () {
+
+            // Change top navbar on scroll
+            $(window).on("scroll", function () {
+                if ($(window).scrollTop() > 100) {
+                    $(".tm-top-bar").addClass("active");
+                } else {
+                    $(".tm-top-bar").removeClass("active");
+                }
+            });
+
+            // Smooth scroll to search form
+            $('.tm-down-arrow-link').click(function () {
+                $.scrollTo('#tm-section-search', 300, { easing: 'linear' });
+            });
+
+            // Date Picker in Search form
+            //var pickerCheckIn = datepicker('#inputCheckIn');
+            //var pickerCheckOut = datepicker('#inputCheckOut');
+
+            // Update nav links on scroll
+            $('#tm-top-bar').singlePageNav({
+                currentClass: 'active',
+                offset: 60
+            });
+
+            // Close navbar after clicked
+            $('.nav-link').click(function () {
+                $('#mainNav').removeClass('show');
+            });
+
+            // Slick Carousel
+            $('.tm-slideshow').slick({
+                infinite: true,
+                arrows: true,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+
+            loadGoogleMap();                                       // Google Map
+            $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+        });
+
+</script>

@@ -1,0 +1,85 @@
+﻿@model 期末專案0924.ViewModels.CheckViewModel
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .first_cot {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .outframe {
+            width: auto;
+            margin: 50px auto;
+            border-bottom: solid 1px gray;
+            overflow: hidden; /* 避免長方框下面顯示不正常 */
+        }
+
+        .imgframe {
+            width: 300px;
+            float: left; /* 圖片在左邊 */
+            padding: 20px;
+        }
+
+            .imgframe img {
+                display: block;
+                width: 100%;
+            }
+
+        .textframe {
+            float: right; /* 文字在右邊 */
+            padding: 20px 20px 0px 0px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <div class="first_cot">
+        @if (Model.selects != null)
+        {
+            //<button id="forPrice">依價格排序</button>
+            //<button id="forRating">依評分排序</button>
+            //<button id="forPeople">依人數排序</button>
+            foreach (var p in Model.selects)
+            {
+                <div class="outframe">
+                    <div style="float:left">
+                        <div class="imgframe">
+                            <img src="~/img/tm-img-07.jpg" />@*換成飯店圖片*@
+                        </div>
+                        <div class="textframe" style="width:250px">
+                            <h1>@p.cHotelName</h1>
+                            <p>@p.cHotelNameEN</p>
+                            <p>@p.cHotelAdress</p>
+                            <p>@p.cHotelAverageRating</p>
+                            <p>@p.cHotelRatingOfPeople</p>
+                        </div>
+                    </div>
+                    <div style="float:right">
+                        <div class="textframe" style="width:300px">
+                            <h1 style="color:orange">TWD @p.cHotelRoomTypePrice</h1>起
+                            平均每晚含稅價
+                            <br />
+                            @*<p>@Html.ActionLink("訂購", "Create", "UserOrder", "", new { @class = "btn btn-outline-primary" })</p>*@
+                            <p>@Html.ActionLink("查看房型", "SelectRoom", new { cHotelSN = p.cHotelSN, cHotelName = p.cHotelName, cHotelRoomTypePrice = p.cHotelRoomTypePrice }, new { @class = "btn btn-outline-primary" })</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h1>無資料</h1>
+        }
+    </div>
+</body>
+</html>
+

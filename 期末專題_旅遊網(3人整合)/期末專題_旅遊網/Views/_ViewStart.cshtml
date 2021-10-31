@@ -1,0 +1,19 @@
+﻿@{ switch (Session["identity"])
+    {
+        case 0: //未登入
+            Layout = "~/Views/Shared/_Layout0.cshtml";
+            break;
+        case 1:  //旅客
+            Layout = "~/Views/Shared/_Layout1.cshtml";
+            break;
+        case 2:  //廠商
+            Layout = "~/Views/Shared/_Layout2.cshtml";
+            break;
+        case 3:  //員工
+            Layout = "~/Views/Shared/_Layout3.cshtml";
+            break;
+        default:  //未登入
+            Layout = "~/Views/Shared/_Layout0.cshtml";
+            break;
+    }
+}

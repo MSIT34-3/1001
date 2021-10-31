@@ -1,0 +1,88 @@
+﻿@model List<期末專案0924.ViewModels.CGuestPaymentInformationViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>信用卡資訊一覽表</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+<p>
+    @Html.ActionLink("信用卡資訊", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cOrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardNameID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardDeadlineMonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardDeadlineYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cGuestCreditCardSecurityCode)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int Count = 0;
+        foreach (var item in Model)
+        {
+            Count++;
+        <tr>
+            <td>
+                @Count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cOrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardNameID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardDeadlineMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardDeadlineYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cGuestCreditCardSecurityCode)
+            </td>
+        </tr>
+        }
+    }
+
+
+</table>

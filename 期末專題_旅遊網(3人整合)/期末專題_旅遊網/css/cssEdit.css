@@ -1,0 +1,8 @@
+﻿#readonly {
+    pointer-events: none;
+    color: gainsboro;
+}
+
+.pre_img {
+    height: 300px;
+}

@@ -1,0 +1,69 @@
+﻿@model List<期末專案0924.ViewModels.CHotelOrderSystemViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>訂單系統一覽表</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        <input type="text" name="txtKeyword" />
+        <input type="submit" value="查詢" />
+    </p>
+}
+<p>
+    @Html.ActionLink("新增訂單系統", "Create", new { id = Model[0].cHotelRoomTypeSN, HotelId = Model[0].cHotelSN }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("返回房型列表", "List", "HotelRoomType",new { id = Model[0].cHotelSN }, new { @class = "btn btn-outline-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            序
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelRoomTypeSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].CanBookNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].BookedNumber)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        int Count = 0;
+        foreach (var item in Model)
+        {
+            Count++;
+        <tr>
+            <td>
+                @Count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelRoomTypeSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanBookNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedNumber)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.OrderSystemSN }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.OrderSystemSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
+    }
+
+
+</table>

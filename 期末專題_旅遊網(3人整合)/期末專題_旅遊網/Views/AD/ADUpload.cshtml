@@ -1,0 +1,69 @@
+﻿@using 期末專題_旅遊網.ViewModels
+@model List<CADViewModel>
+
+@{
+    ViewBag.Title = "ADUpload";
+}
+
+<h2>新增廣告</h2>
+
+<form method="post" onsubmit="return CheckUpLoad(this);" enctype="multipart/form-data">    
+    <div hidden="hidden">
+        @*cFirmSN用get取得*@
+        <label id="FirmSN">廠商SN:</label>
+        <input type="text" name="cFirmSN" id="cFirmSN" value="@ViewBag.FirmSN" />
+    </div>
+    @*cADName取檔案名稱*@
+    @*cADFileName後台建*@
+    <div>
+        @*cADStartDate*@
+        <label id="StartDate">廣告開始日期:</label>
+        <input type="date" name="cADStartDate" id="cADStartDate" onchange="outPutStr()" />
+    </div>
+    <div>
+        @*cADDueDate*@
+        <label id="DueDate">廣告結束日期:</label>
+        <input type="date" name="cADDueDate" id="cADDueDate" onchange="outPutStr()" />
+    </div>
+    <div hidden>
+        @*GetActionDate*@
+        <input type="text" id="getActionDate" value="@ViewBag.inputStr" readonly />
+    </div>
+    <div hidden>
+        @*cADActionDate用js寫*@
+        <label id="ADActionDate">廣告總天數:</label>
+        <input type="text" name="cADActionDate" id="cADActionDate" readonly />
+    </div>
+    <div>
+        @*顯示有效天數*@
+        <label>選擇的總天數:</label>
+        <input type="text" id="ActionDateCount" />
+        <label id="fullDays" style="color:red"></label>
+    </div>
+    <div>
+        @*cADURL*@
+        <label id="URL">連結的URL:</label>
+        <input type="text" name="cADURL" id="cADURL" />
+    </div>
+    <div>
+        <label id="lblImage">請選擇圖檔:</label>
+        <input type="file" name="image" id="image" accept="image/">
+    </div>
+    <div>
+        預覽:<br />
+        <img class="pre_img" id="preview_img" src="#" />
+    </div>
+    <input type="submit" value="開始上傳" /><br />
+    @*cADGroup  廣告群組點進時get，目前預設1*@
+    <input type="text" name="cADGroup" value="1" hidden="hidden" readonly />
+    @*cADStatus後台寫，建立時默認TRUE*@
+    @*cADCreateDate後台寫*@
+    @*cADCreateDate後台寫*@
+</form>
+<br />
+<a href="~/AD/ADShow">返回</a>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/jsADUpload.js"></script>
+
+

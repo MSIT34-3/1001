@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbtravelwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmSN" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADStartDate" Type="date" />
+          <Property Name="cADDueDate" Type="date" />
+          <Property Name="cADActionDate" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADStatus" Type="bit" />
+          <Property Name="cADGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="cADURL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="cADCreateDate" Type="smalldatetime" />
+          <Property Name="cADEditDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tFirmAccountInfomation">
+          <Key>
+            <PropertyRef Name="cFirmSN" />
+          </Key>
+          <Property Name="cFirmSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmTaxID" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmPWDHash" Type="varbinary" MaxLength="50" />
+          <Property Name="cFirmPWDSalt" Type="varbinary" MaxLength="50" />
+          <Property Name="cFirmAccountCreationDate" Type="datetime" />
+          <Property Name="cFirmAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmOwner" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cFirmCellphone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tGuestAccountInfomation">
+          <Key>
+            <PropertyRef Name="cGuestSN" />
+          </Key>
+          <Property Name="cGuestSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cGuestEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestPWDHash" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestPWDSalt" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestAccountCreationDate" Type="datetime" />
+          <Property Name="cGuestLastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="cGuestFirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="cGuestLastNameEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestFirstNameEN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestBirth" Type="date" Nullable="false" />
+          <Property Name="cGuestCitizenship" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="cGuestID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestGender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cGuestPhoneNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tGuestPaymentInfomation">
+          <Key>
+            <PropertyRef Name="cGuestPaymentInfoSN" />
+          </Key>
+          <Property Name="cGuestPaymentInfoSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cOrderID" Type="int" />
+          <Property Name="cCreditCardType" Type="nvarchar" MaxLength="50" />
+          <Property Name="cGuestCreditCardName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cGuestCreditCardBirth" Type="date" />
+          <Property Name="cGuestCreditCardNameID" Type="nvarchar" MaxLength="50" />
+          <Property Name="cGuestCreditCardNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="cGuestCreditCardDeadlineMonth" Type="int" />
+          <Property Name="cGuestCreditCardDeadlineYear" Type="int" />
+          <Property Name="cGuestCreditCardSecurityCode" Type="int" />
+        </EntityType>
+        <EntityType Name="tHotelInfomation">
+          <Key>
+            <PropertyRef Name="cHotelSN" />
+          </Key>
+          <Property Name="cHotelSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmSN" Type="int" />
+          <Property Name="cFirmTaxID" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelNameEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelAdress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelCreationDate" Type="datetime" />
+          <Property Name="cHotelInfoPhotoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelInfoPhotoFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelAverageRating" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelRatingOfPeople" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelType" Type="nvarchar" MaxLength="50" />
+          <Property Name="cHotelBarrierfree" Type="bit" />
+          <Property Name="cHotelVisitors" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tHotelOrderSystem">
+          <Key>
+            <PropertyRef Name="OrderSystemSN" />
+          </Key>
+          <Property Name="OrderSystemSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="cHotelSN" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+          <Property Name="CanBookNumber" Type="int" Nullable="false" />
+          <Property Name="BookedNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tHotelRoomType">
+          <Key>
+            <PropertyRef Name="cHotelRoomTypeSN" />
+          </Key>
+          <Property Name="cHotelRoomTypeSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cFirmSN" Type="int" />
+          <Property Name="cHotelSN" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="cHotelRoomCount" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomContain" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomContainAldults" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomContainChiidren" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tStaffProfile">
+          <Key>
+            <PropertyRef Name="cStaffProfileSN" />
+          </Key>
+          <Property Name="cStaffProfileSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cStaffAccountID" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffPWD" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffPWDHash" Type="varbinary" MaxLength="20" />
+          <Property Name="cStaffPWDSalt" Type="varbinary" MaxLength="20" />
+          <Property Name="cStaffProfileCreationDate" Type="datetime" />
+          <Property Name="cStaffLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffID" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffCellphone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffResidenceAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffMailingAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffEmail" Type="varbinary" MaxLength="50" />
+          <Property Name="cJobTitleSN" Type="int" />
+          <Property Name="cStaffERContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffERContactRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffERContactNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="cStaffBirth" Type="date" />
+        </EntityType>
+        <EntityType Name="tUserOrder">
+          <Key>
+            <PropertyRef Name="cOrderSN" />
+          </Key>
+          <Property Name="cOrderSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cOrderID" Type="int" Nullable="false" />
+          <Property Name="cGuestSN" Type="int" Nullable="false" />
+          <Property Name="cOrderDate" Type="datetime" />
+          <Property Name="cCheckInDate" Type="date" />
+          <Property Name="cCheckOutDate" Type="date" />
+          <Property Name="cOrderStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="cStaffProfileSN" Type="int" />
+          <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+          <Property Name="cOrderNotes" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="cOrderPrice" Type="int" Nullable="false" />
+          <Property Name="cStayDays" Type="int" />
+        </EntityType>
+        <EntityContainer Name="dbtravelwebModelStoreContainer">
+          <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tFirmAccountInfomation" EntityType="Self.tFirmAccountInfomation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tGuestAccountInfomation" EntityType="Self.tGuestAccountInfomation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tGuestPaymentInfomation" EntityType="Self.tGuestPaymentInfomation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tHotelOrderSystem" EntityType="Self.tHotelOrderSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tHotelRoomType" EntityType="Self.tHotelRoomType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tStaffProfile" EntityType="Self.tStaffProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUserOrder" EntityType="Self.tUserOrder" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbtravelwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tAdvertising">
+          <Key>
+            <PropertyRef Name="cADSN" />
+          </Key>
+          <Property Name="cADSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADStartDate" Type="DateTime" Precision="0" />
+          <Property Name="cADDueDate" Type="DateTime" Precision="0" />
+          <Property Name="cADActionDate" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADStatus" Type="Boolean" />
+          <Property Name="cADGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cADURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="cADCreateDate" Type="DateTime" Precision="0" />
+          <Property Name="cADEditDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tFirmAccountInfomation">
+          <Key>
+            <PropertyRef Name="cFirmSN" />
+          </Key>
+          <Property Name="cFirmSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmPWDHash" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="cFirmPWDSalt" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="cFirmAccountCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cFirmAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cFirmCellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tHotelInfomation">
+          <Key>
+            <PropertyRef Name="cHotelSN" />
+          </Key>
+          <Property Name="cHotelSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="Int32" />
+          <Property Name="cFirmTaxID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelNameEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cHotelInfoPhotoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelInfoPhotoFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelAverageRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelRatingOfPeople" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelBarrierfree" Type="Boolean" />
+          <Property Name="cHotelVisitors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="dbtravelwebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" />
+          <EntitySet Name="tFirmAccountInfomation" EntityType="Self.tFirmAccountInfomation" />
+          <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" />
+          <EntitySet Name="tStaffProfile" EntityType="dbtravelwebModel.tStaffProfile" />
+          <EntitySet Name="tHotelOrderSystem" EntityType="dbtravelwebModel.tHotelOrderSystem" />
+          <EntitySet Name="tHotelRoomType" EntityType="dbtravelwebModel.tHotelRoomType" />
+          <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
+          <EntitySet Name="tGuestAccountInfomation" EntityType="dbtravelwebModel.tGuestAccountInfomation" />
+          <EntitySet Name="tGuestPaymentInfomation" EntityType="dbtravelwebModel.tGuestPaymentInfomation" />
+        </EntityContainer>
+        <EntityType Name="tStaffProfile">
+          <Key>
+            <PropertyRef Name="cStaffProfileSN" />
+          </Key>
+          <Property Name="cStaffProfileSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cStaffAccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffPWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffPWDHash" Type="Binary" MaxLength="20" FixedLength="false" />
+          <Property Name="cStaffPWDSalt" Type="Binary" MaxLength="20" FixedLength="false" />
+          <Property Name="cStaffProfileCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cStaffLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffCellphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffResidenceAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffMailingAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffEmail" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="cJobTitleSN" Type="Int32" />
+          <Property Name="cStaffERContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffERContactRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffERContactNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffBirth" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tHotelOrderSystem">
+          <Key>
+            <PropertyRef Name="OrderSystemSN" />
+          </Key>
+          <Property Name="OrderSystemSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+          <Property Name="CanBookNumber" Type="Int32" Nullable="false" />
+          <Property Name="BookedNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tHotelRoomType">
+          <Key>
+            <PropertyRef Name="cHotelRoomTypeSN" />
+          </Key>
+          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cFirmSN" Type="Int32" />
+          <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelRoomCount" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContain" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContainAldults" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContainChiidren" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfWeekdays" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfHoliday" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfFestival" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUserOrder">
+          <Key>
+            <PropertyRef Name="cOrderSN" />
+          </Key>
+          <Property Name="cOrderSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cOrderID" Type="Int32" Nullable="false" />
+          <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+          <Property Name="cOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="cCheckInDate" Type="DateTime" Precision="0" />
+          <Property Name="cCheckOutDate" Type="DateTime" Precision="0" />
+          <Property Name="cOrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffProfileSN" Type="Int32" />
+          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+          <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
+          <Property Name="cStayDays" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tGuestAccountInfomation">
+          <Key>
+            <PropertyRef Name="cGuestSN" />
+          </Key>
+          <Property Name="cGuestSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cGuestEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestPWDHash" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestPWDSalt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestAccountCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="cGuestLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestLastNameEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cGuestFirstNameEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cGuestBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cGuestCitizenship" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestPhoneNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tGuestPaymentInfomation">
+          <Key>
+            <PropertyRef Name="cGuestPaymentInfoSN" />
+          </Key>
+          <Property Name="cGuestPaymentInfoSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cOrderID" Type="Int32" />
+          <Property Name="cCreditCardType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestCreditCardName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestCreditCardBirth" Type="DateTime" Precision="0" />
+          <Property Name="cGuestCreditCardNameID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestCreditCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cGuestCreditCardDeadlineMonth" Type="Int32" />
+          <Property Name="cGuestCreditCardDeadlineYear" Type="Int32" />
+          <Property Name="cGuestCreditCardSecurityCode" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbtravelwebModelStoreContainer" CdmEntityContainer="dbtravelwebEntities">
+          <EntitySetMapping Name="tAdvertising">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tAdvertising">
+              <MappingFragment StoreEntitySet="tAdvertising">
+                <ScalarProperty Name="cADSN" ColumnName="cADSN" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cADName" ColumnName="cADName" />
+                <ScalarProperty Name="cADFileName" ColumnName="cADFileName" />
+                <ScalarProperty Name="cADStartDate" ColumnName="cADStartDate" />
+                <ScalarProperty Name="cADDueDate" ColumnName="cADDueDate" />
+                <ScalarProperty Name="cADActionDate" ColumnName="cADActionDate" />
+                <ScalarProperty Name="cADStatus" ColumnName="cADStatus" />
+                <ScalarProperty Name="cADGroup" ColumnName="cADGroup" />
+                <ScalarProperty Name="cADURL" ColumnName="cADURL" />
+                <ScalarProperty Name="cADCreateDate" ColumnName="cADCreateDate" />
+                <ScalarProperty Name="cADEditDate" ColumnName="cADEditDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tFirmAccountInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tFirmAccountInfomation">
+              <MappingFragment StoreEntitySet="tFirmAccountInfomation">
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cFirmName" ColumnName="cFirmName" />
+                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+                <ScalarProperty Name="cFirmPWDHash" ColumnName="cFirmPWDHash" />
+                <ScalarProperty Name="cFirmPWDSalt" ColumnName="cFirmPWDSalt" />
+                <ScalarProperty Name="cFirmAccountCreationDate" ColumnName="cFirmAccountCreationDate" />
+                <ScalarProperty Name="cFirmAddress" ColumnName="cFirmAddress" />
+                <ScalarProperty Name="cFirmOwner" ColumnName="cFirmOwner" />
+                <ScalarProperty Name="cFirmEmail" ColumnName="cFirmEmail" />
+                <ScalarProperty Name="cFirmPhone" ColumnName="cFirmPhone" />
+                <ScalarProperty Name="cFirmCellphone" ColumnName="cFirmCellphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tHotelInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelInfomation">
+              <MappingFragment StoreEntitySet="tHotelInfomation">
+                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cFirmTaxID" ColumnName="cFirmTaxID" />
+                <ScalarProperty Name="cHotelName" ColumnName="cHotelName" />
+                <ScalarProperty Name="cHotelNameEN" ColumnName="cHotelNameEN" />
+                <ScalarProperty Name="cHotelCity" ColumnName="cHotelCity" />
+                <ScalarProperty Name="cHotelAdress" ColumnName="cHotelAdress" />
+                <ScalarProperty Name="cHotelCreationDate" ColumnName="cHotelCreationDate" />
+                <ScalarProperty Name="cHotelInfoPhotoName" ColumnName="cHotelInfoPhotoName" />
+                <ScalarProperty Name="cHotelInfoPhotoFileName" ColumnName="cHotelInfoPhotoFileName" />
+                <ScalarProperty Name="cHotelPhone" ColumnName="cHotelPhone" />
+                <ScalarProperty Name="cHotelAverageRating" ColumnName="cHotelAverageRating" />
+                <ScalarProperty Name="cHotelRatingOfPeople" ColumnName="cHotelRatingOfPeople" />
+                <ScalarProperty Name="cHotelType" ColumnName="cHotelType" />
+                <ScalarProperty Name="cHotelBarrierfree" ColumnName="cHotelBarrierfree" />
+                <ScalarProperty Name="cHotelVisitors" ColumnName="cHotelVisitors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tStaffProfile">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tStaffProfile">
+              <MappingFragment StoreEntitySet="tStaffProfile">
+                <ScalarProperty Name="cStaffBirth" ColumnName="cStaffBirth" />
+                <ScalarProperty Name="cStaffERContactNumber" ColumnName="cStaffERContactNumber" />
+                <ScalarProperty Name="cStaffERContactRelationship" ColumnName="cStaffERContactRelationship" />
+                <ScalarProperty Name="cStaffERContactName" ColumnName="cStaffERContactName" />
+                <ScalarProperty Name="cJobTitleSN" ColumnName="cJobTitleSN" />
+                <ScalarProperty Name="cStaffEmail" ColumnName="cStaffEmail" />
+                <ScalarProperty Name="cStaffMailingAddress" ColumnName="cStaffMailingAddress" />
+                <ScalarProperty Name="cStaffResidenceAddress" ColumnName="cStaffResidenceAddress" />
+                <ScalarProperty Name="cStaffCellphone" ColumnName="cStaffCellphone" />
+                <ScalarProperty Name="cStaffGender" ColumnName="cStaffGender" />
+                <ScalarProperty Name="cStaffID" ColumnName="cStaffID" />
+                <ScalarProperty Name="cStaffFirstName" ColumnName="cStaffFirstName" />
+                <ScalarProperty Name="cStaffLastName" ColumnName="cStaffLastName" />
+                <ScalarProperty Name="cStaffProfileCreationDate" ColumnName="cStaffProfileCreationDate" />
+                <ScalarProperty Name="cStaffPWDSalt" ColumnName="cStaffPWDSalt" />
+                <ScalarProperty Name="cStaffPWDHash" ColumnName="cStaffPWDHash" />
+                <ScalarProperty Name="cStaffPWD" ColumnName="cStaffPWD" />
+                <ScalarProperty Name="cStaffAccountID" ColumnName="cStaffAccountID" />
+                <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tHotelOrderSystem">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelOrderSystem">
+              <MappingFragment StoreEntitySet="tHotelOrderSystem">
+                <ScalarProperty Name="BookedNumber" ColumnName="BookedNumber" />
+                <ScalarProperty Name="CanBookNumber" ColumnName="CanBookNumber" />
+                <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderSystemSN" ColumnName="OrderSystemSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tHotelRoomType">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
+              <MappingFragment StoreEntitySet="tHotelRoomType">
+                <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
+                <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
+                <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
+                <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
+                <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
+                <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
+                <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
+                <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
+                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+                <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUserOrder">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
+              <MappingFragment StoreEntitySet="tUserOrder">
+                <ScalarProperty Name="cStayDays" ColumnName="cStayDays" />
+                <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+                <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
+                <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+                <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+                <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+                <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+                <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+                <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+                <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+                <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+                <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tGuestAccountInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tGuestAccountInfomation">
+              <MappingFragment StoreEntitySet="tGuestAccountInfomation">
+                <ScalarProperty Name="cGuestPhoneNumber" ColumnName="cGuestPhoneNumber" />
+                <ScalarProperty Name="cGuestGender" ColumnName="cGuestGender" />
+                <ScalarProperty Name="cGuestID" ColumnName="cGuestID" />
+                <ScalarProperty Name="cGuestCitizenship" ColumnName="cGuestCitizenship" />
+                <ScalarProperty Name="cGuestBirth" ColumnName="cGuestBirth" />
+                <ScalarProperty Name="cGuestFirstNameEN" ColumnName="cGuestFirstNameEN" />
+                <ScalarProperty Name="cGuestLastNameEN" ColumnName="cGuestLastNameEN" />
+                <ScalarProperty Name="cGuestFirstName" ColumnName="cGuestFirstName" />
+                <ScalarProperty Name="cGuestLastName" ColumnName="cGuestLastName" />
+                <ScalarProperty Name="cGuestAccountCreationDate" ColumnName="cGuestAccountCreationDate" />
+                <ScalarProperty Name="cGuestPWDSalt" ColumnName="cGuestPWDSalt" />
+                <ScalarProperty Name="cGuestPWDHash" ColumnName="cGuestPWDHash" />
+                <ScalarProperty Name="cGuestEmail" ColumnName="cGuestEmail" />
+                <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tGuestPaymentInfomation">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tGuestPaymentInfomation">
+              <MappingFragment StoreEntitySet="tGuestPaymentInfomation">
+                <ScalarProperty Name="cGuestCreditCardSecurityCode" ColumnName="cGuestCreditCardSecurityCode" />
+                <ScalarProperty Name="cGuestCreditCardDeadlineYear" ColumnName="cGuestCreditCardDeadlineYear" />
+                <ScalarProperty Name="cGuestCreditCardDeadlineMonth" ColumnName="cGuestCreditCardDeadlineMonth" />
+                <ScalarProperty Name="cGuestCreditCardNumber" ColumnName="cGuestCreditCardNumber" />
+                <ScalarProperty Name="cGuestCreditCardNameID" ColumnName="cGuestCreditCardNameID" />
+                <ScalarProperty Name="cGuestCreditCardBirth" ColumnName="cGuestCreditCardBirth" />
+                <ScalarProperty Name="cGuestCreditCardName" ColumnName="cGuestCreditCardName" />
+                <ScalarProperty Name="cCreditCardType" ColumnName="cCreditCardType" />
+                <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+                <ScalarProperty Name="cGuestPaymentInfoSN" ColumnName="cGuestPaymentInfoSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
