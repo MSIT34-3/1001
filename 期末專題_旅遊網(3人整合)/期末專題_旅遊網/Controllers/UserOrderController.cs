@@ -62,6 +62,13 @@ namespace 期末專案0924.Controllers
             prod.cStayDays = sessionOrderDate.StayDays;
             prod.cHotelRoomTypeSN = HotelRoom;
             prod.cOrderPrice = HotelPrice * (sessionOrderDate.StayDays);
+            if (Session["sn"] == null)
+            {
+                //如果沒有旅客編號將會跳到登入畫面
+                TempData["message"] = "請先登入";
+                return RedirectToAction("Login","Home");
+            }
+            prod.cGuestSN = (int)Session["sn"];
             CUserOrderViewModel models = new CUserOrderViewModel() { userOrder = prod };
             return View(models);
         }

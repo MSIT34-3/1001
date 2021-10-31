@@ -90,7 +90,7 @@ namespace 期末專案0924.ViewModels
             set { this.userOrder.cOrderNotes = value; }
         }
 
-        [DisplayName("訂單價格")]
+        [DisplayName("訂單總金額")]
         public int cOrderPrice
         {
             get { return this.userOrder.cOrderPrice; }

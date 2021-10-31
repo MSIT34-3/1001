@@ -43,7 +43,9 @@ namespace 期末專題_旅遊網.Controllers
                      q.cHotelRoomContainAldults >= checkViewModel.adult &&
                      q.cHotelRoomContainChiidren >= checkViewModel.children &&
                      q.cHotelRoomContain >= checkViewModel.adult + checkViewModel.children &&
-                     r.cHotelCity.Contains(checkViewModel.destination)
+                     r.cHotelCity.Contains(checkViewModel.destination) ||
+                     r.cHotelName.Contains(checkViewModel.destination) ||
+                     r.cHotelAdress.Contains(checkViewModel.destination)
                      select r).ToList();
                 //入住日期及天數到Session裡
                 TimeSpan ts = checkViewModel.checkout - checkViewModel.checkin;
