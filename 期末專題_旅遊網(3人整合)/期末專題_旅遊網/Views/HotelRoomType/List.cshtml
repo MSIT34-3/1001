@@ -91,7 +91,7 @@
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.cHotelRoomTypeSN }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("刪除", "Delete", new { id = item.cHotelRoomTypeSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
-                @Html.ActionLink("新增房型訂單系統", "List", "HotelOrderSystem", new { id = item.cHotelRoomTypeSN , HotelId = item.cHotelSN}, new { @class = "btn btn-outline-primary" })
+                @Html.ActionLink("新增房型訂單系統", "List", "HotelOrderSystem", new { id = item.cHotelRoomTypeSN , HotelId = item.cHotelSN}, new { @class = "btn btn-outline-primary" })                
             </td>
         </tr>
         }

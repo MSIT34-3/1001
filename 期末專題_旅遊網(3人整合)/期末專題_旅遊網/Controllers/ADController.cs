@@ -47,12 +47,13 @@ namespace 期末專題_旅遊網.Controllers
             return View();
         }
 
-        public ActionResult ADUpload()
-        {
+        public ActionResult ADUpload(int? hotelSN)
+        {        
             switch (Session["identity"])
             {
                 case 2:
                     ViewBag.FirmSN = (int)Session["sn"];
+                    Session["hotelSN"] = hotelSN;
                     break;
                 case 3:
                     ViewBag.FirmSN = 001;
@@ -68,9 +69,11 @@ namespace 期末專題_旅遊網.Controllers
         [HttpPost]
         public ActionResult ADUpload(HttpPostedFileBase image, CADViewModel cADViewModel)
         {
+            int hotelSN = (int)Session["hotelSN"];
+            if(cADViewModel.cADURL==null)
+                cADViewModel.cADURL = $"/Home/SelectRoom?cHotelSN={hotelSN}";
             tADFactory factory = new tADFactory();
             factory.Create(image, cADViewModel);
-
             return RedirectToAction("ADList");
         }
         public ActionResult ADEdit(int? sn)

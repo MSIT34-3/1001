@@ -99,7 +99,8 @@
                 <td>
                     @Html.ActionLink("修改", "Edit", new { id = item.cHotelSN }, new { @class = "btn btn-success" }) |
                     @Html.ActionLink("刪除", "Delete", "HotelInformation", new { id = item.cHotelSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
-                    @Html.ActionLink("飯店房型管理", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("飯店房型管理", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" }) |
+                    @Html.ActionLink("新增廣告", "ADUpload", "AD", new { hotelSN = (int)item.cHotelSN }, new { @class = "btn btn-outline-primary" })
                 </td>
             </tr>
         }

@@ -11,7 +11,7 @@ namespace 期末專題_旅遊網.ViewModels.Models
 
         //圖片儲存位置
         //"E:/資策會/003專題/GitHub/Travel/期末專案整合/期末專案0924/ADImage/"
-        string savePath = "E:/資策會/003專題/我的檔案/期末專題/旅遊網/期末專題_旅遊網/期末專題_旅遊網/img/ADImage/";
+        string savePath = "E:/資策會/003專題/GitHub/Travel/期末專題_旅遊網(3人整合)/期末專題_旅遊網/img/ADImage/";
         //新增圖片
         public void Create(HttpPostedFileBase image, CADViewModel tad)
         {
