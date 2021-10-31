@@ -7,12 +7,13 @@
 <h2>新增訂單</h2>
 
 <head>
-    
+
     <style>
         .cOrderNotes {
             display: inline;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="~/Content/cssEdit.css" />
 </head>
 @using (Html.BeginForm()) 
 {
@@ -27,24 +28,24 @@
     
     <div class="form-group">
         @Html.LabelFor(model => model.cCheckInDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cCheckInDate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        <div class="col-md-10" id="readonly">
+            @Html.EditorFor(model => model.cCheckInDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.cCheckInDate, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.cCheckOutDate, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cCheckOutDate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        <div class="col-md-10" id="readonly">
+            @Html.EditorFor(model => model.cCheckOutDate, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.cCheckOutDate, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.cStayDays, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cStayDays, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        <div class="col-md-10" id="readonly">
+            @Html.EditorFor(model => model.cStayDays, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.cStayDays, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -57,10 +58,10 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="readonly">
         @Html.LabelFor(model => model.cOrderPrice, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.cOrderPrice, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.EditorFor(model => model.cOrderPrice, new { htmlAttributes = new { @class = "form-control"} })
             @Html.ValidationMessageFor(model => model.cOrderPrice, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -74,9 +75,7 @@
 </div>
 }
 
-<div>
-    @Html.ActionLink("回訂單列表", "List")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

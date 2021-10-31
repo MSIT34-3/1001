@@ -32,6 +32,9 @@ namespace 期末專案0924.ViewModels
             get { return this.userOrder.cGuestSN; }
             set { this.userOrder.cGuestSN = value; }
         }
+        [Required(ErrorMessage = "旅客姓名不可空白")]
+        [DisplayName("旅客姓名")]
+        public string cGuestName { get; set; }
         [DisplayName("訂購日期")]
         public Nullable<System.DateTime> cOrderDate
         {

@@ -22,7 +22,7 @@
             序
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].cGuestSN)
+            @Html.DisplayNameFor(model => model[0].cGuestName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cOrderID)
@@ -43,9 +43,6 @@
             @Html.DisplayNameFor(model => model[0].cOrderStatus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].cStaffProfileSN)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model[0].cOrderNotes)
         </th>
         <th>
@@ -63,7 +60,7 @@
                 @Count
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cGuestSN)
+                @Html.DisplayFor(modelItem => item.cGuestName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cOrderID)
@@ -82,9 +79,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cOrderStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cStaffProfileSN)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cOrderNotes)
