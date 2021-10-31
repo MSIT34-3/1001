@@ -52,13 +52,16 @@ namespace 期末專案0924.Controllers
             }
             return RedirectToAction("List");
         }
-        public ActionResult Create()
+        public ActionResult Create(int HotelRoom,int HotelPrice)
         {
+            //分別抓首頁搜尋資料及確認的房型
             SessionOrderDate sessionOrderDate = (SessionOrderDate)Session[CDictionary.SK_USER_ORDER];
             tUserOrder prod = (new dbtravelwebEntities()).tUserOrder.Create();
             prod.cCheckInDate = sessionOrderDate.CheckIndate;
             prod.cCheckOutDate = sessionOrderDate.CheckOutdate;
             prod.cStayDays = sessionOrderDate.StayDays;
+            prod.cHotelRoomTypeSN = HotelRoom;
+            prod.cOrderPrice = HotelPrice * (sessionOrderDate.StayDays);
             CUserOrderViewModel models = new CUserOrderViewModel() { userOrder = prod };
             return View(models);
         }

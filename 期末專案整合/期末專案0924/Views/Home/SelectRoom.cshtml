@@ -55,15 +55,17 @@
                             <p>可容納最多成人人數:@p.cHotelRoomContainAldults 人</p>
                             <p>可容納最多孩童人數:@p.cHotelRoomContainChildren 人</p>
                             <p>房間可容納最多人數(成人+孩童):@p.cHotelRoomContain 人</p>
-                        </div>
+                            @{Session["GetRoom"] = p;}
 
+                        </div>
+                        
                     </div>
                     <div style="float:right">
                         <div class="textframe" style="width:300px">
                             <h1 style="color:orange">TWD @p.cHotelRoomTypePriceOfWeekdays</h1>起
                             平均每晚含稅價
                             <br />
-                            <p>@Html.ActionLink("訂購", "Create", "UserOrder", "", new { @class = "btn btn-outline-primary" })</p>
+                            <p>@Html.ActionLink("訂購", "Create", "UserOrder", new { HotelRoom = p.cHotelRoomTypeSN,HotelPrice = p.cHotelRoomTypePriceOfWeekdays }, new { @class = "btn btn-outline-primary" })</p>
 
 
                         </div>
