@@ -47,7 +47,7 @@
                                     <a class="nav-link active" href="/home/index">首頁 <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/Hotel/HotelList">我的飯店</a>
+                                    <a class="nav-link" id="firmHotel" href="/HotelInformation/List">我的飯店</a>
                                 </li>
                                 @*<li class="nav-item">
                                     <a class="nav-link" href="~/home/index#tm-section-3">Recommended Places</a>
@@ -59,7 +59,7 @@
                                     <a class="nav-link" id="firmAD" href="/AD/ADList">我的廣告</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="firmName" href="/Hotel/HotelList">@Session["name"]，您好</a>
+                                    <a class="nav-link" id="firmInfo" href="/Firm/FirmEdit">@Session["name"]，您好</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="homeLogout" href="/Home/Logout">登出</a>
@@ -88,10 +88,13 @@
     <script src="~/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
     <script src="~/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
     <script>
+        $('#firmHotel').click(function () {
+            location.href = $(this).attr('href');
+        })
         $('#firmAD').click(function () {
             location.href = $(this).attr('href');
         })
-        $('#firmName').click(function () {
+        $('#firmInfo').click(function () {
             location.href = $(this).attr('href');
         })
         $('#homeLogout').click(function () {

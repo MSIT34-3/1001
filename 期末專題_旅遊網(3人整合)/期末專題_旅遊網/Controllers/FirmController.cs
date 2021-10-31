@@ -39,13 +39,13 @@ namespace 期末專題_旅遊網.Controllers
             }            
         }
 
-        public ActionResult FirmEdit(int cFirmSN)
+        public ActionResult FirmEdit(int? cFirmSN)
         {
             if ((int)Session["identity"] == 2)
                 cFirmSN = (int)Session["sn"];
 
             tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
-            tFirmAccountInfomation firm = factory.QueryBySN(cFirmSN);
+            tFirmAccountInfomation firm = factory.QueryBySN((int)cFirmSN);
 
             return View(tableToViewModel(firm));
         }

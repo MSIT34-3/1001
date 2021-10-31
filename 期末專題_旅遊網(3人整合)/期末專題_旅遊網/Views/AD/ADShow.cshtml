@@ -45,8 +45,12 @@
 
             </div>
         </div>
-        <a href="~/AD/ADUpload">新增廣告</a><br />
-        <a href="~/AD/ADList">廣告列表</a>
+        @{ if ((int)Session["identity"] == 3)
+            {
+                <a href="~/AD/ADUpload">新增廣告</a><br />
+            }
+        }
+        <a href="~/AD/ADList">返回列表</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/Scripts/jsADShow.js"></script>

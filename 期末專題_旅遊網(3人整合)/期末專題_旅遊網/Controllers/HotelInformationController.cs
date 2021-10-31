@@ -14,23 +14,44 @@ namespace 期末專案0924.Controllers
         public ActionResult List()
         {
             IEnumerable<tHotelInfomation> hotelInfomations = null;
-            string keyword = Request.Form["txtKeyword"];
-            if (string.IsNullOrEmpty(keyword))
+
+            int identity = 0;
+            if (Session["identity"] != null)
+                identity = (int)Session["identity"];
+            int firmSN = 0;
+            if (Session["sn"] != null)
+                firmSN = (int)Session["sn"];
+
+            if (identity == 0)
+                return RedirectToAction("Index", "Home");
+            else if (identity == 1)
+                return RedirectToAction("Index", "Home");
+            else if (identity == 2)
             {
                 hotelInfomations = from p in (new dbtravelwebEntities()).tHotelInfomation
+                                   where p.cFirmSN== firmSN
                                    select p;
-            }
+            }                
             else
             {
-                hotelInfomations = from p in (new dbtravelwebEntities()).tHotelInfomation
-                                   where p.cFirmTaxID.ToString().Contains(keyword) ||
-                                   p.cHotelName.Contains(keyword) ||
-                                   p.cHotelNameEN.Contains(keyword) ||
-                                   p.cHotelCity.Contains(keyword) ||
-                                   p.cHotelAdress.Contains(keyword) ||
-                                   p.cHotelPhone.Contains(keyword) ||
-                                   p.cHotelType.Contains(keyword) 
-                                   select p;
+                string keyword = Request.Form["txtKeyword"];
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    hotelInfomations = from p in (new dbtravelwebEntities()).tHotelInfomation
+                                       select p;
+                }
+                else
+                {
+                    hotelInfomations = from p in (new dbtravelwebEntities()).tHotelInfomation
+                                       where p.cFirmTaxID.ToString().Contains(keyword) ||
+                                       p.cHotelName.Contains(keyword) ||
+                                       p.cHotelNameEN.Contains(keyword) ||
+                                       p.cHotelCity.Contains(keyword) ||
+                                       p.cHotelAdress.Contains(keyword) ||
+                                       p.cHotelPhone.Contains(keyword) ||
+                                       p.cHotelType.Contains(keyword)
+                                       select p;
+                }
             }
             List<CHotelInformationViewModel> models = new List<CHotelInformationViewModel>();
             foreach (tHotelInfomation t in hotelInfomations)

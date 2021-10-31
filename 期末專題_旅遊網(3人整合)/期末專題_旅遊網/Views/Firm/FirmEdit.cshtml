@@ -85,6 +85,20 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("回到列表", "FirmList")
-</div>
+@{ if ((int)Session["identity"] == 2)
+    {
+        <div>
+            @Html.ActionLink("返回", "Index","Home")
+        </div>
+    }
+    else if ((int)Session["identity"] == 3)
+    {
+        <div>
+            @Html.ActionLink("回到列表", "FirmList")
+        </div> }
+    else
+    {
+        <div></div>
+    }
+}
+
