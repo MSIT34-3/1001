@@ -5,16 +5,20 @@
 }
 
 <h2>旅館一覽表</h2>
-@using (Html.BeginForm())
-{
-    <p>
-        關鍵字
-        <input type="text" name="txtKeyword" />
-        <input type="submit" value="查詢" />
-    </p>
+@{ using (Html.BeginForm())
+    {
+        if ((int)Session["identity"] == 3)
+        {
+            <p>
+                關鍵字
+                <input type="text" name="txtKeyword" />
+                <input type="submit" value="查詢" />
+            </p>
+        }
+    }
 }
 <p>
-    @Html.ActionLink("新增旅館", "Create","",new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("新增旅館", "Create", "", new { @class = "btn btn-outline-primary" })
 </p>
 <table class="table">
     <tr>
@@ -58,46 +62,46 @@
         foreach (var item in Model)
         {
             count++;
-        <tr>
-            <td>
-                @count
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cFirmSN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cFirmTaxID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelNameEN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelCreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelBarrierfree)
-            </td>
-            <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.cHotelSN }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("刪除", "Delete", "HotelInformation", new { id = item.cHotelSN }, new { onclick = "return confirm('確定要刪除嗎?')" ,Class = "btn btn-danger" }) |
-                @Html.ActionLink("新增飯店房型", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cFirmSN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cFirmTaxID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelNameEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelCreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cHotelBarrierfree)
+                </td>
+                <td>
+                    @Html.ActionLink("修改", "Edit", new { id = item.cHotelSN }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("刪除", "Delete", "HotelInformation", new { id = item.cHotelSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
+                    @Html.ActionLink("飯店房型管理", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" })
+                </td>
+            </tr>
         }
     }
 

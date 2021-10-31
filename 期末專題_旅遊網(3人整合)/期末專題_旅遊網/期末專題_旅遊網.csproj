@@ -142,7 +142,6 @@
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\GuestPaymentInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\HotelInformationController.cs" />
     <Compile Include="Controllers\HotelOrderSystemController.cs" />
     <Compile Include="Controllers\HotelRoomTypeController.cs" />
@@ -200,7 +199,6 @@
     <Compile Include="ViewModels\CheckViewModel.cs" />
     <Compile Include="ViewModels\CHomeLoginViewModel.cs" />
     <Compile Include="ViewModels\CHotelInformationViewModel.cs" />
-    <Compile Include="ViewModels\CHotelInfoViewModel.cs" />
     <Compile Include="ViewModels\CHotelOrderSystemViewModel.cs" />
     <Compile Include="ViewModels\CHotelRoomTypeViewModel.cs" />
     <Compile Include="ViewModels\CUserOrderViewModel.cs" />
@@ -212,7 +210,6 @@
     <Compile Include="ViewModels\Models\PasswordHashAndSalt.cs" />
     <Compile Include="ViewModels\Models\tADFactory.cs" />
     <Compile Include="ViewModels\Models\tFirmAccountInfoFactory.cs" />
-    <Compile Include="ViewModels\Models\tHotelInfoFactory.cs" />
     <Compile Include="ViewModels\PaymentModel.cs" />
     <Compile Include="ViewModels\SessionOrderDate.cs" />
   </ItemGroup>
@@ -356,7 +353,6 @@
     <Content Include="Views\Firm\FirmEdit.cshtml" />
     <Content Include="Views\Firm\ChangePWD.cshtml" />
     <Content Include="Views\Shared\_Layout3.cshtml" />
-    <Content Include="Views\Hotel\HotelList.cshtml" />
     <Content Include="Views\Home\SelectRoom.cshtml" />
     <Content Include="Views\GuestPaymentInformation\CheckOrder.cshtml" />
     <Content Include="Views\GuestPaymentInformation\Create.cshtml" />
