@@ -25,5 +25,6 @@ namespace 期末專題_旅遊網
         public int cHotelRoomTypePriceOfWeekdays { get; set; }
         public int cHotelRoomTypePriceOfHoliday { get; set; }
         public int cHotelRoomTypePriceOfFestival { get; set; }
+        public string cHotelRoomTypePhoto { get; set; }
     }
 }

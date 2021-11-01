@@ -107,5 +107,11 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelInfomation.cHotelBarrierfree; }
             set { this.hotelInfomation.cHotelBarrierfree = value; }
         }
+
+        public string cHotelInfoPhotoFileName
+        {
+            get { return this.hotelInfomation.cHotelInfoPhotoFileName; }
+            set { this.hotelInfomation.cHotelInfoPhotoFileName = value; }
+        }
     }
 }

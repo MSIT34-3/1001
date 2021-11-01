@@ -6,16 +6,16 @@
 
 <h2>新增房型</h2>
 
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+<form method="post" enctype="multipart/form-data">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>填寫房型資料</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.cHotelRoomTypeName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -79,6 +79,14 @@
                 @Html.ValidationMessageFor(model => model.cHotelRoomTypePriceOfFestival, "", new { @class = "text-danger" })
             </div>
         </div>*@
+        <div>
+            <label id="lblImage"> 請選擇飯店圖片:</label>
+            <input type="file" name="image" id="image" accept="image/">
+        </div>
+        <div>
+            預覽:<br />
+            <img class="pre_img" id="preview_img" src="#" />
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -87,7 +95,10 @@
             </div>
         </div>
     </div>
-}
+    }
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/jsADUpload.js"></script>
 
 
 

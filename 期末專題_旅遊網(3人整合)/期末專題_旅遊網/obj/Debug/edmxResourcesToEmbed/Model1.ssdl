@@ -114,6 +114,7 @@
     <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypePhoto" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tStaffProfile">
     <Key>
@@ -155,6 +156,7 @@
     <Property Name="cOrderNotes" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="cOrderPrice" Type="int" Nullable="false" />
     <Property Name="cStayDays" Type="int" />
+    <Property Name="cFirmSN" Type="int" />
   </EntityType>
   <EntityContainer Name="dbtravelwebModelStoreContainer">
     <EntitySet Name="tAdvertising" EntityType="Self.tAdvertising" Schema="dbo" store:Type="Tables" />
