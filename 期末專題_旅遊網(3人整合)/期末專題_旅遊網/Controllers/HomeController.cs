@@ -69,7 +69,7 @@ namespace 期末專題_旅遊網.Controllers
                         if (!distin.Contains(SN.cHotelName))
                         {
                             var price = db.tHotelRoomType.Where(m => m.cHotelSN == SN.cHotelSN).OrderByDescending(m => m.cHotelRoomTypePriceOfWeekdays).FirstOrDefault().cHotelRoomTypePriceOfWeekdays;
-                            checkViewModel.selects.Add(new SelectViewModel { cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAdress = SN.cHotelAdress, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
+                            checkViewModel.selects.Add(new SelectViewModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAdress = SN.cHotelAdress, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
                             distin.Add(SN.cHotelName);
                         }
                     }
@@ -83,7 +83,7 @@ namespace 期末專題_旅遊網.Controllers
         }
         public ActionResult SelectRoom(SelectViewModel selectRoomtype)
         {
-            //抓不到selectRoomtype
+            
             dbtravelwebEntities db = new dbtravelwebEntities();
             var cHotelRooms =
                 (from p in db.tHotelRoomType
@@ -95,7 +95,7 @@ namespace 期末專題_旅遊網.Controllers
                 foreach (var SN in cHotelRooms)
                 {
                     selectRoomtype.selectRoom = selectRoom;
-                    selectRoomtype.selectRoom.Add(new SelectRoomModel { cHotelSN = SN.cHotelSN, cHotelRoomTypeSN = SN.cHotelRoomTypeSN, cHotelRoomTypeName = SN.cHotelRoomTypeName, cHotelRoomContain = SN.cHotelRoomContain, cHotelRoomContainAldults = SN.cHotelRoomContainAldults, cHotelRoomContainChildren = SN.cHotelRoomContainChiidren, cHotelRoomTypePriceOfWeekdays = SN.cHotelRoomTypePriceOfWeekdays, cHotelRoomTypePriceOfHoliday = SN.cHotelRoomTypePriceOfHoliday, cHotelRoomTypePriceOfFestival = SN.cHotelRoomTypePriceOfFestival });
+                    selectRoomtype.selectRoom.Add(new SelectRoomModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelRoomTypeSN = SN.cHotelRoomTypeSN, cHotelRoomTypeName = SN.cHotelRoomTypeName, cHotelRoomContain = SN.cHotelRoomContain, cHotelRoomContainAldults = SN.cHotelRoomContainAldults, cHotelRoomContainChildren = SN.cHotelRoomContainChiidren, cHotelRoomTypePriceOfWeekdays = SN.cHotelRoomTypePriceOfWeekdays, cHotelRoomTypePriceOfHoliday = SN.cHotelRoomTypePriceOfHoliday, cHotelRoomTypePriceOfFestival = SN.cHotelRoomTypePriceOfFestival });
                 }
             }
             else

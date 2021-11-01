@@ -19,12 +19,13 @@
     <input type="hidden" name="cOrderSN" value="@Model.cOrderSN" />
     <input type="hidden" name="cGuestSN" value="@Model.cGuestSN" />
     <input type="hidden" name="cHotelRoomTypeSN" value="@Model.cHotelRoomTypeSN" />
+    <input type="hidden" name="cFirmSN" value="@Model.cFirmSN" />
     <div class="form-horizontal">
         <h4>輸入訂單資料</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.cCheckInDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -48,7 +49,7 @@
                 @Html.ValidationMessageFor(model => model.cStayDays, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.cOrderNotes, htmlAttributes: new { @class = "control-label col-md-2 cOrderNotes" })
             <div class="col-md-10">
