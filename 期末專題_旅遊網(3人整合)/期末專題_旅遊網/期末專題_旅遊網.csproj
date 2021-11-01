@@ -289,6 +289,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jsADShow.js" />
     <Content Include="Scripts\jsADUpload.js" />
+    <Content Include="Scripts\jsHidePW.js" />
     <Content Include="Scripts\repeat\bootstrap.min.js" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />

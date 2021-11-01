@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -35,8 +36,10 @@ namespace 期末專題_旅遊網.ViewModels
 
         //密碼+密碼確認
         [DisplayName("密碼")]
+        [DataType(DataType.Password)]
         public string cFirmPWD { get; set; }
         [DisplayName("密碼確認")]
+        [DataType(DataType.Password)]
         public string cFirmPWDChk { get; set; }
 
         //取上面兩個
