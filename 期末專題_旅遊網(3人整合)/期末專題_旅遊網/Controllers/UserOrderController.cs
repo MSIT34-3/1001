@@ -94,13 +94,13 @@ namespace 期末專案0924.Controllers
             prod.cStayDays = sessionOrderDate.StayDays;
             prod.cHotelRoomTypeSN = HotelRoom;
             prod.cOrderPrice = HotelPrice * (sessionOrderDate.StayDays);
-            if (Session["Guestsn"] == null || (int)Session["Guestsn"] == 0)
+            if (Session["sn"] == null)
             {
                 //如果沒有旅客編號將會跳到登入畫面
-                TempData["message"] = "請先登入旅客帳號";
+                TempData["message"] = "請先登入";
                 return RedirectToAction("Login", "Home");
             }
-            prod.cGuestSN = (int)Session["Guestsn"];
+            prod.cGuestSN = (int)Session["sn"];
             CUserOrderViewModel models = new CUserOrderViewModel() { userOrder = prod };
             return View(models);
         }
@@ -154,27 +154,6 @@ namespace 期末專案0924.Controllers
                 prod.cOrderNotes = input.cOrderNotes;
                 db.SaveChanges();
             }
-            return RedirectToAction("List");
-        }
-        public ActionResult OrderChangeStatus(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("List");
-            }
-            dbtravelwebEntities db = new dbtravelwebEntities();
-            var q = (from item in db.tUserOrder
-                     where item.cOrderSN == id
-                     select item).First();
-            if (q.cOrderStatus == "審核中")
-            {
-                q.cOrderStatus = "審核通過";
-            }
-            else
-            {
-                q.cOrderStatus = "審核中";
-            }
-            db.SaveChanges();
             return RedirectToAction("List");
         }
     }

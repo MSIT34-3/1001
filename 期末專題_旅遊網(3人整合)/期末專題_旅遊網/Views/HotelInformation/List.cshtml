@@ -26,6 +26,9 @@
             序
         </th>
         <th>
+            @Html.DisplayNameFor(model => model[0].cFirmSN)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model[0].cFirmTaxID)
         </th>
         <th>
@@ -62,6 +65,9 @@
             <tr>
                 <td>
                     @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cFirmSN)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.cFirmTaxID)

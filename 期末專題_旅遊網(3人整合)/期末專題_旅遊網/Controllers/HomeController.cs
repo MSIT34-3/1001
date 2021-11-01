@@ -119,7 +119,6 @@ namespace 期末專題_旅遊網.Controllers
             Session.RemoveAll();
             Session["identity"] = info.identity;
             Session["sn"] = info.sn;
-            Session["Guestsn"] = info.Guestsn;
             Session["name"] = info.name;
             //登入失敗
             if ((int)Session["identity"] == 0)
