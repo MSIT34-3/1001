@@ -74,6 +74,7 @@ namespace 期末專案0924.Controllers
         }
         public ActionResult Create()
         {
+            
             //讓View-DeadlineMonths變成下拉式選單
             List<SelectListItem> hoteltypes = new List<SelectListItem>();
             SelectListItem hoteltype = new SelectListItem { Text = "請選擇旅館類型", Value = "請選擇旅館類型" };

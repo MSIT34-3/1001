@@ -72,7 +72,7 @@ namespace 期末專案0924.Controllers
         {
             int GuestSN =0;
             if ((int)Session["identity"] == 1)
-                GuestSN = (int)Session["sn"];
+                GuestSN = (int)Session["Guestsn"];
 
             dbtravelwebEntities db = new dbtravelwebEntities();
             tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestSN == GuestSN);
