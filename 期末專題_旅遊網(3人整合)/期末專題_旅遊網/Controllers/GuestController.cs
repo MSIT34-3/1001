@@ -225,6 +225,40 @@ namespace 期末專案0924.Controllers
         //    tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == id);
         //    return RedirectToAction("CreditCard", new { prod.cGuestID });
         //}
+         public ActionResult GuestList()
+        {
+            IEnumerable<tGuestAccountInfomation> IEnGuestAccountInfomation = null;
+            string keyword = Request.Form["txtKeyword"];
+            if (string.IsNullOrEmpty(keyword))
+            {
+                IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
+                                         select p;
+            }
+            else
+            {
+                IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
+                                         where 
+                p.cGuestAccountCreationDate.ToString().Contains(keyword) ||
+                                   p.cGuestBirth.ToString().Contains(keyword) ||
+                                   p.cGuestCitizenship.Contains(keyword) ||
+                                   p.cGuestEmail.Contains(keyword) ||
+                                   p.cGuestFirstName.Contains(keyword) ||
+                                   p.cGuestFirstNameEN.Contains(keyword) ||
+                                   p.cGuestGender.Contains(keyword) ||
+                                   p.cGuestID.Contains(keyword) ||
+                                   p.cGuestLastName.Contains(keyword) ||
+                                   p.cGuestLastNameEN.Contains(keyword) ||
+                                   p.cGuestPhoneNumber.ToString().Contains(keyword)
+
+                                     select p;
+            }
+            List<GuestModel> models = new List<GuestModel>();
+            foreach (tGuestAccountInfomation t in IEnGuestAccountInfomation)
+                models.Add(new GuestModel() { GuestAccountInfomation = t });
+            return View(models);
+           
+        }
+    }
 
 
     }
