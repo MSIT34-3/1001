@@ -119,7 +119,6 @@
           <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
           <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
           <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
-          <Property Name="cHotelRoomTypePhoto" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tStaffProfile">
           <Key>
@@ -238,10 +237,10 @@
           <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" />
           <EntitySet Name="tStaffProfile" EntityType="dbtravelwebModel.tStaffProfile" />
           <EntitySet Name="tHotelOrderSystem" EntityType="dbtravelwebModel.tHotelOrderSystem" />
-          <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
+          <EntitySet Name="tHotelRoomType" EntityType="dbtravelwebModel.tHotelRoomType" />
           <EntitySet Name="tGuestAccountInfomation" EntityType="dbtravelwebModel.tGuestAccountInfomation" />
           <EntitySet Name="tGuestPaymentInfomation" EntityType="dbtravelwebModel.tGuestPaymentInfomation" />
-          <EntitySet Name="tHotelRoomType" EntityType="dbtravelwebModel.tHotelRoomType" />
+          <EntitySet Name="tUserOrder" EntityType="dbtravelwebModel.tUserOrder" />
         </EntityContainer>
         <EntityType Name="tStaffProfile">
           <Key>
@@ -278,23 +277,21 @@
           <Property Name="CanBookNumber" Type="Int32" Nullable="false" />
           <Property Name="BookedNumber" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="tUserOrder">
+        <EntityType Name="tHotelRoomType">
           <Key>
-            <PropertyRef Name="cOrderSN" />
+            <PropertyRef Name="cHotelRoomTypeSN" />
           </Key>
-          <Property Name="cOrderSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cOrderID" Type="Int32" Nullable="false" />
-          <Property Name="cGuestSN" Type="Int32" Nullable="false" />
-          <Property Name="cOrderDate" Type="DateTime" Precision="3" />
-          <Property Name="cCheckInDate" Type="DateTime" Precision="0" />
-          <Property Name="cCheckOutDate" Type="DateTime" Precision="0" />
-          <Property Name="cOrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="cStaffProfileSN" Type="Int32" />
-          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
-          <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
-          <Property Name="cStayDays" Type="Int32" />
+          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cFirmSN" Type="Int32" />
+          <Property Name="cHotelSN" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cHotelRoomCount" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContain" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContainAldults" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomContainChiidren" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfWeekdays" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfHoliday" Type="Int32" Nullable="false" />
+          <Property Name="cHotelRoomTypePriceOfFestival" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tGuestAccountInfomation">
           <Key>
@@ -330,22 +327,23 @@
           <Property Name="cGuestCreditCardDeadlineYear" Type="Int32" />
           <Property Name="cGuestCreditCardSecurityCode" Type="Int32" />
         </EntityType>
-        <EntityType Name="tHotelRoomType">
+        <EntityType Name="tUserOrder">
           <Key>
-            <PropertyRef Name="cHotelRoomTypeSN" />
+            <PropertyRef Name="cOrderSN" />
           </Key>
-          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cOrderSN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cOrderID" Type="Int32" Nullable="false" />
+          <Property Name="cGuestSN" Type="Int32" Nullable="false" />
+          <Property Name="cOrderDate" Type="DateTime" Precision="3" />
+          <Property Name="cCheckInDate" Type="DateTime" Precision="0" />
+          <Property Name="cCheckOutDate" Type="DateTime" Precision="0" />
+          <Property Name="cOrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cStaffProfileSN" Type="Int32" />
+          <Property Name="cHotelRoomTypeSN" Type="Int32" Nullable="false" />
+          <Property Name="cOrderNotes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cOrderPrice" Type="Int32" Nullable="false" />
+          <Property Name="cStayDays" Type="Int32" />
           <Property Name="cFirmSN" Type="Int32" />
-          <Property Name="cHotelSN" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cHotelRoomCount" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomContain" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomContainAldults" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomContainChiidren" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomTypePriceOfWeekdays" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomTypePriceOfHoliday" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomTypePriceOfFestival" Type="Int32" Nullable="false" />
-          <Property Name="cHotelRoomTypePhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -447,22 +445,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tUserOrder">
-            <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
-              <MappingFragment StoreEntitySet="tUserOrder">
+          <EntitySetMapping Name="tHotelRoomType">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
+              <MappingFragment StoreEntitySet="tHotelRoomType">
+                <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
+                <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
+                <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
+                <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
+                <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
+                <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
+                <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
+                <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
+                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
                 <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
-                <ScalarProperty Name="cStayDays" ColumnName="cStayDays" />
-                <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
-                <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
                 <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
-                <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
-                <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
-                <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
-                <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
-                <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
-                <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
-                <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
-                <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -502,21 +498,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tHotelRoomType">
-            <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
-              <MappingFragment StoreEntitySet="tHotelRoomType">
-                <ScalarProperty Name="cHotelRoomTypePhoto" ColumnName="cHotelRoomTypePhoto" />
-                <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
-                <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
-                <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
-                <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
-                <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
-                <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
-                <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
-                <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
-                <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+          <EntitySetMapping Name="tUserOrder">
+            <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
+              <MappingFragment StoreEntitySet="tUserOrder">
                 <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+                <ScalarProperty Name="cStayDays" ColumnName="cStayDays" />
+                <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+                <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
                 <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+                <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+                <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+                <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+                <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+                <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+                <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+                <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+                <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

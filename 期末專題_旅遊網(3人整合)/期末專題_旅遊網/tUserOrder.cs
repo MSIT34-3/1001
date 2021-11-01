@@ -26,6 +26,6 @@ namespace 期末專題_旅遊網
         public string cOrderNotes { get; set; }
         public int cOrderPrice { get; set; }
         public Nullable<int> cStayDays { get; set; }
-        public Nullable<int> cFirmSN { get; set; }
+        public int cFirmSN { get; set; }
     }
 }

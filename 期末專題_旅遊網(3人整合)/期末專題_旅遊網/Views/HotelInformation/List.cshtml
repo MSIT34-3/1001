@@ -4,14 +4,6 @@
     ViewBag.Title = "List";
 }
 
-<head>
-    <style>
-        #hotelImg{
-            height:100px;
-        }
-    </style>
-</head>
-
 <h2>旅館一覽表</h2>
 @{ using (Html.BeginForm())
     {
@@ -25,30 +17,15 @@
         }
     }
 }
-@{ if ((int)Session["identity"] == 2)
-    {
-        <p>
-            @Html.ActionLink("新增旅館", "Create", new { id = (int)Session["sn"] }, new { @class = "btn btn-outline-primary" })
-        </p>
-    }
-}
+<p>
+    @Html.ActionLink("新增旅館", "Create", new { id = (int)Session["sn"] }, new { @class = "btn btn-outline-primary" })
+</p>
 
 <table class="table">
     <tr>
         <th>
             序
         </th>
-        <th>
-            照片
-        </th>
-        @{
-            if ((int)Session["identity"] == 3)
-            {
-                <th>
-                    @Html.DisplayNameFor(model => model[0].cFirmTaxID)
-                </th>
-            }
-        }
         <th>
             @Html.DisplayNameFor(model => model[0].cHotelName)
         </th>
@@ -85,17 +62,6 @@
                     @count
                 </td>
                 <td>
-                    <img id="hotelImg" src="~/img/HotelImage/@item.cHotelInfoPhotoFileName">
-                </td>
-                @{
-                    if ((int)Session["identity"] == 3)
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cFirmTaxID)
-                        </td>
-                    }
-                }
-                <td>
                     @Html.DisplayFor(modelItem => item.cHotelName)
                 </td>
                 <td>
@@ -122,7 +88,7 @@
                 <td>
                     @Html.ActionLink("修改", "Edit", new { id = item.cHotelSN }, new { @class = "btn btn-success" }) |
                     @Html.ActionLink("刪除", "Delete", "HotelInformation", new { id = item.cHotelSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
-                    @Html.ActionLink("飯店房型管理", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("飯店房型管理", "List", "HotelRoomType", new { id = item.cHotelSN, FirmSN = item.cFirmSN }, new { @class = "btn btn-outline-primary" }) |
                     @Html.ActionLink("新增廣告", "ADUpload", "AD", new { hotelSN = (int)item.cHotelSN }, new { @class = "btn btn-outline-primary" })
                 </td>
             </tr>

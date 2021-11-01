@@ -42,6 +42,7 @@ namespace 期末專案0924.ViewModels
         /// 飯店編號
         /// </summary>
         public int cHotelSN { get; set; }
+        public int cFirmSN { get; set; }
         /// <summary>
         /// 飯店平均評分
         /// </summary>
@@ -78,6 +79,7 @@ namespace 期末專案0924.ViewModels
     public class SelectRoomModel
     {
         public int cHotelSN { get; set; }
+        public int cFirmSN { get; set; }
         public int cHotelRoomTypeSN { get; set; }
         public  string cHotelRoomTypeName { get; set; }
         public int cHotelRoomContain { get; set; }

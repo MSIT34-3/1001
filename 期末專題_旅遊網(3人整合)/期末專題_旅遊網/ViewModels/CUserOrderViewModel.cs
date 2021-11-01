@@ -24,6 +24,12 @@ namespace 期末專案0924.ViewModels
             get { return this.userOrder.cOrderID; }
             set { this.userOrder.cOrderID = value; }
         }
+        [DisplayName("廠商編號")]
+        public int cFirmSN
+        {
+            get { return this.userOrder.cFirmSN; }
+            set { this.userOrder.cFirmSN = value; }
+        }
 
         [Required(ErrorMessage = "旅客編號不可空白")]
         [DisplayName("旅客編號")]

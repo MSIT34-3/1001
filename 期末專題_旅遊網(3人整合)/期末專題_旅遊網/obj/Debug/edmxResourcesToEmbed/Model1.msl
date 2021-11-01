@@ -95,22 +95,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tUserOrder">
-      <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
-        <MappingFragment StoreEntitySet="tUserOrder">
+    <EntitySetMapping Name="tHotelRoomType">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
+        <MappingFragment StoreEntitySet="tHotelRoomType">
+          <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
+          <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
+          <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
+          <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
+          <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
+          <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
+          <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
+          <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
+          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
           <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
-          <ScalarProperty Name="cStayDays" ColumnName="cStayDays" />
-          <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
-          <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
           <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
-          <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
-          <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
-          <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
-          <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
-          <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
-          <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
-          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
-          <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -150,21 +148,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tHotelRoomType">
-      <EntityTypeMapping TypeName="dbtravelwebModel.tHotelRoomType">
-        <MappingFragment StoreEntitySet="tHotelRoomType">
-          <ScalarProperty Name="cHotelRoomTypePhoto" ColumnName="cHotelRoomTypePhoto" />
-          <ScalarProperty Name="cHotelRoomTypePriceOfFestival" ColumnName="cHotelRoomTypePriceOfFestival" />
-          <ScalarProperty Name="cHotelRoomTypePriceOfHoliday" ColumnName="cHotelRoomTypePriceOfHoliday" />
-          <ScalarProperty Name="cHotelRoomTypePriceOfWeekdays" ColumnName="cHotelRoomTypePriceOfWeekdays" />
-          <ScalarProperty Name="cHotelRoomContainChiidren" ColumnName="cHotelRoomContainChiidren" />
-          <ScalarProperty Name="cHotelRoomContainAldults" ColumnName="cHotelRoomContainAldults" />
-          <ScalarProperty Name="cHotelRoomContain" ColumnName="cHotelRoomContain" />
-          <ScalarProperty Name="cHotelRoomCount" ColumnName="cHotelRoomCount" />
-          <ScalarProperty Name="cHotelRoomTypeName" ColumnName="cHotelRoomTypeName" />
-          <ScalarProperty Name="cHotelSN" ColumnName="cHotelSN" />
+    <EntitySetMapping Name="tUserOrder">
+      <EntityTypeMapping TypeName="dbtravelwebModel.tUserOrder">
+        <MappingFragment StoreEntitySet="tUserOrder">
           <ScalarProperty Name="cFirmSN" ColumnName="cFirmSN" />
+          <ScalarProperty Name="cStayDays" ColumnName="cStayDays" />
+          <ScalarProperty Name="cOrderPrice" ColumnName="cOrderPrice" />
+          <ScalarProperty Name="cOrderNotes" ColumnName="cOrderNotes" />
           <ScalarProperty Name="cHotelRoomTypeSN" ColumnName="cHotelRoomTypeSN" />
+          <ScalarProperty Name="cStaffProfileSN" ColumnName="cStaffProfileSN" />
+          <ScalarProperty Name="cOrderStatus" ColumnName="cOrderStatus" />
+          <ScalarProperty Name="cCheckOutDate" ColumnName="cCheckOutDate" />
+          <ScalarProperty Name="cCheckInDate" ColumnName="cCheckInDate" />
+          <ScalarProperty Name="cOrderDate" ColumnName="cOrderDate" />
+          <ScalarProperty Name="cGuestSN" ColumnName="cGuestSN" />
+          <ScalarProperty Name="cOrderID" ColumnName="cOrderID" />
+          <ScalarProperty Name="cOrderSN" ColumnName="cOrderSN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
