@@ -109,15 +109,15 @@
                     if ((int)Session["identity"] == 3)
                     {
                         <td>
-                            @Html.ActionLink("編輯", "ADEdit", new { sn = item.cADSN }) |
-                            @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }) |
-                            @Html.ActionLink("刪除", "ADDelete", new { id = item.cADSN })
+                            @Html.ActionLink("編輯", "ADEdit", new { sn = item.cADSN }, new { @class = "btn btn-success" }) |
+                            @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" }) |
+                            @Html.ActionLink("刪除", "ADDelete", new { id = item.cADSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
                         </td>
                     }
                     else
                     {
                         <td>
-                            @Html.ActionLink("Status", "ADChangeStatus", new { id = item.cADSN })
+                            @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" })
                         </td>
                     }
                 }

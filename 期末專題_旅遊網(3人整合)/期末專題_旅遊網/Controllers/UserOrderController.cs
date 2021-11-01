@@ -16,7 +16,6 @@ namespace 期末專案0924.Controllers
         {
             IEnumerable<tUserOrder> userOrders = null;
             string keyword = Request.Form["txtKeyword"];
-
             if (string.IsNullOrEmpty(keyword))
             {
                 if (id != null)
@@ -37,36 +36,43 @@ namespace 期末專案0924.Controllers
                 {
                     userOrders = from p in (new dbtravelwebEntities()).tUserOrder
                                  where p.cGuestSN == id &&
-                                       p.cGuestSN.ToString().Contains(keyword) ||
+                                       p.cOrderID.ToString().Contains(keyword) ||
                                        p.cCheckInDate.ToString().Contains(keyword) ||
                                        p.cCheckOutDate.ToString().Contains(keyword) ||
                                        p.cOrderStatus.Contains(keyword) ||
-                                       p.cStaffProfileSN.ToString().Contains(keyword) ||
-                                       p.cOrderNotes.Contains(keyword) ||
-                                       p.cOrderPrice.ToString().Contains(keyword)
-                                        select p;
+                                       p.cOrderNotes.Contains(keyword)
+                                 select p;
                 }
                 else
                 {
                     userOrders = from p in (new dbtravelwebEntities()).tUserOrder
-                                 where p.cGuestSN.ToString().Contains(keyword) ||
+                                 where p.cOrderID.ToString().Contains(keyword) ||
                                        p.cCheckInDate.ToString().Contains(keyword) ||
                                        p.cCheckOutDate.ToString().Contains(keyword) ||
                                        p.cOrderStatus.Contains(keyword) ||
-                                       p.cStaffProfileSN.ToString().Contains(keyword) ||
-                                       p.cOrderNotes.Contains(keyword) ||
-                                       p.cOrderPrice.ToString().Contains(keyword)
+                                       p.cOrderNotes.Contains(keyword)
                                  select p;
                 }
 
             }
+
+
+
             List<CUserOrderViewModel> models = new List<CUserOrderViewModel>();
 
             foreach (tUserOrder t in userOrders)
             {
+                //抓房型名稱
+                var HotelRoomNames = (new dbtravelwebEntities()).tHotelRoomType.FirstOrDefault(q => q.cHotelRoomTypeSN == t.cHotelRoomTypeSN);
+                string HotelRoomName = HotelRoomNames.cHotelRoomTypeName;
+                int HotelNameID = HotelRoomNames.cHotelSN;
+                //抓飯店名稱
+                var HotelNames = (new dbtravelwebEntities()).tHotelInfomation.FirstOrDefault(q => q.cHotelSN == HotelNameID);
+                string HotelName = HotelNames.cHotelName;
+                //旅客編號抓人名
                 var cGuestName = (new dbtravelwebEntities()).tGuestAccountInfomation.FirstOrDefault(q => q.cGuestSN == t.cGuestSN);
                 string GuestName = cGuestName.cGuestFirstName + cGuestName.cGuestLastName;
-                models.Add(new CUserOrderViewModel() { userOrder = t, cGuestName = GuestName });
+                models.Add(new CUserOrderViewModel() { userOrder = t, cGuestName = GuestName ,cHotelName = HotelName , cHotelRoomTypeName = HotelRoomName });
             }
             return View(models);
         }

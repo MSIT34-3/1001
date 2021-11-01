@@ -13,9 +13,9 @@
         <input type="submit" value="查詢" />
     </p>
 }
-<p>
-    @Html.ActionLink("新增訂單", "Create","", new { @class = "btn btn-outline-primary" })
-</p>
+@*<p>
+    @Html.ActionLink("新增訂單", "Create", "", new { @class = "btn btn-outline-primary" })
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -26,6 +26,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cOrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cHotelRoomTypeName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cOrderDate)
@@ -66,6 +72,12 @@
                 @Html.DisplayFor(modelItem => item.cOrderID)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.cHotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cHotelRoomTypeName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.cOrderDate)
             </td>
             <td>
@@ -87,12 +99,21 @@
                 @Html.DisplayFor(modelItem => item.cOrderPrice)
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.cOrderSN }, new { @class = "btn btn-success" }) |
-                @Html.ActionLink("刪除", "Delete", "UserOrder", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })|
-                @Html.ActionLink("變更訂單狀態", "OrderChangeStatus", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要變更訂單狀態嗎?')", Class = "btn btn-outline-primary" })
-            </td>
-        </tr>
-        }
+                @{
+                    if ((int)Session["identity"] != 1)
+                    {
+                    <td>
+                        @Html.ActionLink("修改", "Edit", new { id = item.cOrderSN }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("刪除", "Delete", "UserOrder", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })|
+                        @Html.ActionLink("變更訂單狀態", "OrderChangeStatus", new { id = item.cOrderSN }, new { onclick = "return confirm('確定要變更訂單狀態嗎?')", Class = "btn btn-outline-primary" })
+                    </td>
+                }
+
+                }
+
+                </td>
+            </tr>
+            }
     }
 
 

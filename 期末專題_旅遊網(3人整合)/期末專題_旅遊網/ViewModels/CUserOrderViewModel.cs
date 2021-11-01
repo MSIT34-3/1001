@@ -63,6 +63,11 @@ namespace 期末專案0924.ViewModels
             get { return this.userOrder.cStayDays; }
             set { this.userOrder.cStayDays = value; }
         }
+        [DisplayName("飯店名稱")]
+        public string cHotelName{ get; set; }
+        [DisplayName("房型名稱")]
+        public string cHotelRoomTypeName { get; set; }
+        
         [DisplayName("訂單狀態")]
         public string cOrderStatus
         {
@@ -76,13 +81,14 @@ namespace 期末專案0924.ViewModels
             get { return this.userOrder.cStaffProfileSN; }
             set { this.userOrder.cStaffProfileSN = value; }
         }
-
+        
         [DisplayName("飯店房型編號")]
         public int cHotelRoomTypeSN
         {
             get { return this.userOrder.cHotelRoomTypeSN; }
             set { this.userOrder.cHotelRoomTypeSN = value; }
         }
+
         [StringLength(100, MinimumLength = 0, ErrorMessage = "{0}至少要{2}個字，不超過{1}個字")]
         [DisplayName("訂單備註(ex:預計入住時間、退房時間、抽不抽菸等...)")]
         public string cOrderNotes
