@@ -61,7 +61,7 @@ namespace 期末專案0924.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             TempData["message"] = "請登入";
 
@@ -225,21 +225,20 @@ namespace 期末專案0924.Controllers
         //    tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == id);
         //    return RedirectToAction("CreditCard", new { prod.cGuestID });
         //}
-	public ActionResult GuestList(string id)
+	public ActionResult GuestList(/*string id*/)
         {
             IEnumerable<tGuestAccountInfomation> IEnGuestAccountInfomation = null;
             string keyword = Request.Form["txtKeyword"];
             if (string.IsNullOrEmpty(keyword))
             {
                 IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
-                                            where p.cGuestID == id
+                                            //where p.cGuestID == id
                                             select p;
             }
             else
             {
                 IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
-                                         where p.cGuestID == id &&
-                p.cGuestAccountCreationDate.ToString().Contains(keyword) ||
+                                         where p.cGuestAccountCreationDate.ToString().Contains(keyword) ||
                                    p.cGuestBirth.ToString().Contains(keyword) ||
                                    p.cGuestCitizenship.Contains(keyword) ||
                                    p.cGuestEmail.Contains(keyword) ||

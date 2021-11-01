@@ -114,7 +114,6 @@
     <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
-    <Property Name="cHotelRoomTypePhoto" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tStaffProfile">
     <Key>
