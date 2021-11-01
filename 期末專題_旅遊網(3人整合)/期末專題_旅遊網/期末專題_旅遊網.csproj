@@ -243,6 +243,10 @@
     <Content Include="img\2.jpeg" />
     <Content Include="img\3.jpeg" />
     <Content Include="img\4.jpeg" />
+    <Content Include="img\ADImage\20211101-394-003.jpg" />
+    <Content Include="img\ADImage\20211101-944-3sjM3t9.jpg" />
+    <Content Include="img\ADImage\20211102-727-003.jpg" />
+    <Content Include="img\ADImage\20211102-826-豆漿-1.jpg" />
     <Content Include="img\ADImage\沒照片.jpg" />
     <Content Include="img\africa.png" />
     <Content Include="img\antartica.png" />
@@ -255,6 +259,11 @@
     <Content Include="img\europe.png" />
     <Content Include="img\fgb-min.jpg" />
     <Content Include="img\ghh.jpg" />
+    <Content Include="img\HotelImage\20211101-262-002.jpg" />
+    <Content Include="img\HotelImage\20211102-647-豆漿-4.jpg" />
+    <Content Include="img\HotelImage\RoomImage\20211102-463-豆漿-3.jpg" />
+    <Content Include="img\HotelImage\RoomImage\20211102-6-007.jpg" />
+    <Content Include="img\HotelImage\RoomImage\20211102-853-009.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\north-america.png" />
     <Content Include="img\pexelsphoto1172207.jpeg" />
@@ -267,6 +276,12 @@
     <Content Include="img\tm-img-05.jpg" />
     <Content Include="img\tm-img-06.jpg" />
     <Content Include="img\tm-img-07.jpg" />
+    <Content Include="img\tm-img-08.jpg" />
+    <Content Include="img\tm-img-09.jpg" />
+    <Content Include="img\tm-img-10.jpg" />
+    <Content Include="img\tm-img-11.jpg" />
+    <Content Include="img\tm-img-12.jpg" />
+    <Content Include="img\tm-img-13.jpg" />
     <Content Include="img\ttt-min.jpg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\datepicker.min.js" />
@@ -379,7 +394,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\HotelImage\RoomImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

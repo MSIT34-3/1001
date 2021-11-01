@@ -30,7 +30,27 @@ namespace 期末專題_旅遊網.Controllers
         {
             using (dbtravelwebEntities db = new dbtravelwebEntities())
             {
-                var cHotels =
+                List<tHotelInfomation> cHotels = null;
+                if (checkViewModel.destination == null)
+                {
+                    cHotels =
+                    (from p in db.tHotelOrderSystem
+                     join q in db.tHotelRoomType
+                     on p.cHotelRoomTypeSN equals q.cHotelRoomTypeSN
+                     join r in db.tHotelInfomation
+                     on q.cHotelSN equals r.cHotelSN
+                     where
+                     p.OrderDate == checkViewModel.checkin &&
+                     p.OrderDate < checkViewModel.checkout &&
+                     p.CanBookNumber >= checkViewModel.room &&
+                     q.cHotelRoomContainAldults >= checkViewModel.adult &&
+                     q.cHotelRoomContainChiidren >= checkViewModel.children &&
+                     q.cHotelRoomContain >= checkViewModel.adult + checkViewModel.children
+                     select r).ToList();
+                }
+                else
+                {
+                    cHotels =
                     (from p in db.tHotelOrderSystem
                      join q in db.tHotelRoomType
                      on p.cHotelRoomTypeSN equals q.cHotelRoomTypeSN
@@ -47,6 +67,8 @@ namespace 期末專題_旅遊網.Controllers
                      r.cHotelName.Contains(checkViewModel.destination) ||
                      r.cHotelAdress.Contains(checkViewModel.destination)
                      select r).ToList();
+                }
+                
                 //入住日期及天數到Session裡
                 TimeSpan ts = checkViewModel.checkout - checkViewModel.checkin;
                 SessionOrderDate sessionOrderDate = new SessionOrderDate()
