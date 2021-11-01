@@ -25,7 +25,7 @@ namespace 期末專題_旅遊網.ViewModels.Models
                           select n).FirstOrDefault();
                 if (e1 != null && e1.cGuestPWDHash == pWD)
                 {
-                    output.sn = e1.cGuestSN;
+                    output.Guestsn = e1.cGuestSN;
                     output.name = e1.cGuestLastName;
                     output.identity = 1;
                     return output;
