@@ -97,8 +97,8 @@
                     @Html.DisplayFor(modelItem => item.cFirmCellphone)
                 </td>
                 <td>
-                    @Html.ActionLink("編輯", "FirmEdit", new { firmSN = item.cFirmSN }) |
-                    @Html.ActionLink("刪除", "FirmDelete", new { firmSN = item.cFirmSN })
+                    @Html.ActionLink("編輯", "FirmEdit", new { firmSN = item.cFirmSN }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("刪除", "FirmDelete", new { firmSN = item.cFirmSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
                 </td>
             </tr>
         }
