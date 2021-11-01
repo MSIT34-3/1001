@@ -71,8 +71,8 @@ namespace 期末專案0924.ViewModels
             set { this.hotelRoomTypes.cHotelRoomContainChiidren = value; }
         }
         
-        [Required(ErrorMessage = "飯店房型價格(平日)不可空白")]
-        [DisplayName("飯店房型價格(平日)")]
+        [Required(ErrorMessage = "飯店房型價格不可空白")]
+        [DisplayName("飯店房型價格")]
         public int cHotelRoomTypePriceOfWeekdays
         {
             get { return this.hotelRoomTypes.cHotelRoomTypePriceOfWeekdays; }

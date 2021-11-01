@@ -18,15 +18,12 @@
     }
 }
 <p>
-    @Html.ActionLink("新增旅館", "Create", "", new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("新增旅館", "Create", new { id = Model[0].cFirmSN }, new { @class = "btn btn-outline-primary" })
 </p>
 <table class="table">
     <tr>
         <th>
             序
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model[0].cFirmSN)
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cFirmTaxID)
@@ -65,9 +62,6 @@
             <tr>
                 <td>
                     @count
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cFirmSN)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.cFirmTaxID)

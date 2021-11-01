@@ -24,9 +24,6 @@
             序
         </th>
         <th>
-            @Html.DisplayNameFor(model => model[0].cHotelSN)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model[0].cHotelRoomTypeName)
         </th>
         <th>
@@ -44,12 +41,12 @@
         <th>
             @Html.DisplayNameFor(model => model[0].cHotelRoomTypePriceOfWeekdays)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model[0].cHotelRoomTypePriceOfHoliday)
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cHotelRoomTypePriceOfFestival)
-        </th>
+        </th>*@
         <th></th>
     </tr>
     @{
@@ -60,9 +57,6 @@
         <tr>
             <td>
                 @count
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelSN)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypeName)
@@ -82,12 +76,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfWeekdays)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfHoliday)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfFestival)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.cHotelRoomTypeSN }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("刪除", "Delete", new { id = item.cHotelRoomTypeSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |

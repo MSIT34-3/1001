@@ -72,8 +72,9 @@ namespace 期末專案0924.Controllers
             }
             return RedirectToAction("List");
         }
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            Session["FirmSN"] = id;
             //讓View-DeadlineMonths變成下拉式選單
             List<SelectListItem> hoteltypes = new List<SelectListItem>();
             SelectListItem hoteltype = new SelectListItem { Text = "請選擇旅館類型", Value = "請選擇旅館類型" };
@@ -90,6 +91,7 @@ namespace 期末專案0924.Controllers
         [HttpPost]
         public ActionResult Create(tHotelInfomation p)
         {
+            p.cFirmSN = (int)Session["FirmSN"];
             dbtravelwebEntities db = new dbtravelwebEntities();
             db.tHotelInfomation.Add(p);
             db.SaveChanges();

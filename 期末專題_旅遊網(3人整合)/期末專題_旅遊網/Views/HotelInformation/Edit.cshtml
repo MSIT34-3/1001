@@ -11,18 +11,11 @@
 {
     @Html.AntiForgeryToken()
 <input type="hidden" name="cHotelSN" value="@Model.cHotelSN" />
+<input type="hidden" name="cFirmSN" value="@Model.cFirmSN" />
 <div class="form-horizontal">
     <h4>輸入旅館資訊</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.cFirmSN, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.cFirmSN, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.cFirmSN, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.cFirmTaxID, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -71,9 +71,9 @@ namespace 期末專案0924.ViewModels
         }
 
         
-        [StringLength(10, MinimumLength = 8, ErrorMessage = "電話號碼為9-10碼")]
+        [StringLength(13, MinimumLength = 8, ErrorMessage = "電話號碼為9-10碼")]
         [Required(ErrorMessage = "飯店電話不可空白")]
-        [DisplayName("飯店電話(區碼加電話號碼)")]
+        [DisplayName("飯店電話[(02)1234-5678]")]
         public string cHotelPhone
         {
             get { return this.hotelInfomation.cHotelPhone; }
