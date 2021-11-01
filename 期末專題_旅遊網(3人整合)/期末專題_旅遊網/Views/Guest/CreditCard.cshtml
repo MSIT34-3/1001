@@ -34,11 +34,17 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.cGuestCreditCardNumber, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.cGuestCreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.cGuestCreditCardNumber, "", new { @class = "text-danger" })
+                    
+                        <input class="form-control card" maxlength="4" id="card1" />
+                        <input class="form-control card" maxlength="4" id="card2" />
+                        <input class="form-control card" maxlength="4" id="card3" />
+                        <input class="form-control card" maxlength="4" id="card4" />
+                        <input type="hidden" name="cGuestCreditCardNumber" id="card5" />
+                        @*@Html.EditorFor(model => model.cGuestCreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.cGuestCreditCardNumber, "", new { @class = "text-danger" })
 
+                    </div>
                 </div>
-            </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.cGuestCreditCardNameID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -85,3 +91,28 @@
     }
     </body>
 </html>
+<script>
+    $("#cardClick").click(function () {
+        var intcard1 = parseInt($("#card1").val());
+        var intcard2 = parseInt($("#card2").val());
+        var intcard3 = parseInt($("#card3").val());
+        var intcard4 = parseInt($("#card4").val());
+        if ($("#card1").val().length != 4 || isNaN(intcard1)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
+            return false;
+        }
+        if ($("#card2").val().length != 4 || isNaN(intcard2)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
+            return false;
+        }
+        if ($("#card3").val().length != 4 || isNaN(intcard3)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
+            return false;
+        }
+        if ($("#card4").val().length != 4 || isNaN(intcard4)) {
+            alert("信用卡卡號為16碼或輸入數字!!");
+            return false;
+        };
+        $("#cardForm").submit();
+    });
+</script>

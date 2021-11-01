@@ -225,19 +225,20 @@ namespace 期末專案0924.Controllers
         //    tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == id);
         //    return RedirectToAction("CreditCard", new { prod.cGuestID });
         //}
-	public ActionResult GuestList()
+	public ActionResult GuestList(string id)
         {
             IEnumerable<tGuestAccountInfomation> IEnGuestAccountInfomation = null;
             string keyword = Request.Form["txtKeyword"];
             if (string.IsNullOrEmpty(keyword))
             {
                 IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
-                                         select p;
+                                            where p.cGuestID == id
+                                            select p;
             }
             else
             {
                 IEnGuestAccountInfomation = from p in (new dbtravelwebEntities()).tGuestAccountInfomation
-                                         where 
+                                         where p.cGuestID == id &&
                 p.cGuestAccountCreationDate.ToString().Contains(keyword) ||
                                    p.cGuestBirth.ToString().Contains(keyword) ||
                                    p.cGuestCitizenship.Contains(keyword) ||
@@ -258,9 +259,60 @@ namespace 期末專案0924.Controllers
             return View(models);
            
         }
+        public ActionResult GuestEdit(string id)
+        {
+            if (id == null)
+                return RedirectToAction("List");
+
+            tGuestAccountInfomation prod = (new dbtravelwebEntities()).tGuestAccountInfomation.FirstOrDefault(p => p.cGuestID == id);
+            if (prod == null)
+                return RedirectToAction("List");
+            GuestModel models = new GuestModel() { GuestAccountInfomation = prod };
+            return View(models);
+        }
+        [HttpPost]
+        public ActionResult GuestEdit(tGuestAccountInfomation input)
+        {
+            dbtravelwebEntities db = new dbtravelwebEntities();
+            tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestID == input.cGuestID);
+            if (prod != null)
+            {
+                //prod.cHotelSN = (int)Session["tHotelRoomType"];
+                prod.cGuestAccountCreationDate = input.cGuestAccountCreationDate;
+                prod.cGuestBirth = input.cGuestBirth;
+                prod.cGuestCitizenship = input.cGuestCitizenship;
+                prod.cGuestEmail = input.cGuestEmail;
+                prod.cGuestFirstName = input.cGuestFirstName;
+                prod.cGuestFirstNameEN = input.cGuestFirstNameEN;
+                prod.cGuestGender = input.cGuestGender;
+                prod.cGuestID = input.cGuestID;
+                prod.cGuestLastName = input.cGuestLastName;
+                prod.cGuestLastNameEN = input.cGuestLastNameEN;
+                prod.cGuestPhoneNumber = input.cGuestPhoneNumber;
+               db.SaveChanges();
+            }
+            return RedirectToAction("GuestList", new { id = prod.cGuestID });
+        }
+        public ActionResult GuestDelete(string id)
+        {
+            dbtravelwebEntities db = new dbtravelwebEntities();
+            tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestID == id);
+            if (prod != null)
+            {
+                db.tGuestAccountInfomation.Remove(prod);
+                db.SaveChanges();
+            }
+            //如果刪除房型管理資料後 List為0 會跳回飯店管理
+            tGuestAccountInfomation Zero = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestID == prod.cGuestID);
+            if (Zero == null)
+            {
+                return RedirectToAction("GuestList", new { id = prod.cGuestID });
+            }
+            return RedirectToAction("GuestList", new { id = prod.cGuestID });
+        }
     }
 
 
-    
+
 
 }

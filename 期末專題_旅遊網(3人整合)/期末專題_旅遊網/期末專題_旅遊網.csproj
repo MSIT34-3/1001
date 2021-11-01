@@ -243,9 +243,7 @@
     <Content Include="img\2.jpeg" />
     <Content Include="img\3.jpeg" />
     <Content Include="img\4.jpeg" />
-    <Content Include="img\ADImage\20211029-202-123.jpg" />
-    <Content Include="img\ADImage\20211029-670-IMG_9624.JPG" />
-    <Content Include="img\ADImage\讚.jpg" />
+    <Content Include="img\ADImage\沒照片.jpg" />
     <Content Include="img\africa.png" />
     <Content Include="img\antartica.png" />
     <Content Include="img\asia.png" />
@@ -376,9 +374,11 @@
     <Content Include="Views\Guest\Register.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Guest\GuestList.cshtml" />
+    <Content Include="Views\Guest\GuestEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\HotelImage\RoomImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

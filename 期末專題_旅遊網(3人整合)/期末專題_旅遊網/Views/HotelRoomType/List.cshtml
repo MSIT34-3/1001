@@ -24,6 +24,9 @@
             序
         </th>
         <th>
+            照片
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model[0].cHotelRoomTypeName)
         </th>
         <th>
@@ -59,6 +62,9 @@
                 @count
             </td>
             <td>
+                <img id="hotelImg" src="~/img/HotelImage/RoomImage/@item.cHotelRoomTypePhoto">
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypeName)
             </td>
             <td>
@@ -77,15 +83,15 @@
                 @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfWeekdays)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfHoliday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfFestival)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfHoliday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cHotelRoomTypePriceOfFestival)
+        </td>*@
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.cHotelRoomTypeSN }, new { @class = "btn btn-success" }) |
                 @Html.ActionLink("刪除", "Delete", new { id = item.cHotelRoomTypeSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" }) |
-                @Html.ActionLink("新增房型訂單系統", "List", "HotelOrderSystem", new { id = item.cHotelRoomTypeSN , HotelId = item.cHotelSN}, new { @class = "btn btn-outline-primary" })                
+                @Html.ActionLink("新增房型訂單系統", "List", "HotelOrderSystem", new { id = item.cHotelRoomTypeSN, HotelId = item.cHotelSN }, new { @class = "btn btn-outline-primary" })
             </td>
         </tr>
         }

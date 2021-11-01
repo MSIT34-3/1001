@@ -41,14 +41,14 @@
 </head>
 <body>
     <div class="first_cot">
-        @if (Model.selectRoom != null)
+        @if (Model!=null && Model.selectRoom != null)
         {
             foreach (var p in Model.selectRoom)
             {
                 <div class="outframe">
                     <div style="float:left">
                         <div class="imgframe">
-                            <img src="~/img/tm-img-07.jpg" />@*換成飯店圖片*@
+                            <img src="~/img/HotelImage/RoomImage/@p.cHotelRoomTypePhoto" />@*換成飯店圖片*@
                         </div>
                         <div class="textframe" style="width:250px">
                             <h3>@p.cHotelRoomTypeName</h3>

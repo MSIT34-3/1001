@@ -5,7 +5,7 @@
 /*顯示框的大小*/
 .warpper {
     width: 800px;
-    height: 400px;
+    height: 600px;
     background-color: black;
     margin: 0 auto;
     position: relative;
@@ -26,7 +26,7 @@
     /*單張圖片大小*/
     .slider-img li {
         width: 800px;
-        height: 400px;
+        height: 600px;
         background-color: ghostwhite;
         /*身展比例 壓縮比例 額外剩餘比例*/
         flex: 1 0 0;

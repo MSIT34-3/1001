@@ -69,8 +69,14 @@ namespace 期末專案0924.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(tHotelRoomType p)
+        public ActionResult Create(HttpPostedFileBase image, tHotelRoomType p)
         {
+            string savePath = "E:/資策會/003專題/GitHub/Travel/期末專題_旅遊網(3人整合)/期末專題_旅遊網/img/HotelImage/RoomImage/";
+            string HotelFileName = DateTime.Now.ToString("yyyyMMdd") + "-" + DateTime.Now.Millisecond + "-" + image.FileName;
+            image.SaveAs(savePath + HotelFileName);
+
+            p.cHotelRoomTypePhoto = HotelFileName;
+
             p.cHotelSN = (int)Session["tHotelRoomTypeHotelSN"];
             p.cFirmSN = (int)Session["tHotelRoomTypeFirmSN"];
             dbtravelwebEntities db = new dbtravelwebEntities();

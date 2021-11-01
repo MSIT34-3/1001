@@ -90,7 +90,7 @@ namespace 期末專題_旅遊網.ViewModels.Models
             //取出圖片名
             if (AdCount(date) == 0)
             {
-                adFileName = new string[1] { "讚.jpg" };
+                adFileName = new string[1] { "沒照片.jpg" };
                 return adFileName;
             }
             else

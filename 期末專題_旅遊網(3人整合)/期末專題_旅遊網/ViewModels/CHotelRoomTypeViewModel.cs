@@ -92,5 +92,10 @@ namespace 期末專案0924.ViewModels
             get { return this.hotelRoomTypes.cHotelRoomTypePriceOfFestival; }
             set { this.hotelRoomTypes.cHotelRoomTypePriceOfFestival = value; }
         }
+        public string cHotelRoomTypePhoto
+        {
+            get { return this.hotelRoomTypes.cHotelRoomTypePhoto; }
+            set { this.hotelRoomTypes.cHotelRoomTypePhoto = value; }
+        }
     }
 }
