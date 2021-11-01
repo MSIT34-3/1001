@@ -12,62 +12,30 @@ namespace 期末專案0924.Controllers
     public class UserOrderController : Controller
     {
         // GET: UserOrder
-        public ActionResult List(int? id)
+        public ActionResult List()
         {
             IEnumerable<tUserOrder> userOrders = null;
             string keyword = Request.Form["txtKeyword"];
-
             if (string.IsNullOrEmpty(keyword))
             {
-                if (id != null)
-                {
-                    userOrders = from p in (new dbtravelwebEntities()).tUserOrder
-                                 where p.cGuestSN == id
-                                 select p;
-                }
-                else
-                {
-                    userOrders = from p in (new dbtravelwebEntities()).tUserOrder
-                                 select p;
-                }
+                userOrders = from p in (new dbtravelwebEntities()).tUserOrder
+                                   select p;
             }
             else
             {
-                if (id != null)
-                {
-                    userOrders = from p in (new dbtravelwebEntities()).tUserOrder
-                                 where p.cGuestSN == id &&
-                                       p.cGuestSN.ToString().Contains(keyword) ||
-                                       p.cCheckInDate.ToString().Contains(keyword) ||
-                                       p.cCheckOutDate.ToString().Contains(keyword) ||
-                                       p.cOrderStatus.Contains(keyword) ||
-                                       p.cStaffProfileSN.ToString().Contains(keyword) ||
-                                       p.cOrderNotes.Contains(keyword) ||
-                                       p.cOrderPrice.ToString().Contains(keyword)
-                                        select p;
-                }
-                else
-                {
-                    userOrders = from p in (new dbtravelwebEntities()).tUserOrder
-                                 where p.cGuestSN.ToString().Contains(keyword) ||
-                                       p.cCheckInDate.ToString().Contains(keyword) ||
-                                       p.cCheckOutDate.ToString().Contains(keyword) ||
-                                       p.cOrderStatus.Contains(keyword) ||
-                                       p.cStaffProfileSN.ToString().Contains(keyword) ||
-                                       p.cOrderNotes.Contains(keyword) ||
-                                       p.cOrderPrice.ToString().Contains(keyword)
-                                 select p;
-                }
-
+                userOrders = from p in (new dbtravelwebEntities()).tUserOrder
+                             where p.cGuestSN.ToString().Contains(keyword) ||
+                                   p.cCheckInDate.ToString().Contains(keyword) ||
+                                   p.cCheckOutDate.ToString().Contains(keyword) ||
+                                   p.cOrderStatus.Contains(keyword) ||
+                                   p.cStaffProfileSN.ToString().Contains(keyword) ||
+                                   p.cOrderNotes.Contains(keyword) ||
+                                   p.cOrderPrice.ToString().Contains(keyword)
+                                   select p;
             }
             List<CUserOrderViewModel> models = new List<CUserOrderViewModel>();
-
             foreach (tUserOrder t in userOrders)
-            {
-                var cGuestName = (new dbtravelwebEntities()).tGuestAccountInfomation.FirstOrDefault(q => q.cGuestSN == t.cGuestSN);
-                string GuestName = cGuestName.cGuestFirstName + cGuestName.cGuestLastName;
-                models.Add(new CUserOrderViewModel() { userOrder = t, cGuestName = GuestName });
-            }
+                models.Add(new CUserOrderViewModel() { userOrder = t });
             return View(models);
         }
         public ActionResult Delete(int? id)
@@ -84,7 +52,7 @@ namespace 期末專案0924.Controllers
             }
             return RedirectToAction("List");
         }
-        public ActionResult Create(int HotelRoom, int HotelPrice)
+        public ActionResult Create(int HotelRoom,int HotelPrice)
         {
             //分別抓首頁搜尋資料及確認的房型
             SessionOrderDate sessionOrderDate = (SessionOrderDate)Session[CDictionary.SK_USER_ORDER];
@@ -98,7 +66,7 @@ namespace 期末專案0924.Controllers
             {
                 //如果沒有旅客編號將會跳到登入畫面
                 TempData["message"] = "請先登入";
-                return RedirectToAction("Login", "Home");
+                return RedirectToAction("Login","Home");
             }
             prod.cGuestSN = (int)Session["sn"];
             CUserOrderViewModel models = new CUserOrderViewModel() { userOrder = prod };
@@ -107,7 +75,7 @@ namespace 期末專案0924.Controllers
         [HttpPost]
         public ActionResult Create(tUserOrder p)
         {
-
+            
             //dbtravelwebEntities db = new dbtravelwebEntities();
             p.cOrderDate = DateTime.Now;
 
@@ -124,7 +92,7 @@ namespace 期末專案0924.Controllers
             //db.tUserOrder.Add(p);
             //db.SaveChanges();
             //到時候在上面加價格...要鎖起來
-            return RedirectToAction("Create", "GuestPaymentInformation", new { p.cOrderID });
+            return RedirectToAction("Create", "GuestPaymentInformation",new { p.cOrderID});
         }
 
         public ActionResult Edit(int? id)
