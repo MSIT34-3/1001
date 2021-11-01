@@ -72,7 +72,7 @@ namespace 期末專案0924.Controllers
         {
             int GuestSN =0;
             if ((int)Session["identity"] == 1)
-                GuestSN = (int)Session["sn"];
+                GuestSN = (int)Session["Guestsn"];
 
             dbtravelwebEntities db = new dbtravelwebEntities();
             tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestSN == GuestSN);
@@ -80,7 +80,7 @@ namespace 期末專案0924.Controllers
             if (prod == null)
             {
                 TempData["message"] = "帳號目前沒有資料";
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Home");
             }
             //MODELS
             GuestAndCreditCardModel models = new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = pay };
