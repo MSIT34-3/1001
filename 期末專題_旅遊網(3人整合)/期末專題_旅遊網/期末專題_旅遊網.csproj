@@ -374,6 +374,7 @@
     <Content Include="Views\Guest\Register.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Guest\GuestList.cshtml" />
+    <Content Include="Views\Guest\GuestEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
