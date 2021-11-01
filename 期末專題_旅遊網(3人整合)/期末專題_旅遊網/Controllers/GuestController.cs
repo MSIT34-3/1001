@@ -30,13 +30,13 @@ namespace 期末專案0924.Controllers
             if (cGuestEmail == null)
             {
                 TempData["message"] = "請輸入正確電子郵件";
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
             tGuestAccountInfomation prod = (new dbtravelwebEntities()).tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == cGuestEmail);
             if (cGuestEmail == null)
             {
                 TempData["message"] = "請輸入正確電子郵件與密碼";
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
 
 
@@ -65,7 +65,7 @@ namespace 期末專案0924.Controllers
             }
             TempData["message"] = "請登入";
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","Home");
 
         }
         public ActionResult Member( )
@@ -80,7 +80,7 @@ namespace 期末專案0924.Controllers
             if (prod == null)
             {
                 TempData["message"] = "帳號目前沒有資料";
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
             //MODELS
             GuestAndCreditCardModel models = new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = pay };
@@ -192,7 +192,7 @@ namespace 期末專案0924.Controllers
         public ActionResult AfterLogin(string cGuestEmail)
         {
             if (cGuestEmail == null)
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
 
             dbtravelwebEntities db = new dbtravelwebEntities();
             tGuestAccountInfomation prod = db.tGuestAccountInfomation.FirstOrDefault(p => p.cGuestEmail == cGuestEmail);
@@ -200,7 +200,7 @@ namespace 期末專案0924.Controllers
             if (prod == null)
             {
                 TempData["message"] = "帳號目前沒有資料";
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
             //MODELS
             GuestAndCreditCardModel models = new GuestAndCreditCardModel() { GuestAccountInfomation = prod, GuestPaymentInfomation = pay };
