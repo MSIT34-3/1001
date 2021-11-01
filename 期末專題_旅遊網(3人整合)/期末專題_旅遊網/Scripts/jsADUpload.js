@@ -238,8 +238,8 @@ function CheckAllNotNull() {
         && CheckNotNull(checkDueDate)
         && CheckNotNull(checkimage)
     ) {
-        if (CheckNotNull(checkADURL)) {
-            if (!confirm("確認是否使用自訂連結?")) {
+        if (!CheckNotNull(checkADURL)) {
+            if (!confirm("未填寫URL，是否繼續?")) {
                 return false;
             };
         };
