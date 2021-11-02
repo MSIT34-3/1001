@@ -25,7 +25,7 @@ namespace 期末專案0924.ViewModels
             set { this.userOrder.cOrderID = value; }
         }
         [DisplayName("廠商編號")]
-        public int cFirmSN
+        public Nullable<int> cFirmSN
         {
             get { return this.userOrder.cFirmSN; }
             set { this.userOrder.cFirmSN = value; }

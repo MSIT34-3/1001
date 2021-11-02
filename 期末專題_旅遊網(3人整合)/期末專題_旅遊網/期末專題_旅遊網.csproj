@@ -183,6 +183,9 @@
     <Compile Include="tHotelOrderSystem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="tHotelRoomPhoto.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="tHotelRoomType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

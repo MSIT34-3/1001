@@ -99,6 +99,17 @@
     <Property Name="CanBookNumber" Type="int" Nullable="false" />
     <Property Name="BookedNumber" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="tHotelRoomPhoto">
+    <Key>
+      <PropertyRef Name="cHotelRoomPhotoSN" />
+    </Key>
+    <Property Name="cHotelRoomPhotoSN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cHotelRoomTypeSN" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomPhotoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cHotelRoomPhoto" Type="image" Nullable="false" />
+    <Property Name="cHotelSN" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="tHotelRoomType">
     <Key>
       <PropertyRef Name="cHotelRoomTypeSN" />
@@ -114,6 +125,7 @@
     <Property Name="cHotelRoomTypePriceOfWeekdays" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfHoliday" Type="int" Nullable="false" />
     <Property Name="cHotelRoomTypePriceOfFestival" Type="int" Nullable="false" />
+    <Property Name="cHotelRoomTypePhoto" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="tStaffProfile">
     <Key>
@@ -164,6 +176,7 @@
     <EntitySet Name="tGuestPaymentInfomation" EntityType="Self.tGuestPaymentInfomation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tHotelInfomation" EntityType="Self.tHotelInfomation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tHotelOrderSystem" EntityType="Self.tHotelOrderSystem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tHotelRoomPhoto" EntityType="Self.tHotelRoomPhoto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tHotelRoomType" EntityType="Self.tHotelRoomType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tStaffProfile" EntityType="Self.tStaffProfile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tUserOrder" EntityType="Self.tUserOrder" Schema="dbo" store:Type="Tables" />

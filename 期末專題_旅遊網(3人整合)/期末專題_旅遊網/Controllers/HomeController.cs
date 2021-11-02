@@ -117,7 +117,7 @@ namespace 期末專題_旅遊網.Controllers
                 foreach (var SN in cHotelRooms)
                 {
                     selectRoomtype.selectRoom = selectRoom;
-                    selectRoomtype.selectRoom.Add(new SelectRoomModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelRoomTypeSN = SN.cHotelRoomTypeSN, cHotelRoomTypeName = SN.cHotelRoomTypeName, cHotelRoomContain = SN.cHotelRoomContain, cHotelRoomContainAldults = SN.cHotelRoomContainAldults, cHotelRoomContainChildren = SN.cHotelRoomContainChiidren, cHotelRoomTypePriceOfWeekdays = SN.cHotelRoomTypePriceOfWeekdays, cHotelRoomTypePriceOfHoliday = SN.cHotelRoomTypePriceOfHoliday, cHotelRoomTypePriceOfFestival = SN.cHotelRoomTypePriceOfFestival });
+                    selectRoomtype.selectRoom.Add(new SelectRoomModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelRoomTypeSN = SN.cHotelRoomTypeSN, cHotelRoomTypeName = SN.cHotelRoomTypeName, cHotelRoomContain = SN.cHotelRoomContain, cHotelRoomContainAldults = SN.cHotelRoomContainAldults, cHotelRoomContainChildren = SN.cHotelRoomContainChiidren, cHotelRoomTypePriceOfWeekdays = SN.cHotelRoomTypePriceOfWeekdays, cHotelRoomTypePriceOfHoliday = SN.cHotelRoomTypePriceOfHoliday, cHotelRoomTypePriceOfFestival = SN.cHotelRoomTypePriceOfFestival, cHotelRoomTypePhoto=SN.cHotelRoomTypePhoto });
                 }
             }
             else

@@ -30,9 +30,10 @@ namespace 期末專題_旅遊網
         public virtual DbSet<tHotelInfomation> tHotelInfomation { get; set; }
         public virtual DbSet<tStaffProfile> tStaffProfile { get; set; }
         public virtual DbSet<tHotelOrderSystem> tHotelOrderSystem { get; set; }
-        public virtual DbSet<tHotelRoomType> tHotelRoomType { get; set; }
         public virtual DbSet<tGuestAccountInfomation> tGuestAccountInfomation { get; set; }
         public virtual DbSet<tGuestPaymentInfomation> tGuestPaymentInfomation { get; set; }
         public virtual DbSet<tUserOrder> tUserOrder { get; set; }
+        public virtual DbSet<tHotelRoomPhoto> tHotelRoomPhoto { get; set; }
+        public virtual DbSet<tHotelRoomType> tHotelRoomType { get; set; }
     }
 }
