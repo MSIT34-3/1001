@@ -80,7 +80,7 @@ namespace 期末專題_旅遊網.Controllers
                 };
                 Session[CDictionary.SK_USER_ORDER] = sessionOrderDate;
 
-                cHotels = cHotels.OrderByDescending(m => m.cHotelRatingOfPeople).ToList();
+                //cHotels = cHotels.OrderByDescending(m => m.cHotelRatingOfPeople).ToList();
 
                 checkViewModel.selects = new List<SelectViewModel>();
                 if (cHotels.Count != 0)
@@ -91,7 +91,7 @@ namespace 期末專題_旅遊網.Controllers
                         if (!distin.Contains(SN.cHotelName))
                         {
                             var price = db.tHotelRoomType.Where(m => m.cHotelSN == SN.cHotelSN).OrderByDescending(m => m.cHotelRoomTypePriceOfWeekdays).FirstOrDefault().cHotelRoomTypePriceOfWeekdays;
-                            checkViewModel.selects.Add(new SelectViewModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAdress = SN.cHotelAdress, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity });
+                            checkViewModel.selects.Add(new SelectViewModel { cFirmSN = (int)SN.cFirmSN,cHotelSN = SN.cHotelSN, cHotelName = SN.cHotelName, cHotelAdress = SN.cHotelAdress, cHotelAverageRating = SN.cHotelAverageRating, cHotelRatingOfPeople = SN.cHotelRatingOfPeople, cHotelRoomTypePrice = price, cHotelNameEN = SN.cHotelNameEN, cHotelCity = SN.cHotelCity ,cHotelInfoPhotoFileName = SN.cHotelInfoPhotoFileName});
                             distin.Add(SN.cHotelName);
                         }
                     }
