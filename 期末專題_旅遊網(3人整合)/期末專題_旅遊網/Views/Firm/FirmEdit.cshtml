@@ -87,9 +87,10 @@
 
 @{ if ((int)Session["identity"] == 2)
     {
-        <div>
-            @Html.ActionLink("返回", "Index","Home")
-        </div>
+    <div>
+        @Html.ActionLink("返回", "Index", "Home")
+        @Html.ActionLink("更改密碼", "ChangePWD", new { firmSN = (int)Session["sn"] })
+    </div>
     }
     else if ((int)Session["identity"] == 3)
     {

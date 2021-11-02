@@ -65,7 +65,7 @@ namespace 期末專案0924.Controllers
             }
             TempData["message"] = "請登入";
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","Home");
 
         }
         public ActionResult Member( )
