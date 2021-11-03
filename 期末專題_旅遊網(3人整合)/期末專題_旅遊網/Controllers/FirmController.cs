@@ -39,13 +39,13 @@ namespace 期末專題_旅遊網.Controllers
             }            
         }
 
-        public ActionResult FirmEdit(int? cFirmSN)
+        public ActionResult FirmEdit(int? firmSN)
         {
             if ((int)Session["identity"] == 2)
-                cFirmSN = (int)Session["sn"];
+                firmSN = (int)Session["sn"];
 
             tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
-            tFirmAccountInfomation firm = factory.QueryBySN((int)cFirmSN);
+            tFirmAccountInfomation firm = factory.QueryBySN((int)firmSN);
 
             return View(tableToViewModel(firm));
         }
@@ -64,10 +64,10 @@ namespace 期末專題_旅遊網.Controllers
                     return RedirectToAction("Login", "Home");
             }
         }
-        public ActionResult ChangePWD(int cFirmSN)
+        public ActionResult ChangePWD(int firmSN)
         {
             tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
-            tFirmAccountInfomation firm = factory.QueryBySN(cFirmSN);
+            tFirmAccountInfomation firm = factory.QueryBySN(firmSN);
 
             return View(tableToViewModel(firm));
         }
