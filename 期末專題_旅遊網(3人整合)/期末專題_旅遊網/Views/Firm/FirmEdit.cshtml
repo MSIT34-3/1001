@@ -89,7 +89,7 @@
     {
     <div>
         @Html.ActionLink("返回", "Index", "Home")
-        @Html.ActionLink("更改密碼", "ChangePWD", new { firmSN = (int)Session["sn"] })
+        @Html.ActionLink("更改密碼", "ChangePWD", new { cfirmSN = (int)Session["sn"] })
     </div>
     }
     else if ((int)Session["identity"] == 3)

@@ -53,6 +53,17 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("取消", "FirmList")
-</div>
+@{ if ((int)Session["identity"] == 3)
+    {
+        <div>
+            @Html.ActionLink("取消", "FirmList")
+        </div>
+    }
+    else
+    {
+        <div>
+            @Html.ActionLink("取消", "FirmEdit")
+        </div>
+    }
+}
+

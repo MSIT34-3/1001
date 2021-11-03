@@ -64,10 +64,10 @@ namespace 期末專題_旅遊網.Controllers
                     return RedirectToAction("Login", "Home");
             }
         }
-        public ActionResult ChangePWD(int firmSN)
+        public ActionResult ChangePWD(int cfirmSN)
         {
             tFirmAccountInfoFactory factory = new tFirmAccountInfoFactory();
-            tFirmAccountInfomation firm = factory.QueryBySN(firmSN);
+            tFirmAccountInfomation firm = factory.QueryBySN(cfirmSN);
 
             return View(tableToViewModel(firm));
         }

@@ -5,6 +5,14 @@
     ViewBag.Title = "ADList";
 }
 
+<head>
+    <style>
+        .pre_img {
+            height: 100px;
+        }
+    </style>
+</head>
+
 <h2>廣告列表</h2>
 @{ if ((int)Session["identity"] == 3)
     {
@@ -28,6 +36,9 @@
     <tr>
         <th>
             序
+        </th>
+        <th>
+            圖片
         </th>
         <th>
             @Html.DisplayNameFor(model => model[0].cADName)
@@ -61,67 +72,70 @@
         foreach (var item in Model)
         {
             count++;
-            <tr>
-                <td>
-                    @count
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cADName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cADStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cADDueDate)
-                </td>
-                <td>
-                    @{if (item.cADStatus == true)
-                        {
-                            <label>播放中</label>
-                        }
-                        else
-                        {
-                            <label>已暫停</label>
-                        }
-                    }
-                </td>
-                <td>
-                    @{if (item.cADGroup == "1")
-                        {
-                            <label>首頁</label>
-                        }
-                        else
-                        {
-                            <label>其他</label>
-                        }
-                    }
-                </td>
-                <td>
-                    <a href="@item.cADURL">連結</a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cADCreateDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cADEditDate)
-                </td>
-                @{
-                    if ((int)Session["identity"] == 3)
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                <img class="pre_img" id="preview_img" src="~/img/ADImage/@item.cADFileName">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADDueDate)
+            </td>
+            <td>
+                @{if (item.cADStatus == true)
                     {
-                        <td>
-                            @Html.ActionLink("編輯", "ADEdit", new { sn = item.cADSN }, new { @class = "btn btn-success" }) |
-                            @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" }) |
-                            @Html.ActionLink("刪除", "ADDelete", new { id = item.cADSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
-                        </td>
+                        <label>播放中</label>
                     }
                     else
                     {
-                        <td>
-                            @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" })
-                        </td>
+                        <label>已暫停</label>
                     }
                 }
-            </tr>
+            </td>
+            <td>
+                @{if (item.cADGroup == "1")
+                    {
+                        <label>首頁</label>
+                    }
+                    else
+                    {
+                        <label>其他</label>
+                    }
+                }
+            </td>
+            <td>
+                <a href="@item.cADURL">連結</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADCreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cADEditDate)
+            </td>
+            @{
+                if ((int)Session["identity"] == 3)
+                {
+                    <td>
+                        @Html.ActionLink("編輯", "ADEdit", new { sn = item.cADSN }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" }) |
+                        @Html.ActionLink("刪除", "ADDelete", new { id = item.cADSN }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("變更狀態", "ADChangeStatus", new { id = item.cADSN }, new { @class = "btn btn-outline-primary" })
+                    </td>
+                }
+            }
+        </tr>
         }
     }
 </table>
