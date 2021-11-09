@@ -63,9 +63,9 @@ namespace 期末專題_旅遊網.Controllers
                      q.cHotelRoomContainAldults >= checkViewModel.adult &&
                      q.cHotelRoomContainChiidren >= checkViewModel.children &&
                      q.cHotelRoomContain >= checkViewModel.adult + checkViewModel.children &&
-                     r.cHotelCity.Contains(checkViewModel.destination) ||
+                     (r.cHotelCity.Contains(checkViewModel.destination) ||
                      r.cHotelName.Contains(checkViewModel.destination) ||
-                     r.cHotelAdress.Contains(checkViewModel.destination)
+                     r.cHotelAdress.Contains(checkViewModel.destination))
                      select r).ToList();
                 }
                 
@@ -79,8 +79,6 @@ namespace 期末專題_旅遊網.Controllers
 
                 };
                 Session[CDictionary.SK_USER_ORDER] = sessionOrderDate;
-
-                //cHotels = cHotels.OrderByDescending(m => m.cHotelRatingOfPeople).ToList();
 
                 checkViewModel.selects = new List<SelectViewModel>();
                 if (cHotels.Count != 0)
